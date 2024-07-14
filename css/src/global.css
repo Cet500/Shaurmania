@@ -1,0 +1,21 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background-color: orangered;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.btn{
+    color: black;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+     font-size: 20px;
+}
