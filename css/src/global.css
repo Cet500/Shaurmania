@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.footer {
+    width: 100%;
+    background-color: bisque;
+    position: relative;
+    display: flex;
+    float: right;
+    color: #000;
+    font-family: sans-serif;
+    border: #000 solid 0px;
+    border-radius: 10px;
+    padding: 0;
+    font-size: larger;
+}
+.sp {
+    display: inline-block;
+    position: relative;
+    padding-left: 35%;
+}
