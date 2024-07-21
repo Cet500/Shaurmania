@@ -1,0 +1,18 @@
+.btn{
+    color: black;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+.btn:active{
+    background-color: #333;
+    color: #fff;
+}

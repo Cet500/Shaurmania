@@ -1,0 +1,35 @@
+.sp {
+    display: inline-block;
+    position: relative;
+    padding-left: 50%;
+}
+.content__wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 0;
+}
+.content {
+    display: flex;
+    width: calc(calc(100% - 60px) / 2);
+    background-color: #000;
+    background-image: linear-gradient(to right, orange, orangered);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+.content > img {
+    width: 35%;
+    display: inline-flex;
+}
+main > h2 {
+    margin-left: 10px;
+    color: red;
+    text-align: center;
+}
+p {
+    margin: 8px;
+}
