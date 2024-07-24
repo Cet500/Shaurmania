@@ -33,3 +33,13 @@ main > h2 {
 p {
     margin: 8px;
 }
+.price {
+    display: flex;
+    width: 45px;
+    font-size: larger;
+    font-weight: bold;
+    margin: 3px 15px 0 15px;
+    float: left;
+    color: lightgoldenrodyellow
+    
+}
