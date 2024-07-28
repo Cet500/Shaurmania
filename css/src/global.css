@@ -36,4 +36,5 @@
     border-radius: 0px;
     padding: 0;
     font-size: larger;
+    z-index: 0;
 }

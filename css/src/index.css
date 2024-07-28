@@ -15,7 +15,7 @@
     display: flex;
     width: calc(calc(100% - 60px) / 2);
     background-color: #000;
-    background-image: linear-gradient(to right, orange, orangered);
+    background-image: linear-gradient(to right, #ffa500, #ff4500);
     color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -41,5 +41,35 @@ p {
     margin: 3px 15px 0 15px;
     float: left;
     color: lightgoldenrodyellow
+    
+}
+.key_discounts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-image: linear-gradient(15deg, #FA4923, #FFE612);
+    height: 300px;
+    border-radius: 10px;
+    margin: 5px;
+    justify-content: center;
+    
+
+}
+.key_discounts > h2{
+    color: red;
+    font-size: larger;
+}
+main > h2 {
+    color: red;
+    font-size: larger;
+}
+.discount {
+    display: grid;
+    border-radius: 7px;
+    width: calc(50% - 12px);
+    padding: 1px;
+    background-image: linear-gradient(33deg, tomato, darkorange);
+    font-size: large;
+    margin: 5px 5px;
     
 }

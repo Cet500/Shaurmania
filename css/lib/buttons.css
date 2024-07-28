@@ -16,3 +16,13 @@
     background-color: #333;
     color: #fff;
 }
+.discount > .btn {
+    background-color: orangered;
+}
+.discount > .btn:hover {
+    background-color: coral;
+    color: blanchedalmond
+}
+.discount > .btn:active {
+    background-color: darkred;
+}
