@@ -1,0 +1,16 @@
+/* ---------------------------- colors ----------------------------- */
+
+:root{
+    /* monochrome */
+    --clr-white: #FFFFFF;
+    --clr-black: #000000;
+    
+    /* main colors */
+    --clr-logo:      #ffe437;
+    --clr-red:       #e64c38;
+    --clr-orangered: #ff7433;
+    --clr-yellow:    #ffbb33;
+   
+    /* gradients */
+    --grad-yellow-orange: linear-gradient(to right, var(--clr-yellow), var(--clr-orangered));
+}

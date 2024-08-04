@@ -3,74 +3,44 @@
     position: relative;
     padding-left: 50%;
 }
+
 .content__wrapper{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    padding: 10px 0;
+    margin: 10px 0;
 }
 .content {
     display: flex;
-    width: calc(calc(100% - 60px) / 2);
+    width: calc(calc(100% - 80px) / 2);
     background-color: #000;
-    background-image: linear-gradient(to right, #ffa500, #ff4500);
+    background-image: var(--grad-yellow-orange);
     color: #fff;
     border-radius: 10px;
     padding: 10px;
-    
 }
 .content > img {
     width: 35%;
     display: inline-flex;
 }
-main > h2 {
-    margin-left: 10px;
-    color: red;
-    text-align: center;
+.content p {
+    display: block;
+    margin: 8px 0;
 }
-p {
-    margin: 8px;
-}
-.price {
+.content .price {
     display: flex;
     width: 45px;
     font-size: larger;
     font-weight: bold;
-    margin: 3px 15px 0 15px;
+    margin: 3px 15px 0 0;
     float: left;
-    color: lightgoldenrodyellow
     
 }
-.key_discounts {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-image: linear-gradient(15deg, #FA4923, #FFE612);
-    border-radius: 10px;
-    margin: 5px;
-    justify-content: center;
-    
 
-}
-.key_discounts > h2{
-    color: red;
-    font-size: larger;
-}
-main > h2 {
-    color: red;
-    font-size: larger;
-}
-.discount {
-    display: grid;
-    border-radius: 7px;
-    width: calc(50% - 30px);
-    padding: 10px;
-    background-image: linear-gradient(33deg, tomato, darkorange);
-    font-size: large;
-    margin: 5px 5px;
-    
+.flex-column{
+    flex-direction: column;
 }
 .licenses-wrapper{
     text-align: center;
