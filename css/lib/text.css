@@ -1,0 +1,9 @@
+.h2 {
+    color: var(--clr-red);
+    margin: 10px auto;
+    text-align: center;
+    font-size: 22px;
+}
+.text-center{
+    text-align: center;
+}
