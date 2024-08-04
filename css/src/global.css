@@ -11,7 +11,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 .header{
-    background-color: orangered;
+    background-color: var(--clr-orangered);
     padding: 10px;
     display: flex;
     flex-wrap: nowrap;
@@ -22,12 +22,12 @@
 .header__logo{
     font-family: "Consolas";
     font-style: italic;   
-    color: #ffc14d;
+    color: var(--clr-logo);
     text-decoration: none;
 }
 .footer {
     width: 100%;
-    background-color: orangered;
+    background-color: var(--clr-orangered);
     position: relative;
     display: flex;
     float: right;
