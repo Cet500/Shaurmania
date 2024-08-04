@@ -48,7 +48,6 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     background-image: linear-gradient(15deg, #FA4923, #FFE612);
-    height: 300px;
     border-radius: 10px;
     margin: 5px;
     justify-content: center;
@@ -66,10 +65,20 @@ main > h2 {
 .discount {
     display: grid;
     border-radius: 7px;
-    width: calc(50% - 12px);
-    padding: 1px;
+    width: calc(50% - 30px);
+    padding: 10px;
     background-image: linear-gradient(33deg, tomato, darkorange);
     font-size: large;
     margin: 5px 5px;
     
+}
+.licenses-wrapper{
+    text-align: center;
+    background-image: linear-gradient(45deg, #ffb02e, #b86e00);
+}
+.license-background{
+    background-color: #DAF7A6;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }

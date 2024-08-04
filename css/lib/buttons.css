@@ -7,6 +7,8 @@
     font-size: 16px;
     border: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    
 }
 .btn:hover{
     cursor: pointer;
