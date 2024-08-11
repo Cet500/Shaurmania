@@ -1,0 +1,13 @@
+.productCatalog{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    background-image: radial-gradient(orange, orangered);
+    border-radius: 15px;
+    margin: 5px;
+}
+.catalogPic{
+    width: 200px;
+}
+.about{
+    display: flex;
+}
