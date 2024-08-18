@@ -46,3 +46,13 @@
     margin-top: 10px;
     padding-bottom: 10px;
 }
+
+.Delivery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: baselin;
+    margin: 10px 0;
+}
