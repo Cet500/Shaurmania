@@ -1,9 +1,16 @@
+.catalog_wrapper{
+    display: flex;
+}
 .productCatalog{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: lighter;
-    background-image: radial-gradient(orange, orangered);
+    background-color: #ffcca8;
     border-radius: 15px;
     margin: 5px;
+    display: flex;
+    width: calc(calc(100% - 80px)/ 2);
+    flex-direction: wrap;
+    flex-wrap: wrap;
 }
 .catalogPic{
     width: 200px;

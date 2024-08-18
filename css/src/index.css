@@ -14,7 +14,7 @@
 }
 .content {
     display: flex;
-    width: calc(calc(100% - 80px) / 2);
+    width: calc(calc(100%) / 2);
     background-color: #000;
     background-image: var(--grad-yellow-orange);
     color: #fff;

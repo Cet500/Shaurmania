@@ -28,3 +28,22 @@
 .discount > .btn:active {
     background-color: darkred;
 }
+.btn_cat{
+    color: #fff;
+    background-color: #fe5311;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    margin: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+.btn_cat:hover{
+    cursor: pointer;
+    background-color: #ef3807;
+}
+.btn_cat:active{
+    background-color: #c62608;
+}
