@@ -1,13 +1,30 @@
+.catalogWrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    padding-top: 10px;
+    align-content: center;
+}
 .productCatalog{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: lighter;
-    background-image: radial-gradient(orange, orangered);
+    display: grid;
+    grid-template-columns: 10fr 6fr;
+    background-color: #ffe7d4;
+    border: 2px solid #ff7433;
     border-radius: 15px;
-    margin: 5px;
+    padding-bottom: 10px;
 }
 .catalogPic{
-    width: 200px;
+    max-width: 500px;
+    width: 100%;
+    max-width: 350px;
+    height: 190px;
 }
-.about{
-    display: flex;
+.buy_button{
+    grid-column: 1 / 3;
+    text-align: center;
+}
+.productCatalog p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
 }

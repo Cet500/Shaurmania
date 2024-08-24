@@ -19,7 +19,7 @@
     color: #fff;
 }
 .discount > .btn {
-    background-color: orangered;
+    background-color: var(--clr-orangered);
 }
 .discount > .btn:hover {
     background-color: coral;
@@ -27,4 +27,18 @@
 }
 .discount > .btn:active {
     background-color: darkred;
+}
+.btn_catalog{
+    text-decoration: none;
+    color: var(--clr-white);
+    background-color: var(--clr-orangered);
+    padding: 5px 200px;
+    border-radius: 8px;
+}
+.btn_catalog:hover{
+    background-color: #ef3807;
+    cursor: pointer;
+}
+.btn_catalog:active{
+    background-color: #c62608;
 }
