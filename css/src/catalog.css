@@ -1,18 +1,9 @@
-.catalogWrapper {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    padding-top: 10px;
-    align-content: center;
-}
 .productCatalog{
-    display: grid;
-    grid-template-columns: 10fr 6fr;
-    background-color: #ffe7d4;
-    border: 2px solid #ff7433;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    background-image: radial-gradient(orange, orangered);
     border-radius: 15px;
-    padding-bottom: 10px;
+    margin: 5px;
 }
 .catalogPic{
     max-width: 500px;
