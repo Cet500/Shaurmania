@@ -1,0 +1,32 @@
+.bloock_Product {
+    width: calc(100% - 60px);
+    background-color: #000;
+    background-image: linear-gradient(to right, orange, orangered);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+.block-Product__tag{
+    background-color: white;
+    padding: 10px;
+    margin: 5px 0;
+    color: black;
+    border-radius: 10px;
+    display: inline-block;
+}
+.block-Product__tag .name{
+    font-weight: 700;
+}
+.block-Product__tag .stars{
+    color: yellow;
+}
+.block-Product__tag .text{
+    display: block;
+    margin: 5px 0;
+
+}
+
+.block-Product__tag .time{
+    color: #333333;
+}
