@@ -8,7 +8,7 @@
 }
 .content {
     display: flex;
-    width: calc(calc(100%) / 2);
+    width: calc(calc(100% - 60px) / 2);
     background-color: #000;
     background-image: var(--grad-yellow-orange);
     color: #fff;
@@ -55,4 +55,5 @@
     justify-content: space-evenly;
     align-items: baselin;
     margin: 10px 0;
+    gap: 10px;
 }

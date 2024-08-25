@@ -32,7 +32,7 @@
     text-decoration: none;
     color: var(--clr-white);
     background-color: var(--clr-orangered);
-    padding: 5px 200px;
+    padding: 5px 10vw;
     border-radius: 8px;
 }
 .btn_catalog:hover{
