@@ -38,6 +38,7 @@
 .btn_catalog:hover{
     background-color: #ef3807;
     cursor: pointer;
+    animation: ease-in 1s timing-function delay iteration-count direction fill-mode;
 }
 .btn_catalog:active{
     background-color: #c62608;
