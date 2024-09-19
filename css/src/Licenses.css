@@ -1,0 +1,13 @@
+.trotcky-license-background{
+    background-image: url("../../img/bg/paper.png");
+    width: calc(90% - 60px);
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+.trotcky-license-background p{
+    margin: 10px 0;
+    font-family: 'Segoe Print', 'Times New Roman', Times, serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.8);
+}

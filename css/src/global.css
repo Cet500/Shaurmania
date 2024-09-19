@@ -27,7 +27,7 @@
     justify-content: space-around;
 }
 .header__logo{
-    font-family: "Consolas";
+    font-family: "Consolas", monospace;
     font-style: italic;   
     color: var(--clr-logo);
     text-decoration: none;
@@ -40,8 +40,8 @@
     background-color: var(--clr-orangered);
     position: relative;
     color: #000;
-    border: #000 solid 0px;
-    border-radius: 0px;
+    border: #000 solid 0;
+    border-radius: 0;
     padding: 20px;
     font-size: 16px;
     
