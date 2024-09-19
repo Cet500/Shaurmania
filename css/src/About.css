@@ -44,6 +44,7 @@ main {
 @keyframes about-text-anim {
     from {
         font-size: 3rem;
+        margin-left: 200px;
     }
     to {
         font-size: auto;
@@ -100,5 +101,5 @@ main {
     padding: 50px 0;
     margin: 10px 5px;
     border-radius: 25px;
-    line-height: 50px;
+    line-height: 55px;
 }
