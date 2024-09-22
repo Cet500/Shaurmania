@@ -32,6 +32,19 @@
     color: var(--clr-logo);
     text-decoration: none;
 }
+.header__logo h1{
+    font-size: 40px;
+}
+.header__nav{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+.nav__row{
+    display: flex;
+    gap: 20px;
+    justify-content: right;
+}
 
 /* ----------------------- footer ----------------------- */
 
@@ -55,13 +68,15 @@
 }
 .footer__links {
     display: flex;
+    flex-wrap: wrap;
     min-width: calc(50% - 10px);
     position: relative;
     list-style: none;
-    gap: 20px;
+    gap: 10px;
 }
 .footer__links li a {
     text-decoration: none;
+    font-size: 14px;
 }
 .subfooter {
     display: flex;
