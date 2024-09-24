@@ -1,5 +1,4 @@
 main {
-    background: url(img/backgrounds/bgshaurmaniaabout.jpg);
     overflow: hidden;
 }
 .text p{
@@ -12,7 +11,6 @@ main {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.4rem;
-    overflow: hidden;
     animation: about-text-anim 1s ease alternate 1;
     padding-bottom: 20px;
 }

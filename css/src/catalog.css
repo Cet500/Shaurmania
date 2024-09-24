@@ -8,7 +8,7 @@
 }
 .productCatalog{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     background-color: #ffe7d4;
     border: 2px solid #ff7433;
     border-radius: 15px;
@@ -25,9 +25,12 @@
     grid-column: 1 / 3;
     text-align: center;
 }
-.productCatalog p{
+.catalogName{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 18px;
+    padding: 10px 5px;
+    text-align: center;
+    line-height: 30px;
 }
 i {
     padding-left: 5px;
