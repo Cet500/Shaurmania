@@ -1,0 +1,59 @@
+main {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.wrapperemae {
+    display: block;
+    text-align: center;
+}
+.username {
+    font-size: 24px;
+    font-weight: bold;
+    height: fit-content;
+}
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.regSince {
+    height: fit-content;
+}
+.userLocation {
+    display: flex;
+    height: fit-content;
+}
+.userPhoto {
+    display: block;
+    width: 200px;
+    margin: 0 -100px 0 -180px;
+}
+#favDishText{
+    font-size: bold;
+    font-size: 1.5rem;
+    margin-left: 35px;
+}
+.favDishes {
+    display: grid;
+    padding-right: 35px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-content: space-between;
+}
+.favDish {
+    padding: 30px 40px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #494b00;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    border: 2px solid rgba(255, 166, 0, 0.74);
+}
+.favDish:hover{
+    transition: all 0.6s;
+    background-color: rgba(255, 166, 0, 0.74);
+    color: rgb(95, 79, 6);
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+}
