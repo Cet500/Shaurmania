@@ -8,9 +8,20 @@
     /* main colors */
     --clr-logo:      #ffe437;
     --clr-red:       #e64c38;
-    --clr-orangered: #ff7433;
-    --clr-yellow:    #ffbb33;
+    --clr-orangered: #fa793e;
+    --clr-yellow:    #fdbe3f;
    
     /* gradients */
     --grad-yellow-orange: linear-gradient(to right, var(--clr-yellow), var(--clr-orangered));
+}
+
+.text-red{
+    color: var(--clr-red);
+}
+
+.block-red{
+    background-color: var(--clr-red);
+}
+.block-grad-orange{
+    background: var(--grad-yellow-orange);
 }

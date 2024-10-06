@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaurmania</title>
+
+    <title>Shaurmania | Каталог</title>
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
     <link rel="stylesheet" href="css/lib/colors.css">
+    <link rel="stylesheet" href="css/lib/buttons.css">
+    <link rel="stylesheet" href="css/lib/text.css">
+    <link rel="stylesheet" href="css/lib/blocks.css">
+
     <link rel="stylesheet" href="css/src/global.css">
     <link rel="stylesheet" href="css/src/index.css">
     <link rel="stylesheet" href="css/src/catalog.css">
-    <link rel="stylesheet" href="css/lib/buttons.css">
+    
     <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/fontawesome/css/solid.min.css">
 </head>
@@ -81,52 +88,55 @@
     </header>
     
     <main>
-        <div class="catalogWrapper">
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/beef-shava.png" alt="">
-                <p class="catalogName">Шаурма-Говядина<p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-            </div>
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/king_shava.png" alt="">
-                <p class="catalogName">Шаурма-Царь</p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        <h2 class="h2">Наш каталог шаурмы</h2>
+        
+        <div class="block block-columns block-columns-3 catalog__wrapper">
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Говядина</p>
+                <img class="catalog__picture" src="img/product/beef-shava.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
 
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/шаурма со свининой.png" alt="">
-                <p class="catalogName">Шаурма-Свининка</p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Царь</p>
+                <img class="catalog__picture" src="img/product/king_shava.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
 
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/шаурма_король.png" alt="">
-                <p class="catalogName">Шаурма-Толсти-Король</p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Свининка</p>
+                <img class="catalog__picture" src="img/product/шаурма со свининой.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
 
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/шаурма_с_индейкой.png" alt="">
-                <p class="catalogName">Шаурма-Индейка</p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Толсти-Король</p>
+                <img class="catalog__picture" src="img/product/шаурма_король.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
 
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/шаурма_шут.png" alt="">
-                <p class="catalogName">Шаурма-Shoot)<br>Состав:лаваш тонкий, свежий помидор, салат свежий, нежная куриная грудка 350 г, вкусный сливочный сыр, майонез и специи на выбор.<br>Калорийность ~ 280ккал на 100гр.</p></p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Индейка</p>
+                <img class="catalog__picture" src="img/product/шаурма_с_индейкой.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
 
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/sausage_shava.png" alt="">
-                <p class="catalogName">Шаурма-Сосиска<br>Состав: лаваш армянский, свежий помидорка, салатик свежий, вкуснейшая сосиска, вкуснейший сливочный сыр, майонез, кетчуп, и специи по выбору.<br>Калорийность ~ 280ккал на 100гр.</p>
-                <div class="buy_button"><a class="btn_catalog">180₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Shoot)</p>
+                <img class="catalog__picture" src="img/product/шаурма_шут.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            </div>
+
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Сосиска</p>
+                <img class="catalog__picture" src="img/product/sausage_shava.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">180₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
             </div>
             
-            <div class="productCatalog">
-                <img class="catalogPic" src="img/product/calf_shava.png" alt="">
-                <p class="catalogName">Шаурма-Телёнок<br>Состав: Состав: лаваш армянский, свежий помидорка, салатик свежий, сочнейшая телятинка 200гр, вкуснейший сыр колбасный, майонез, кетчуп, перчик черный щепотка. Калорийность ~280ккал на 100гр.</p>
-                <div class="buy_button"><a class="btn_catalog">200₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">Шаурма-Телёнок</p>
+                <img class="catalog__picture" src="img/product/calf_shava.png" alt="">
+                <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
                 
                 
         </div>

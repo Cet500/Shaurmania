@@ -40,9 +40,12 @@
     gap: 5px;
     flex-direction: column;
 }
+.header__nav .btn{
+    font-size: 15px;
+}
 .nav__row{
     display: flex;
-    gap: 20px;
+    gap: 20px 10px;
     justify-content: right;
 }
 
