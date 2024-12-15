@@ -1,224 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaurmania</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/lib/colors.css">
-    <link rel="stylesheet" href="css/src/global.css">
-    <link rel="stylesheet" href="css/src/index.css">
-    <link rel="stylesheet" href="css/src/Product.css">
-    <link rel="stylesheet" href="css/src/catalog.css">
-    <link rel="stylesheet" href="css/lib/buttons.css">
-    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/fontawesome/css/solid.min.css">
-</head>
+{% extends 'main/base.html' %}
+{% load static %}
 
-<body class="body">
-    <header class="header">
-        <a class="header__logo" href="index.html"><h1>ШаурМания</h1></a>
+{% block links %}
+    <link rel="stylesheet" href="{% static 'main/css/src/Product.css' %}">
+{% endblock %}
 
-        <nav class="header__nav">
-            <div class="nav__row">
-                <a href="catalog.html" class="btn">
-                    <i class="fa-solid fa-warehouse"></i>
-                    Каталог
-                </a>
+{% block main %}
+<div class="bloock_Product">
+    <span class="name">Шаурма-Царь</span>
+    <span class="stars"></span>
+    <p class="bloock_Product">
+        Состав: лаваш армянский, свежий помидорка, салатик свежий, нежнейшая куринная грудка 350гр, вкуснейший сливочный сыр, майонез, и специи по выбору.
+    </p>
+    <p class="bloock_Product">
+        Царская шаурма — это уникальное сочетание традиций и современных технологий, которое удовлетворит вкусы даже самого взыскательного гурмана. Наша шаурма готовится только из свежих и качественных продуктов, что гарантирует неповторимый вкус и пользу для вашего здоровья.
+    </p>
+    <p class="bloock_Product">
+        Мы предлагаем широкий ассортимент начинок, среди которых каждый найдёт что-то своё. Любители мяса оценят нашу царскую шаурму с настоящим шашлыком.
+    </p>
+    <p class="bloock_Product">
+        Наша шаурма готовится прямо перед доставкой, поэтому вы всегда получите свежеприготовленное блюдо. Мы используем только натуральные специи и соусы, которые придают нашей шаурме неповторимый вкус и аромат.
+    </p>
+    <p class="bloock_Product">
+        Не упустите возможность попробовать настоящую царскую шаурму прямо у себя дома! Закажите её на нашем сайте или позвоните нам по телефону. Мы гарантируем быструю доставку и отличное настроение!
+    </p>
+</div>
 
-                <a href="Search.html" class="btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    Поиск
-                </a>
-
-                <a class="btn" href="sales.html">
-                    <i class="fa-solid fa-percent"></i>
-                    Акции
-                </a>
-
-                <a class="btn" href="About.html">
-                    <i class="fa-solid fa-history"></i>
-                    О нас
-                </a>
-
-                <a class="btn" href="licenses.html">
-                    <i class="fa-solid fa-page"></i>
-                    Лицензии
-                </a>
-
-                <a href="feedback.html" class="btn">
-                    <i class="fa-solid fa-comment"></i>
-                    Отзывы
-                </a>
-            </div>
-
-            <div class="nav__row">
-                <a href="user.html" class="btn">
-                    <i class="fa-solid fa-user"></i>
-                    Пользователь
-                </a>
-
-                <a href="registration.html" class="btn">
-                    <i class="fa-solid fa-address-card"></i>
-                    Регистрация
-                </a>
-
-                <a class="btn" href="address.html">
-                    <i class="fa-solid fa-location-dot"></i>
-                    Адрес
-                </a>
-
-                <a class="btn" href="Login.html">
-                    <i class="fa-solid fa-envelope"></i>
-                    Войти
-                </a>
-
-                <a href="a" class="btn">
-                    <i class="fa-solid fa-basket-shopping-simple"></i>
-                    Корзина
-                </a>
-            </div>
-        </nav>
-    </header>
-    
-    <main>
-
-        <div class="bloock_Product">
-            <span class="name">Шаурма-Царь</span>
-            <span class="stars"></span>
-            <p class="bloock_Product">
-                Состав: лаваш армянский, свежий помидорка, салатик свежий, нежнейшая куринная грудка 350гр, вкуснейший сливочный сыр, майонез, и специи по выбору.
-            </p>
-            <p class="bloock_Product">
-                Царская шаурма — это уникальное сочетание традиций и современных технологий, которое удовлетворит вкусы даже самого взыскательного гурмана. Наша шаурма готовится только из свежих и качественных продуктов, что гарантирует неповторимый вкус и пользу для вашего здоровья.
-            </p>
-            <p class="bloock_Product">
-                Мы предлагаем широкий ассортимент начинок, среди которых каждый найдёт что-то своё. Любители мяса оценят нашу царскую шаурму с настоящим шашлыком.
-            </p>
-            <p class="bloock_Product">
-                Наша шаурма готовится прямо перед доставкой, поэтому вы всегда получите свежеприготовленное блюдо. Мы используем только натуральные специи и соусы, которые придают нашей шаурме неповторимый вкус и аромат.
-            </p>
-            <p class="bloock_Product">
-                Не упустите возможность попробовать настоящую царскую шаурму прямо у себя дома! Закажите её на нашем сайте или позвоните нам по телефону. Мы гарантируем быструю доставку и отличное настроение!
-            </p>
-        </div>
-
-        <div class="bloock_Product">
-            <span class="name">Шаурма-Говядина</span>
-            <span class="stars"></span>
-            <p class="bloock_Product">
-                Состав: лаваш армянский, свежий помидорка, салатик свежий, нежнейшее мясо говядины, вкуснейший сырок, майонез, кетчуп, смесь перцев щепотка.
-            </p>
-            <p class="bloock_Product">
-                Шаурма-Говядина — это взрыв вкуса и веселья! Наша уникальная шаурма создана специально для тех, кто любит настоящую сочную говядину и хочет насладиться ею в уютной обстановке своего дома.
-            </p>
-            <p class="bloock_Product">
-                Мы готовим шаурму из высококачественной говядины, которая обжаривается до золотистой корочки и становится мягкой внутри. Овощи, такие как свежие огурцы, помидоры, капуста и сладкий перец, придают нашей шаурме свежесть и аромат. А пикантный соус из майонеза и кетчупа добавляет сочности и насыщенности вкуса.
-            </p>
-            <p class="bloock_Product">
-                Не забудьте про зелень — петрушка и укроп станут отличным дополнением к вашей шаурме. Они придадут ей неповторимый вкус и аромат.
-            </p>
-            <p class="bloock_Product">
-                Шаурма-Говядина — это идеальный выбор для тех, кто хочет насладиться вкусной едой без лишних хлопот. Закажите нашу шаурму прямо сейчас и наслаждайтесь вкусом настоящей домашней шаурмы у себя дома!
-            </p>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="footer__flex">
-            <div class="footer__info">
-                <a class="header__logo" href="index.html"><h1>ШаурМания</h1></a>
-    
-                <h3 class="h3">Вкусная шаурма с достакой на дом</h3>
-    
-                <p><b>Работаем с 2020г.</b></p>
-            </div>
-
-            <ul class="footer__links">
-                <li>
-                    <a href="catalog.html" class="btn">
-                        <i class="fa-solid fa-warehouse"></i>
-                        Каталог
-                    </a>
-                </li>
-
-                <li>
-                    <a href="Search.html" class="btn">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        Поиск
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="sales.html">
-                        <i class="fa-solid fa-percent"></i>
-                        Акции
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="About.html">
-                        <i class="fa-solid fa-history"></i>
-                        О нас
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="licenses.html">
-                        <i class="fa-solid fa-page"></i>
-                        Лицензии
-                    </a>
-                </li>
-
-                <li>
-                    <a href="feedback.html" class="btn">
-                        <i class="fa-solid fa-comment"></i>
-                        Отзывы
-                    </a>
-                </li>
-
-                <li>
-                    <a href="user.html" class="btn">
-                        <i class="fa-solid fa-user"></i>
-                        Пользователь
-                    </a>
-                </li>
-
-                <li>
-                    <a href="registration.html" class="btn">
-                        <i class="fa-solid fa-address-card"></i>
-                        Регистрация
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="address.html">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Адрес
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="Login.html">
-                        <i class="fa-solid fa-envelope"></i>
-                        Войти
-                    </a>
-
-                <li>
-                    <a href="a" class="btn">
-                        <i class="fa-solid fa-basket-shopping-simple"></i>
-                        Корзина
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="subfooter">
-            <span>Телефон: 88000000000</span>
-            <span>Email: info@shaurmania.ru</span>
-            <span>Офис: Луна, обратная сторона, кратер Шаурмечный, 29 пещера</span>
-        </div>
-    </footer>
-</body>
-</html>
-
+<div class="bloock_Product">
+    <span class="name">Шаурма-Говядина</span>
+    <span class="stars"></span>
+    <p class="bloock_Product">
+        Состав: лаваш армянский, свежий помидорка, салатик свежий, нежнейшее мясо говядины, вкуснейший сырок, майонез, кетчуп, смесь перцев щепотка.
+    </p>
+    <p class="bloock_Product">
+        Шаурма-Говядина — это взрыв вкуса и веселья! Наша уникальная шаурма создана специально для тех, кто любит настоящую сочную говядину и хочет насладиться ею в уютной обстановке своего дома.
+    </p>
+    <p class="bloock_Product">
+        Мы готовим шаурму из высококачественной говядины, которая обжаривается до золотистой корочки и становится мягкой внутри. Овощи, такие как свежие огурцы, помидоры, капуста и сладкий перец, придают нашей шаурме свежесть и аромат. А пикантный соус из майонеза и кетчупа добавляет сочности и насыщенности вкуса.
+    </p>
+    <p class="bloock_Product">
+        Не забудьте про зелень — петрушка и укроп станут отличным дополнением к вашей шаурме. Они придадут ей неповторимый вкус и аромат.
+    </p>
+    <p class="bloock_Product">
+        Шаурма-Говядина — это идеальный выбор для тех, кто хочет насладиться вкусной едой без лишних хлопот. Закажите нашу шаурму прямо сейчас и наслаждайтесь вкусом настоящей домашней шаурмы у себя дома!
+    </p>
+</div>
+{% endblock %}
