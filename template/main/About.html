@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/About.css'}">
+    <link rel="stylesheet" href="{% static "main/css/src/About.css"%}">
 {% endblock %}
 
-{% block main %}
+{% block main %}{% comment %} {% block main %}" {% endcomment %}
     <div class="text">
         <p class="header__logo About__logo">ШаурМания</p>
         <span class="text About__text">О нас</span>
@@ -17,12 +17,11 @@
         <div class="aboutContent">Удобная оплата <p><i class="fa fa-credit-card-alt" aria-hidden="true"></i></p></div>
         <div class="aboutContent">Супер низкая цена<p><i class="fa fa-dollar"></i></p></div>
         <div class="aboutContent">Быстрая доставка<p><i class="fa fa-truck-clock"></i></p></div>
-
     </div>
     <div class="images">
         <p id="p1">
             <span>Фото нашей красивой шаурмы:</span>
-            <img class="img" src='{% static "main/img/images/shawa_about.jpeg" %}' alt=""><img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+            <img class="img" src= "{% static "main/img/images/shawa_about.jpeg" %}" alt=""><img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
         </p>
     </div>
     <div class="about">

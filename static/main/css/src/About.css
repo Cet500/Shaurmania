@@ -39,23 +39,6 @@ main {
     display: inline;
     padding: 15px 50px;
 }
-@keyframes about-text-anim {
-    from {
-        font-size: 3rem;
-        margin-left: 200px;
-    }
-    to {
-        font-size: auto;
-    }
-}
-@keyframes about-logo-anim {
-    0% {
-        color: var(--clr-orangered);
-    }
-    20%{
-        color: var(--clr-red);
-    }
-}
 #p1{
     text-align: center;
 }
