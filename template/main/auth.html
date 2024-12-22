@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'main/css/src/registration.css' %}">
+{% endblock %}
+
+{% block main %}
+        <div class="form__wrapper">
+            <h2>Войти на сайт</h2>
+
+            <form action="" method="post">
+
+                <h3>Логин</h3>
+                <input type="email" name="email">
+
+                <h3>Пароль</h3>
+                <input type="password" name="password">
+
+                <input type="submit">
+
+            </form>
+        </div>
+{% endblock %}

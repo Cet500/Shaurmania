@@ -16,6 +16,9 @@ def cart(request):
 def catalog(request):
     return render(request, 'main/catalog.html')
 
+def auth(request):
+    return render(request, 'main/auth.html')
+
 def feedback(request):
     return render(request, 'main/feedback.html')
 
