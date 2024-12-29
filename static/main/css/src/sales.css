@@ -18,9 +18,12 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .block-sale__link{
-    background-color: orangered;
+    background-color: #ffb06d;
+    color: #000;
     text-decoration: none;
-    color: #ffead3;
+}
+.block-sale__link:hover {
+    background-color: #ff8232;
 }
 
 .stock {
