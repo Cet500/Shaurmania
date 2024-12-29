@@ -10,23 +10,22 @@
 .block-sale__tag{
     background-color: white;
     padding: 10px;
-    margin: 5px 0;
+    margin: 15px 4px 0px 0px;
     color: black;
     border-radius: 10px;
     display: inline-block;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .block-sale__link{
     background-color: orangered;
-    padding: 10px;
-    margin: 5px 0;
-    color: white;
-    border-radius: 10px;
-    display: inline-block;
     text-decoration: none;
+    color: #ffead3;
 }
 
 .stock {
     text-align: center;
+    color: #fff6ec;
     background-color: #000;
     background-image: linear-gradient(to right, orange, orangered);
     border-radius: 10px;
