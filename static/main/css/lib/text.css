@@ -2,6 +2,10 @@
 
 /* ----------------------- titles ----------------------- */
 
+.h1{
+    margin: 24px auto;
+    font-size: 32px;
+}
 .h2 {
     margin: 16px auto;
     text-align: center;
