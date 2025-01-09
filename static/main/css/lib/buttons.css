@@ -32,13 +32,13 @@
     text-decoration: none;
     color: var(--clr-white);
     background-color: var(--clr-orangered);
-    padding: 5px 10vw;
+    padding: 5px 50px;
     border-radius: 8px;
 }
 .btn_catalog:hover{
     background-color: #ef3807;
     cursor: pointer;
-    animation: ease-in 1s timing-function delay iteration-count direction fill-mode;
+    animation: ease-in 1s;
 }
 .btn_catalog:active{
     background-color: #c62608;
