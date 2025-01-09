@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Shaurmania</title>
+    <title>ШаурМания | {% block title %}Лучший сайт по продаже шаурмы{% endblock %}</title>
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     
     <link rel="stylesheet" href="{% static 'main/css/lib/colors.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/src/global.css' %}">
@@ -24,168 +24,43 @@
 
 <body class="body">
     <header class="header">
-        <a class="header__logo" href="{% url 'index' %}"><h1>ШаурМания</h1></a>
+        <div class="header__inner">
+            <a class="logo" href="{% url 'index' %}">
+                <img src="{% static 'main/img/logo/minimal.png' %}" alt="">
+                <h1>ШаурМания</h1>
+            </a>
 
-        <nav class="header__nav">
-            <div class="nav__row">
-                <a href="{% url 'catalog' %}" class="btn">
-                    <i class="fa-solid fa-warehouse"></i>
-                    Каталог
-                </a>
-
-                <a href="{% url 'search' %}" class="btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    Поиск
-                </a>
-
-                <a class="btn" href="{% url 'sales' %}">
-                    <i class="fa-solid fa-percent"></i>
-                    Акции
-                </a>
-
-                <a class="btn" href="{% url 'about' %}">
-                    <i class="fa-solid fa-history"></i>
-                    О нас
-                </a>
-
-                <a class="btn" href="{% url 'licenses' %}">
-                    <i class="fa-solid fa-page"></i>
-                    Лицензии
-                </a>
-
-                <a href="{% url 'feedback' %}" class="btn">
-                    <i class="fa-solid fa-comment"></i>
-                    Отзывы
-                </a>
-            </div>
-
-            <div class="nav__row">
-                <a href="{% url 'user' %}" class="btn">
-                    <i class="fa-solid fa-user"></i>
-                    Пользователь
-                </a>
-
-                <a href="{% url 'reg' %}" class="btn">
-                    <i class="fa-solid fa-address-card"></i>
-                    Регистрация
-                </a>
-
-                <a class="btn" href="{% url 'address' %}">
-                    <i class="fa-solid fa-location-dot"></i>
-                    Адрес
-                </a>
-
-                <a class="btn" href="{% url 'auth' %}">
-                    <i class="fa-solid fa-envelope"></i>
-                    Вход
-                </a>
-
-                <a href="{% url 'cart' %}" class="btn">
-                    <i class="fa-solid fa-basket-shopping-simple"></i>
-                    Корзина
-                </a>
-            </div>
-        </nav>
+            {% include 'main/_parts/navigation.html' %}
+        </div>
     </header>
     
-    <main>
-        {% block main %}{% endblock %}
+    <main class="main">
+        <div class="main__inner">
+            {% block main %}{% endblock %}
+        </div>
     </main>
 
     <footer class="footer">
-        <div class="footer__flex">
-            <div class="footer__info">
-                <a class="header__logo" href="{% url 'index' %}"><h1>ШаурМания</h1></a>
-    
-                <h3 class="h3">Вкусная шаурма с достакой на дом</h3>
-    
-                <p><b>Работаем с 2020г.</b></p>
+        <div class="footer__inner">
+            <div class="footer_row">
+                <div>
+                    <a class="logo" href="{% url 'index' %}">
+                        <img src="{% static 'main/img/logo/minimal.png' %}" alt="">
+                        <h1>ШаурМания</h1>
+                    </a>
+
+                    <p>Вкусная шаурма с доставкой.</p>
+                </div>
+
+                {% include 'main/_parts/navigation.html' %}
             </div>
 
-            <ul class="footer__links">
-                <li>
-                    <a href="{% url 'catalog' %}" class="btn">
-                        <i class="fa-solid fa-warehouse"></i>
-                        Каталог
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'search' %}" class="btn">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        Поиск
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="{% url 'sales' %}">
-                        <i class="fa-solid fa-percent"></i>
-                        Акции
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="{% url 'about' %}">
-                        <i class="fa-solid fa-history"></i>
-                        О нас
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="{% url 'licenses' %}">
-                        <i class="fa-solid fa-page"></i>
-                        Лицензии
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'feedback' %}" class="btn">
-                        <i class="fa-solid fa-comment"></i>
-                        Отзывы
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'user' %}" class="btn">
-                        <i class="fa-solid fa-user"></i>
-                        Пользователь
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'reg' %}" class="btn">
-                        <i class="fa-solid fa-address-card"></i>
-                        Регистрация
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="{% url 'address' %}">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Адрес
-                    </a>
-                </li>
-
-                <li>
-                    <a class="btn" href="{% url 'auth' %}">
-                        <i class="fa-solid fa-envelope"></i>
-                        Вход
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'cart' %}" class="btn">
-                        <i class="fa-solid fa-basket-shopping-simple"></i>
-                        Корзина
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="subfooter">
-            <span>Телефон: 88000000000</span>
-            <span>Email: info@shaurmania.ru</span>
-            <span>Офис: Луна, обратная сторона, кратер Шаурмечный, 29 пещера</span>
+            <div class="footer__bottom">
+                <p>Работаем с <b>2020</b> года</p>
+                <p>Телефон: <b>88000000000</b></p>
+                <p>Email: <b>info@shaurmania.ru</b></p>
+                <p>Офис: <b>Луна, кратер Шаурмечный, 29</b></p>
+            </div>
         </div>
     </footer>
 </body>

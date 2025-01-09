@@ -1,34 +1,36 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+
+{% block title %}Регистрация в систему{% endblock %}
+
+
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/registration.css' %}">
 {% endblock %}
 
+
 {% block main %}
-        <div class="form__wrapper">
-            <h2>Регистрация на сайт</h2>
+    <div class="form__wrapper">
+        <h2>Регистрация на сайт</h2>
 
-            <form action="" method="post">
+        <form action="" method="post">
+            <h3>Логин</h3>
+            <input type="email" name="email">
 
+            <h3>Пароль</h3>
+            <input type="password" name="password">
 
-                <h3>Логин</h3>
-                <input type="email" name="email">
+            <h3>Повторите Пароль</h3>
+            <input type="password" name="password">
 
-                <h3>Пароль</h3>
-                <input type="password" name="password">
+            <h3>Электронная почта</h3>
+            <input type="email" name="email">
 
-                <h3>Повторите Пароль</h3>
-                <input type="password" name="password">
+            <h3>Повторите Адрес электронный почты</h3>
+            <input type="email" name="email">
 
-                <h3>Электронная почта</h3>
-                <input type="email" name="email">
-
-                <h3>Повторите Адрес электронный почты</h3>
-                <input type="email" name="email">
-
-                <input type="submit">
-
-            </form>
-        </div>
+            <input type="submit">
+        </form>
+    </div>
 {% endblock %}

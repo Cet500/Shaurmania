@@ -1,61 +1,65 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+
+{% block title %}Каталог{% endblock %}
+
+
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/catalog.css' %}">
 {% endblock %}
 
+
 {% block main %}
-<h2 class="h2">Наш каталог шаурмы</h2>
-
-<div class="block block-columns block-columns-3 catalog__wrapper">
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Говядина</p>
-        <img class="catalog__picture" src="{% static "main/img/product/beef-shava.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Царь</p>
-        <img class="catalog__picture" src="{% static "main/img/product/king_shava.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Свининка</p>
-        <img class="catalog__picture" src="{% static "main/img/product/шаурма_с_курицей.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Толсти-Король</p>
-        <img class="catalog__picture" src="{% static "main/img/product/шаурма_король.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Индейка</p>
-        <img class="catalog__picture" src="{% static "main/img/product/шаурма_индейкой.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Shoot)</p>
-        <img class="catalog__picture" src="{% static "main/img/product/шаурма_шут.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
-
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Сосиска</p>
-        <img class="catalog__picture" src="{% static "main/img/product/sausage_shava.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">180₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-    </div>
+    <h2 class="h2">Наш каталог шаурмы</h2>
     
-    <div class="block-columns-item catalog">
-        <p class="catalog__name">Шаурма-Телёнок</p>
-        <img class="catalog__picture" src="{% static "main/img/product/calf_shava.png" %}" alt="">
-        <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+    <div class="block block-columns block-columns-3 catalog__wrapper">
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Говядина</p>
+            <img class="catalog__picture" src="{% static "main/img/product/beef-shava.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Царь</p>
+            <img class="catalog__picture" src="{% static "main/img/product/king_shava.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Свининка</p>
+            <img class="catalog__picture" src="{% static "main/img/product/шаурма_с_курицей.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Толсти-Король</p>
+            <img class="catalog__picture" src="{% static "main/img/product/шаурма_король.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Индейка</p>
+            <img class="catalog__picture" src="{% static "main/img/product/шаурма_индейкой.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Shoot)</p>
+            <img class="catalog__picture" src="{% static "main/img/product/шаурма_шут.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Сосиска</p>
+            <img class="catalog__picture" src="{% static "main/img/product/sausage_shava.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">180₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
         
-        
-</div>
+        <div class="block-columns-item catalog">
+            <p class="catalog__name">Шаурма-Телёнок</p>
+            <img class="catalog__picture" src="{% static "main/img/product/calf_shava.png" %}" alt="">
+            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+        </div>
+    </div>
 {% endblock %}

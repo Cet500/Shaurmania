@@ -1,16 +1,19 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+
+{% block title %}Акции{% endblock %}
+
+
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/sales.css' %}">
 {% endblock %}
 
-{% block main %}
-        <h1 class="stock">Акции</h1> 
 
+{% block main %}
+        <h1 class="stock">Акции</h1>
 
         <div class="block-sale">
-
             <h2>Сейчас новогодие скидки до 50% на шаурму!</h2>
             <p>Скидки действуют тольуо для новых клиентов при покупке шаурмы более чем на 1000 рублей.</p>
             <span class="block-sale__tag">-50%</span>
