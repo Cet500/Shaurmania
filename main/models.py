@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 
+
 class Review(models.Model):
     name = models.CharField(max_length=60)
     
@@ -10,4 +11,16 @@ class Review(models.Model):
 
     date = models.CharField(max_length=30)
 
-# Create your models here.
+
+class Shaurma(models.Model):
+    name = models.CharField(max_length=60)
+
+    compound = models.TextField(max_length=600)
+
+    description = models.TextField(max_length=600)
+
+    picture = models.ImageField(upload_to = 'shaurma_images')
+
+    price = models.PositiveSmallIntegerField()
+
+    weight = models.PositiveSmallIntegerField()

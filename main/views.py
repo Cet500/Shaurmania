@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Review
 
 
 def index( request ):    
@@ -17,7 +18,13 @@ def catalog(request):
     return render(request, 'main/catalog.html')
 
 def feedback(request):
-    return render(request, 'main/feedback.html')
+    reviews = Review.objects.all()
+
+    ctx = {
+        'reviews': reviews
+    }
+
+    return render( request, 'main/feedback.html', context = ctx )
 
 def licenses(request):
     return render(request, 'main/licenses.html')
