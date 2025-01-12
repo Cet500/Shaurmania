@@ -11,26 +11,29 @@
 
 
 {% block main %}
-    <div class="form__wrapper">
-        <h2>Регистрация на сайт</h2>
-
-        <form action="" method="post">
-            <h3>Логин</h3>
-            <input type="email" name="email">
-
-            <h3>Пароль</h3>
-            <input type="password" name="password">
-
-            <h3>Повторите Пароль</h3>
-            <input type="password" name="password">
-
-            <h3>Электронная почта</h3>
-            <input type="email" name="email">
-
-            <h3>Повторите Адрес электронный почты</h3>
-            <input type="email" name="email">
-
-            <input type="submit">
-        </form>
-    </div>
+  
+<div class="wrapper">
+    <div class="title">Регистрация</div>
+    <form action="#">
+      <div class="row">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Логин" required />
+      </div>
+      <div class="row">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="Почта" required />
+      </div>
+      <div class="row">
+        <i class="fas fa-lock"></i>
+        <input type="text" placeholder="Придумайте пароль" required />
+      </div>
+      <div class="row">
+        <i class="fas fa-repeat"></i>
+        <input type="text" placeholder="Повторите пароль" required />
+      </div>
+      <div class="row button">
+        <input type="submit" value="Продолжить" />
+      </div>
+    </form>
+  </div>
 {% endblock %}
