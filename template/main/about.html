@@ -7,37 +7,42 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static "main/css/src/about.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 {% endblock %}
 
 
 {% block main %}
-    <div class="text">
-        <p class="logo About__logo">ШаурМания</p>
-        <span class="text About__text">О нас</span>
-    </div>
-    
-    <div class="contentWrapper">
-        <div class="aboutContent">Качество<p><i class="fa fa-dog"></i></p></div>
-        <div class="aboutContent">Вкус<p><i class="fa fa-face-smile-tongue"></i></p></div>
-        <div class="aboutContent">Свежесть продуктов<p><i class="fa fa-salad" ></i></p></div>
-        <div class="aboutContent">Удобная оплата <p><i class="fa fa-credit-card-alt" aria-hidden="true"></i></p></div>
-        <div class="aboutContent">Супер низкая цена<p><i class="fa fa-dollar"></i></p></div>
-        <div class="aboutContent">Быстрая доставка<p><i class="fa fa-truck-clock"></i></p></div>
-    </div>
-    
-    <div class="images">
-        <p id="p1">
-            <span>Фото нашей красивой шаурмы:</span>
-            <img class="img" src= "{% static "main/img/images/shawa_about.jpeg" %}" alt=""><img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-        </p>
-    </div>
-    
-    <div class="about">
-        <p>Каждая приготовленная шаурма проходит проверку на свежесть продуктов и правильность рецептуры</p>
-        <a href="feedback.html">Также в качестве нашей шаурмы и сроках доставки вы можете убедиться почитав отзывы наших клиентов</a>
-    </div>
-    
-    <div class="license__link">
-        <p>У нас имеется официальное разрешение Роспотребнадзора на приготовление шаурмы, с которым можно ознакомиться<br><a href="licenses.html">нажав сюда</a></p>
-    </div>
+<div class="contentWrapper">
+    <div class="aboutContent">Качество<p><i class="fa fa-dog"></i></p></div>
+    <div class="aboutContent">Вкус<p><i class="fa fa-face-smile-tongue"></i></p></div>
+    <div class="aboutContent">Свежесть продуктов<p><i class="fa fa-salad" ></i></p></div>
+    <div class="aboutContent">Удобная оплата <p><i class="fa fa-credit-card-alt" aria-hidden="true"></i></p></div>
+    <div class="aboutContent">Супер низкая цена<p><i class="fa fa-dollar"></i></p></div>
+    <div class="aboutContent">Быстрая доставка<p><i class="fa fa-truck-clock"></i></p></div>
+</div>
+
+<div class="images">
+    <img class="img" src="{% static 'main/img/images/shawa_about.jpeg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+<script>
+    var slider = tns({
+        container: '.images',
+        items: 3,
+        slideBy: 'page',
+        autoplay: true
+    });
+    </script>
 {% endblock %}
