@@ -1,9 +1,14 @@
 from django.shortcuts import render
-from .models import Review
+from .models import Review, Shaurma
 
 
-def index( request ):    
-    return render( request, 'main/index.html' )
+def index( request ):
+    shaurma = Shaurma.objects.all()
+
+    ctx = {
+        'shaurma': shaurma
+    }    
+    return render( request, 'main/index.html', context = ctx )
 
 def about( request ):
     return render( request, 'main/about.html' )
@@ -15,7 +20,12 @@ def cart(request):
     return render(request, 'main/cart.html')
 
 def catalog(request):
-    return render(request, 'main/catalog.html')
+    shaurma = Shaurma.objects.all()
+
+    ctx = {
+        'shaurma': shaurma
+    }    
+    return render( request, 'main/catalog.html', context = ctx )
 
 def feedback(request):
     reviews = Review.objects.all()

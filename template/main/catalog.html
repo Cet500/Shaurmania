@@ -14,28 +14,12 @@
     <h2 class="h2">Наш каталог шаурмы</h2>
     
     <div class="block block-columns block-columns-3 catalog__wrapper">
-        <div class="block-columns-item catalog">
-            <p class="catalog__name">Шаурма-Говядина</p>
-            <img class="catalog__picture" src="{% static "main/img/product/shaurma_beef.png" %}" alt="">
-            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-        </div>
-    
-        <div class="block-columns-item catalog">
-            <p class="catalog__name">Шаурма-Царь</p>
-            <img class="catalog__picture" src="{% static "main/img/product/shaurma_tsar.png" %}" alt="">
-            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-        </div>
-    
-        <div class="block-columns-item catalog">
-            <p class="catalog__name">Шаурма-Свининка</p>
-            <img class="catalog__picture" src="{% static "main/img/product/shaurma_pork.png" %}" alt="">
-            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-        </div>
-    
-        <div class="block-columns-item catalog">
-            <p class="catalog__name">Шаурма-Толсти-Король</p>
-            <img class="catalog__picture" src="{% static "main/img/product/shaurma_king.png" %}" alt="">
-            <div class="catalog__button"><a class="btn_catalog">200₽ <i class="fa-solid fa-basket-shopping-simple"></i></a></div>
-        </div>
-    </div>
+        {% for food in shaurma %}
+            <div class="block-columns-item catalog">
+                <p class="catalog__name">{{ food.name }}</p>
+                <img class="catalog__picture" src="{{ food.picture.url }}" alt="{{ food.name }}">
+                <div class="catalog__button"><a class="btn_catalog">{{ food.price }}₽<i class="fa-solid fa-basket-shopping-simple"></i></a></div>
+            </div>
+        {% endfor %}
+    </div>    
 {% endblock %}
