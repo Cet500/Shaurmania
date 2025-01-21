@@ -24,8 +24,12 @@
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     {% elif review.stars == 4 %}
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% else %}
+                    {% elif review.stars == 3 %}
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    {% elif review.stars == 2 %}
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    {% elif review.stars == 1 %}
+                    <i class="fa-solid fa-star"></i>
                     {% endif %}
                 </span>
                 <span class="text">

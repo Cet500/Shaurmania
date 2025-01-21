@@ -10,7 +10,7 @@
 .block-sale__tag{
     background-color: white;
     padding: 10px;
-    margin: 15px 4px 0px 0px;
+    margin: 15px 4px 0 0;
     color: black;
     border-radius: 10px;
     display: inline-block;

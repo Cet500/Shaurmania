@@ -73,7 +73,7 @@ main {
     animation: sigma 2s alternate;
 }
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 0;
 }
 .license__link {
     text-align: center;

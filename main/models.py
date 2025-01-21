@@ -7,7 +7,7 @@ class Review( models.Model ):
     text  = models.TextField( max_length = 600, verbose_name = 'Текст отзыва' )
     stars = models.SmallIntegerField( validators = [ MinValueValidator(1), MaxValueValidator(5) ],
                                       verbose_name = 'Оценка' )
-    date  = models.CharField( max_length = 30, verbose_name = 'Дата/Время' )
+    date  = models.CharField( max_length = 30, verbose_name = 'Дата/Время записи' )
 
     class Meta:
         verbose_name = 'отзыв'
@@ -20,8 +20,8 @@ class Shaurma( models.Model ):
     compound    = models.TextField( max_length = 600, verbose_name = 'Состав' )
     description = models.TextField( max_length = 600, verbose_name = 'Описание' )
     picture     = models.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
-    price       = models.PositiveSmallIntegerField( verbose_name = 'Цена' )
-    weight      = models.PositiveSmallIntegerField( verbose_name = 'Вес' )
+    price       = models.PositiveSmallIntegerField( verbose_name = 'Цена в ₽' )
+    weight      = models.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
 
     class Meta:
         verbose_name = 'шаурма'
