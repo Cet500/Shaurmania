@@ -26,6 +26,7 @@
 
 .block-shaurma {
     display: flex;
+    align-items: center;
     background-color: #000;
     background-image: var(--grad-yellow-orange);
     color: #fff;
@@ -40,20 +41,28 @@
     display: block;
     margin: 8px 0;
 }
+.block-shaurma .description{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .block-shaurma .price {
-    display: flex;
-    width: 45px;
     font-size: larger;
     font-weight: bold;
-    margin: 3px 15px 0 0;
-    float: left;
+    margin: 3px 15px 3px 0;
 }
 
 .block-sale{
+    display: flex;
     gap: 10px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    align-items: center;
+}
+.block-sale .btn{
+    width: max( 200px, 40% );
 }
 
 

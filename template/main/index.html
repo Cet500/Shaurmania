@@ -19,11 +19,13 @@
                 <img src="{{ food.picture.url }}" alt="{{ food.name }}">
                 <div>
                     <h3>{{ food.name }}</h3>
-                    <p>{{ food.compound }}</p>
-                    <p class="price">{{ food.price }}₽</p>
-                    <p class="price">{{ food.weight }}гр </p>
-                    <button class="btn">В корзину</button>
-                    <a class="btn" href="{% url 'product' %}">Подробнее</a>
+                    <p class="description">{{ food.compound }}</p>
+                    <p class="price">{{ food.price }}₽ / {{ food.weight }}гр</p>
+                    <p class="price"> </p>
+                    <p>
+                        <button class="btn">В корзину</button>
+                        <a class="btn" href="{% url 'product' %}">Подробнее</a>
+                    </p>
                 </div>
             </div>
         {% endfor %}

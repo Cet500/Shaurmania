@@ -13,21 +13,21 @@
 {% block main %}
         <h1 class="stock">Акции</h1>
 
-        <div class="block-sale">
+        <div class="block-trade">
             <h2>Сейчас новогодие скидки до 50% на шаурму!</h2>
             <p>Скидки действуют тольуо для новых клиентов при покупке шаурмы более чем на 1000 рублей.</p>
-            <span class="block-sale__tag">-50%</span>
-            <span class="block-sale__tag">На весь ассортимент</span>
-            <span class="block-sale__tag">До: 02.01.2025</span>
-            <a class="block-sale__tag block-sale__link" href="{% url 'catalog'%}">Шаурма</a>
+            <span class="block-trade__tag">-50%</span>
+            <span class="block-trade__tag">На весь ассортимент</span>
+            <span class="block-trade__tag">До: 02.01.2025</span>
+            <a class="block-trade__tag block-trade__link" href="{% url 'catalog'%}">Шаурма</a>
         </div>
 
-        <div class="block-sale">
+        <div class="block-trade">
             <h2>Каждую пятницу скидка на одну из шаверм 20%</h2>
             <p>Скидка действует на только одну шаурму которую вы выбрали.</p>
-            <span class="block-sale__tag">-20%</span>
-            <span class="block-sale__tag">Одна шаурма</span>
-            <span class="block-sale__tag">До: 29.12.2024</span>
-            <a class="block-sale__link block-sale__tag" href="{% url 'catalog'%}">Шаурма</a>
+            <span class="block-trade__tag">-20%</span>
+            <span class="block-trade__tag">Одна шаурма</span>
+            <span class="block-trade__tag">До: 29.12.2024</span>
+            <a class="block-trade__link block-trade__tag" href="{% url 'catalog'%}">Шаурма</a>
         </div>
 {% endblock %}
