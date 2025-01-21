@@ -2,25 +2,28 @@ from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 
 
-class Review(models.Model):
-    name = models.CharField(max_length=60)
-    
-    text = models.TextField(max_length=600)
+class Review( models.Model ):
+    name  = models.CharField( max_length = 60,  verbose_name = 'Имя' )
+    text  = models.TextField( max_length = 600, verbose_name = 'Текст отзыва' )
+    stars = models.SmallIntegerField( validators = [ MinValueValidator(1), MaxValueValidator(5) ],
+                                      verbose_name = 'Оценка' )
+    date  = models.CharField( max_length = 30, verbose_name = 'Дата/Время' )
 
-    stars = models.SmallIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    class Meta:
+        verbose_name = 'отзыв'
+        verbose_name_plural = 'отзывы'
+        ordering = [ 'name' ]
 
-    date = models.CharField(max_length=30)
 
+class Shaurma( models.Model ):
+    name        = models.CharField( max_length = 60,  verbose_name = 'Название' )
+    compound    = models.TextField( max_length = 600, verbose_name = 'Состав' )
+    description = models.TextField( max_length = 600, verbose_name = 'Описание' )
+    picture     = models.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
+    price       = models.PositiveSmallIntegerField( verbose_name = 'Цена' )
+    weight      = models.PositiveSmallIntegerField( verbose_name = 'Вес' )
 
-class Shaurma(models.Model):
-    name = models.CharField(max_length=60)
-
-    compound = models.TextField(max_length=600)
-
-    description = models.TextField(max_length=600)
-
-    picture = models.ImageField(upload_to = 'shaurma_images')
-
-    price = models.PositiveSmallIntegerField()
-
-    weight = models.PositiveSmallIntegerField()
+    class Meta:
+        verbose_name = 'шаурма'
+        verbose_name_plural = 'шаурма'
+        ordering = ['name']
