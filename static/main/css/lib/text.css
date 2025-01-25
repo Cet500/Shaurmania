@@ -1,23 +1,51 @@
-/* ---------------------------- text ----------------------------- */
+/* ---------------------------------- text ---------------------------------- */
 
 /* ----------------------- titles ----------------------- */
 
 .h1{
-    margin: 24px auto;
-    font-size: 32px;
+    margin: 32px auto;
+    font-size: 40px;
+    font-weight: 400;
 }
 .h2 {
-    margin: 16px auto;
-    text-align: center;
-    font-size: 26px;
+    margin: 28px auto;
+    font-size: 32px;
+    font-weight: 400;
 }
 .h3{
+    margin: 16px 0;
+    font-size: 24px;
+}
+
+.text-big{
     margin: 10px 0;
     font-size: 20px;
+}
+.text{
+    margin: 10px 0;
+    font-size: 18px;
 }
 
 /* --------------------- text aligns -------------------- */
 
+.text-left{
+    text-align: left;
+}
 .text-center{
     text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.text-justify{
+    text-align: justify;
+}
+
+/* ------------------------ lines ----------------------- */
+
+.hr{
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    border-top: 1px solid var(--clr-gray);
 }

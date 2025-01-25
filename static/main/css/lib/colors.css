@@ -1,27 +1,158 @@
-/* ---------------------------- colors ----------------------------- */
+/* -------------------------------- colors ---------------------------------- */
 
 :root{
-    /* monochrome */
-    --clr-white: #FFFFFF;
-    --clr-black: #000000;
-    
-    /* main colors */
-    --clr-logo:      #ffe646;
-    --clr-red:       #e64c38;
-    --clr-orangered: #dd6934;
-    --clr-yellow:    #fdbe3f;
+    /* ================ MONOCHROME COLORS =============== */
+
+    --clr-white:        #FFFFFF;
+    --clr-lighter-gray: #CCCCCC;
+    --clr-light-gray:   #AAAAAA;
+    --clr-gray:         #888888;
+    --clr-dark-gray:    #555555;
+    --clr-darker-gray:  #333333;
+    --clr-black:        #000000;
+
+    /* =================== MAIN COLORS ================== */
+
+    /* solar */
+    --clr-solar-w60: #FFFFA9;
+    --clr-solar-w40: #FFFF7E;
+    --clr-solar-w20: #FFFF53;
+    --clr-solar:     #FFFF28;
+    --clr-solar-d20: #CCCC20;
+    --clr-solar-d40: #999918;
+    --clr-solar-d60: #666610;
+
+    /* yellow */
+    --clr-yellow-w60: #FFF099;
+    --clr-yellow-w40: #FFE866;
+    --clr-yellow-w20: #FFE133;
+    --clr-yellow:     #FFD900;
+    --clr-yellow-d20: #CCAE00;
+    --clr-yellow-d40: #998200;
+    --clr-yellow-d60: #665700;
+
+    /* sand */
+    --clr-sand-w60: #FFE1A9;
+    --clr-sand-w40: #FFD27F;
+    --clr-sand-w20: #FFC354;
+    --clr-sand:     #FFB429;
+    --clr-sand-d20: #CC9021;
+    --clr-sand-d40: #996C19;
+    --clr-sand-d60: #664810;
+
+    /* orange */
+    --clr-orange-w60: #FBCFA3;
+    --clr-orange-w40: #F8B775;
+    --clr-orange-w20: #F69F47;
+    --clr-orange:     #F48719;
+    --clr-orange-d20: #C36C14;
+    --clr-orange-d40: #92510F;
+    --clr-orange-d60: #62360A;
+
+    /* red */
+    --clr-red-w60: #FFBEAA;
+    --clr-red-w40: #FF9D7F;
+    --clr-red-w20: #FF7D55;
+    --clr-red:     #FF5C2B;
+    --clr-red-d20: #CC4A22;
+    --clr-red-d40: #993719;
+    --clr-red-d60: #662511;
+
+    /* fire */
+    --clr-fire-w60: #FCAEA4;
+    --clr-fire-w40: #FB8576;
+    --clr-fire-w20: #F95D49;
+    --clr-fire:     #F8341B;
+    --clr-fire-d20: #C62A16;
+    --clr-fire-d40: #951F10;
+    --clr-fire-d60: #63150B;
    
-    /* gradients */
-    --grad-yellow-orange: linear-gradient(to right, var(--clr-yellow), var(--clr-orangered));
+    /* ================= GRADIENT COLORS ================ */
+
+    --grad-solar-yellow: linear-gradient( to right, var(--clr-solar),  var(--clr-yellow) );
+    --grad-yellow-sand:  linear-gradient( to right, var(--clr-yellow), var(--clr-sand)   );
+    --grad-sand-orange:  linear-gradient( to right, var(--clr-sand),   var(--clr-orange) );
+    --grad-orange-red:   linear-gradient( to right, var(--clr-orange), var(--clr-red)    );
+    --grad-red-fire:     linear-gradient( to right, var(--clr-red),    var(--clr-fire)   );
+
+    --grad-solar-sand:    linear-gradient( to right, var(--clr-solar),  var(--clr-yellow) );
+    --grad-yellow-orange: linear-gradient( to right, var(--clr-yellow), var(--clr-sand)   );
+    --grad-sand-red:      linear-gradient( to right, var(--clr-sand),   var(--clr-red)    );
+    --grad-orange-fire:   linear-gradient( to right, var(--clr-orange), var(--clr-fire)   );
 }
 
+
+/* ----------------------------- text colors -------------------------------- */
+
+.text-solar{
+    color: var(--clr-solar);
+}
+.text-yellow{
+    color: var(--clr-yellow);
+}
+.text-sand{
+    color: var(--clr-sand);
+}
+.text-orange{
+    color: var(--clr-orange);
+}
 .text-red{
     color: var(--clr-red);
 }
+.text-fire{
+    color: var(--clr-fire);
+}
 
-.block-red{
+
+/* ----------------------------- block colors ------------------------------- */
+
+.clr-solar{
+    background-color: var(--clr-solar);
+}
+.clr-yellow{
+    background-color: var(--clr-yellow);
+}
+.clr-sand{
+    background-color: var(--clr-sand);
+}
+.clr-orange{
+    background-color: var(--clr-orange);
+}
+.clr-red{
     background-color: var(--clr-red);
 }
-.block-grad-orange{
+.clr-fire{
+    background-color: var(--clr-fire);
+}
+
+
+/* ------------------------ block gradients colors -------------------------- */
+
+.grad-solar-yellow{
+    background: var(--grad-solar-yellow);
+}
+.grad-yellow-sand{
+    background: var(--grad-yellow-sand);
+}
+.grad-sand-orange{
+    background: var(--grad-sand-orange);
+}
+.grad-orange-red{
+    background: var(--grad-orange-red);
+}
+.grad-red-fire{
+    background: var(--grad-red-fire);
+}
+
+.grad-solar-sand{
+    background: var(--grad-solar-sand);
+}
+.grad-yellow-orange{
     background: var(--grad-yellow-orange);
+}
+.grad-sand-red{
+    background: var(--grad-sand-red);
+}
+.grad-orange-fire{
+    background: var(--grad-orange-fire);
 }

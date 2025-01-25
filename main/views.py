@@ -52,7 +52,28 @@ def sales(request):
     return render(request, 'main/sales.html')
 
 def search(request):
-    return render(request, 'main/search.html')
+    if 'search' in request.GET:
+        query = request.GET['search']
+
+        if query:
+            finded_rows = Shaurma.objects.filter( name__icontains = query )
+
+            ctx = {
+                'search': f'Найдено по запросу "{query}"',
+                'finded_rows': finded_rows
+            }
+
+        else:
+            ctx = {
+                'search': 'Пустой запрос, искать нечего'
+            }
+
+    else:
+        ctx = {
+            'search': 'Введите запрос'
+        }
+
+    return render( request, 'main/search.html', context = ctx )
 
 def user(request):
     return render(request, 'main/user.html')

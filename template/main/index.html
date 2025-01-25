@@ -11,11 +11,11 @@
 
 
 {% block main %}
-    <h2 class="h2">Самая популярная:</h2>
+    <h2 class="h1 text-center">Лучшая шаурма в мире</h2>
 
     <div class="block block-columns block-columns-2">
         {% for food in shaurma %}
-            <div class="block-columns-item block-grad-orange block-shaurma">
+            <div class="block-columns-item grad-sand-orange block-shaurma">
                 <img src="{{ food.picture.url }}" alt="{{ food.name }}">
                 <div>
                     <h3>{{ food.name }}</h3>
@@ -31,50 +31,50 @@
         {% endfor %}
     </div>
 
-    <h2 class="h2">Текущие акции:</h2>
+    <h2 class="h2 text-center">Текущие акции</h2>
 
     <div class="block block-columns block-columns-2">
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Новогодняя распродажа, скидки 50% на всё!</p>
             <a href="{% url 'sales'%}" class="btn">Подробнее</a>
         </div>
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Каждую пятницу скидка 20% на случайную шаурму!</p>
             <a href="{% url 'sales'%}" class="btn">Подробнее</a>
         </div>
     </div>
 
-    <h2 class="h2">Приходите за покупками:</h2>
+    <h2 class="h2 text-center">Приходите за покупками</h2>
 
     <div class="block block-columns block-columns-2">
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Болоте шрека.</p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Звезде смерти.</p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Пушкина 22.</p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания в Дворце Путина.</p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Ленина 5. </p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>
 
 
-        <div class="block-columns-item block-grad-orange block-sale">
+        <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Сталина 8. </p>
             <a href="{% url 'address'%}" class="btn">За покупками</a>
         </div>

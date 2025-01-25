@@ -5,29 +5,35 @@
 {% block title %}Поиск{% endblock %}
 
 
-{% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/search.css' %}">
-{% endblock %}
-
-
 {% block main %}
-    <div class="search">
-        <h1>Поиск</h1>
+    <h1 class="h1 text-center">Поиск</h1>
 
-        <form action="" method="post">
+    <div class="form__wrapper">
+        <form class="form" action="#">
+            <div class="form__row">
+                <i class="form__icon fas fa-search"></i>
+                <label>
+                    <input class="form__input" type="text" name="search" placeholder="Найти..." required />
+                </label>
+            </div>
 
-            <h1>Найти</h1>
-
-            <input type="search" name="search">
-
-            <input type="submit">
+            <div class="form__row">
+                <input class="form__button" type="submit" value="Поиск" />
+            </div>
         </form>
-
-        <hr class="hr">
-
-        <h2>Найдено по запросу "....."
-            Пока ничего не найдено :(
-        </h2>
-
     </div>
+
+    <hr class="hr">
+
+    <h2 class="h2 text-center">{{ search }}</h2>
+
+    <div class="block block-columns block-columns-3">
+        {% for row in finded_rows %}
+
+            <div class="block-columns-item grad-sand-orange block-search">
+               <a href="{% url 'product' %}">{{ row.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

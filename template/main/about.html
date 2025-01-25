@@ -12,37 +12,108 @@
 
 
 {% block main %}
-<div class="contentWrapper">
-    <div class="aboutContent">Качество<p><i class="fa fa-dog"></i></p></div>
-    <div class="aboutContent">Вкус<p><i class="fa fa-face-smile-tongue"></i></p></div>
-    <div class="aboutContent">Свежесть продуктов<p><i class="fa fa-salad" ></i></p></div>
-    <div class="aboutContent">Удобная оплата <p><i class="fa fa-credit-card-alt" aria-hidden="true"></i></p></div>
-    <div class="aboutContent">Супер низкая цена<p><i class="fa fa-dollar"></i></p></div>
-    <div class="aboutContent">Быстрая доставка<p><i class="fa fa-truck-clock"></i></p></div>
-</div>
+    <h2 class="h1 text-center">О нас</h2>
 
-<div class="images">
-    <img class="img" src="{% static 'main/img/images/shawa_about.jpeg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-    <img class="img" src="{% static 'main/img/images/shawa_about2.jpg' %}" alt="">
-</div>
+    <div class="block block-about">
+        <div class="block-about__advantages">
+            <div class="block__advantage">
+                <span>Качество</span>
+                <i class="block__advantage-icon fa fa-dog"></i>
+            </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+            <div class="block__advantage">
+                <span>Вкус</span>
+                <i class="block__advantage-icon fa fa-face-smile-tongue"></i>
+            </div>
 
-<script>
-    var slider = tns({
-        container: '.images',
-        items: 3,
-        slideBy: 'page',
-        autoplay: true
-    });
+            <div class="block__advantage">
+                <span>Свежесть продуктов</span>
+                <i class="block__advantage-icon fa fa-salad" ></i>
+            </div>
+
+            <div class="block__advantage">
+                <span>Удобная оплата</span>
+                <i class="block__advantage-icon fa fa-credit-card-alt"></i>
+            </div>
+
+            <div class="block__advantage">
+                <span>Супер низкая цена</span>
+                <i class="block__advantage-icon fa fa-dollar"></i>
+            </div>
+
+            <div class="block__advantage">
+                <span>Быстрая доставка</span>
+                <i class="block__advantage-icon fa fa-truck-clock"></i>
+            </div>
+        </div>
+
+        <img class="about-chef" src="{% static 'main/img/images/chef.png' %}" alt="">
+
+
+
+    </div>
+
+    <div class="slider">
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_1.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_2.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_3.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_4.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_5.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_6.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_7.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_8.png' %}" alt="О ШаурМании">
+        </div>
+        <div class="slider__slide">
+            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_9.png' %}" alt="О ШаурМании">
+        </div>
+    </div>
+
+    <div class="slider-nav">
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+        <div class="slider-nav__dot"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+    <script>
+        var slider = tns({
+            container: '.slider',
+
+            controls: false,
+            navPosition: 'bottom',
+            navContainer: '.slider-nav',
+            navAsThumbnails: true,
+
+            items: 2,
+            gutter: 20,
+
+            autoplay: false,
+            autoplayTimeout: 3500,
+
+            arrowKeys: true,
+            mouseDrag: true
+        });
     </script>
 {% endblock %}
