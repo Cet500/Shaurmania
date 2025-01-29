@@ -30,8 +30,13 @@
     <div class="block block-columns block-columns-3">
         {% for row in finded_rows %}
 
-            <div class="block-columns-item grad-sand-orange block-search">
-               <a href="{% url 'product' %}">{{ row.name }}</a>
+            <div class="block-columns-item block-search">
+               <a href="{% url 'product' %}">
+                   {{ row.name }}
+                   <span class="block-search__description">{{ row.description }}</span>
+               </a>
+
+
             </div>
         {% endfor %}
     </div>

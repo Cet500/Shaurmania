@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Review, Shaurma
+from .documents import ShaurmaDocument
 
 
 def index( request ):
@@ -56,7 +57,8 @@ def search(request):
         query = request.GET['search']
 
         if query:
-            finded_rows = Shaurma.objects.filter( name__icontains = query )
+            finded_rows = ShaurmaDocument.search().query( 'multi_match', query = query, fields = ['name', 'description'], fuzziness = 1 )
+            #finded_rows = Shaurma.objects.filter( name__icontains = query )
 
             ctx = {
                 'search': f'Найдено по запросу "{query}"',

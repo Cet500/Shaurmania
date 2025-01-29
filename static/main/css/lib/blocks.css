@@ -98,6 +98,7 @@
 
 .block-search{
     padding: 15px 20px;
+    background-color: var(--clr-orange-d20);
 }
 .block-search a{
     display: block;
@@ -106,4 +107,10 @@
     color: var(--clr-white);
     font-size: 20px;
     text-decoration: none;
+}
+.block-search__description{
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 10px;
 }

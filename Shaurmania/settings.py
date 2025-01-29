@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    'django_elasticsearch_dsl',
+
     "main.apps.MainConfig",
 ]
 
@@ -78,6 +81,14 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'https://localhost:9200',
+        'http_auth': ('elastic', 'passwordES123'),
+        'verify_certs': False
     }
 }
 
