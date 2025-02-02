@@ -42,8 +42,14 @@ def licenses(request):
 def login(request):
     return render(request, 'main/login.html')
 
-def product(request):
-    return render(request, 'main/product.html')
+def product( request, product_id ):
+    product = Shaurma.objects.get( id = product_id )
+
+    ctx = {
+        'product': product
+    }
+
+    return render( request, 'main/product.html', context = ctx )
 
 def reg(request):
     return render(request, 'main/registration.html')
