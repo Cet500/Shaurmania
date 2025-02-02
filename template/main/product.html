@@ -11,17 +11,18 @@
 
 
 {% block main %}
+    <h2 class="h1 text-center">{{ product.name }}</h2>
+
     <div class="bloock_Product">
-        <span class="name">Шаурма-Царь</span>
-        <img src="{{ food.picture.url }}" alt="{{ food.name }}">
+        <img src="{{ product.picture.url }}" alt="{{ product.name }}">
         <span class="stars"></span>
-        <p class="bloock_Product">
-            Состав: лаваш армянский, свежий помидорка, салатик свежий, нежнейшая куринная грудка 350гр, вкуснейший сливочный сыр, майонез, и специи по выбору.
+        <p class="text-big text-left">
+            Состав:{{ product.compound }}
         </p>
-        <p class="bloock_Product">
-            Шаурма-Царь – это блюдо, достойное королевского стола! Сочная куриная грудка, обжаренная до золотистой корочки, щедро уложена в свежий лаваш вместе с хрустящими овощами: сочными помидорами, сладким луком и хрустящим салатом. Всё это великолепие пропитано фирменным соусом на основе йогурта и чеснока, придающим блюду насыщенный вкус и аромат. Каждая порция Шаурмы-Царя – это настоящий праздник для ваших вкусовых рецепторов. Блюдо идеально сбалансировано: нежность мяса, свежесть овощей и пикантность соуса создают гармоничный дуэт, который никого не оставит равнодушным.
+        <p class="text-big text-left">
+            {{ product.description }}
         </p>
-        <p class="bloock_Product">Цена: 350₽</p>
-        <p class="bloock_Product">Вес: 300гр</p>
+        <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
+        <p class="text-big text-left">Вес:{{ product.weight }}г</p>
     </div>
 {% endblock %}
