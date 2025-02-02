@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Review, Shaurma
+from.models import Review, Shaurma, Location
 from django.utils.safestring import mark_safe
 
 
@@ -38,3 +38,7 @@ class ShaurmaAdmin(admin.ModelAdmin):
 
     get_weight.short_description = 'Вес в гр'
 
+
+@admin.register(Location)
+class LocationAdmin(admin.ModelAdmin):
+    list_display = [ 'address', 'description' ]

@@ -11,34 +11,45 @@
 
 
 {% block main %}
-    <div class="block-sale">
-        <h2>Мы находимся на звезде смерти.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
+    <div class="address">
+        <h2 class="h1 text-center">Наши заведения:</h2>
+        <div class="address__blocks block block-columns block-columns-2">
+            <div class="address__block block-columns-item block-shaurma">
+                <img class="address__block-pic" src="../../media/location_images/Putins-house.png" alt="Дворец-Путина" srcset="">
+                <div class="address__block-text">
+                    <h3 class="">Дворец Пу-Тяна</h3>
+                    <div class="address__block-buttons">
+                        <a class="btn" href="https://maps.google.com/">Открыть карту</a>
+                        <a href="" class="btn">Заказать здесь</a>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-    <div class="block-sale">
-        <h2>Мы находимся на Болоте Шрека.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
-        
-    </div>
-    <div class="block-sale">
-        <h2>Мы находимся на Пушкина 22.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
-        
-    </div>
-    <div class="block-sale">
-        <h2>Мы находимся на Дворце Путина.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
-        
-    </div>
-    <div class="block-sale">
-        <h2>Мы находимся на Ленина 5.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
-        
-    </div>
-    <div class="block-sale">
-        <h2>Мы находимся на Сталина 8.</h2>
-        <a class="block-sale__link" href="{% url 'catalog' %}">Ищите нас там.</a>
-        
+            <div class="address__block block-columns-item block-shaurma">
+                <img class="address__block-pic" src="../../media/location_images/Putins-house.png" alt="Дворец-Путина" srcset="">
+                <div class="address__block-text">
+                    <h3 class="">Ул. Пушкина, д. 2</h3>
+                    <div class="address__block-buttons">
+                        <a class="btn" href="https://maps.google.com/">Открыть карту</a>
+                        <a href="" class="btn">Заказать здесь</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="address__block block-columns-item block-shaurma">
+                <img class="address__block-pic" src="../../media/location_images/Putins-house.png" alt="Дворец-Путина" srcset="">
+                <div class="address__block-text">
+                    <h3 class="">Ул. Пушкина, д. 2</h3>
+                    <div class="address__block-buttons">
+                        <a class="btn" href="https://maps.google.com/">Открыть карту</a>
+                        <a href="" class="btn">Заказать здесь</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="address__block block-columns-item block-shaurma">
+                <img class="address__block-pic" src="../../media/location_images/Putins-house.png" alt="Дворец-Путина" srcset="">
+            </div>
+        </div>
     </div>
 {% endblock %}

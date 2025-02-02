@@ -1,22 +1,8 @@
-.block-sale {
-    width: calc(100% - 60px);
-    background-color: #000;
-    background-image: linear-gradient(to right, orange, orangered);
-    color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px;
+.address {
+    box-sizing: border-box;
+    display: flex;
 }
 
-
-.block-sale__link{
-    background-color: orangered;
-    padding: 10px;
-    margin: 5px 0;
-    color: white;
-    border-radius: 10px;
-    display: inline-block;
-    text-decoration: none;
+.address__block-buttons {
+    width: 100%;
 }
-
-

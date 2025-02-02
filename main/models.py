@@ -27,3 +27,13 @@ class Shaurma( models.Model ):
         verbose_name = 'шаурма'
         verbose_name_plural = 'шаурма'
         ordering = ['name']
+
+
+class Location( models.Model ):
+    address     = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
+    description = models.TextField( max_length = 600, verbose_name = 'Описание' )
+    
+    class Meta:
+        verbose_name = 'заведениe'
+        verbose_name_plural = 'заведения'
+        ordering = ['address']
