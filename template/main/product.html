@@ -7,22 +7,53 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/product.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
 {% endblock %}
 
 
 {% block main %}
     <h2 class="h1 text-center">{{ product.name }}</h2>
 
-    <div class="bloock_Product">
-        <img src="{{ product.picture.url }}" alt="{{ product.name }}">
-        <span class="stars"></span>
-        <p class="text-big text-left">
-            Состав:{{ product.compound }}
-        </p>
-        <p class="text-big text-left">
-            {{ product.description }}
-        </p>
-        <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
-        <p class="text-big text-left">Вес:{{ product.weight }}г</p>
+    <div class="block-product">
+        
+        <div class="block-product_column-left">
+            <img class="block-product_image" src="{{ product.picture.url }}" alt="{{ product.name }}">
+            
+            <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
+            
+            <p class="text-big text-left">Вес:{{ product.weight }}г</p>
+            
+            <div class="product-buttons">
+                <input class="product-buttons" type="submit" value="Добавить в корзину" />
+            </div>
+        
+        </div>
+        <div class="block-product_column-right">
+            <span class="stars"></span>
+
+            <p class="text-big text-left">
+                Состав:{{ product.compound }}
+            </p>
+
+            <p class="text-big text-left">
+                {{ product.description }}
+            </p>
+
+            <p class="block-feedback__tag"> Отзывы на шаурму.
+                <span class="name">Дмитрий «Гоблин» Пучков</span>
+                <span class="stars">
+                    
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    
+                </span>
+                <span class="text">
+                    Ребята, ну вы даёте! Шаурму заказал у вас и не пожалел ни разу. Знаете, что такое настоящая шаурма? Это когда ты чувствуешь каждый кусочек мяса, а соус так и течёт по пальцам. У вас всё именно так! Не то что в этих ваших сетевых забегаловках, где мясо больше похоже на резину, чем на еду. Короче, молодцы! Буду заказывать ещё.
+                </span>
+                <span class="time">2023-10-01 18:30</span>
+            </p>
+
+        </div>
+        
+        
     </div>
 {% endblock %}
