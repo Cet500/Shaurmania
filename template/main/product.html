@@ -39,18 +39,28 @@
                 {{ product.description }}
             </p>
 
-            <p class="block-feedback__tag"> Отзывы на шаурму.
-                <span class="name">Дмитрий «Гоблин» Пучков</span>
+            {% for review in reviews %}
+            <p class="block-feedback__tag">
+                <span class="name">{{ review.name }}</span>
                 <span class="stars">
-                    
+                    {% if review.stars == 5 %}
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    
+                    {% elif review.stars == 4 %}
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    {% elif review.stars == 3 %}
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    {% elif review.stars == 2 %}
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    {% elif review.stars == 1 %}
+                    <i class="fa-solid fa-star"></i>
+                    {% endif %}
                 </span>
                 <span class="text">
-                    Ребята, ну вы даёте! Шаурму заказал у вас и не пожалел ни разу. Знаете, что такое настоящая шаурма? Это когда ты чувствуешь каждый кусочек мяса, а соус так и течёт по пальцам. У вас всё именно так! Не то что в этих ваших сетевых забегаловках, где мясо больше похоже на резину, чем на еду. Короче, молодцы! Буду заказывать ещё.
+                    {{ review.text }}
                 </span>
-                <span class="time">2023-10-01 18:30</span>
+                <span class="time">{{ review.date }}</span>
             </p>
+        {% endfor %}
 
         </div>
         
