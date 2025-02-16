@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Review, Shaurma, Location
+from.models import Review, Shaurma, Location, User, Order
 from django.utils.safestring import mark_safe
 
 
@@ -42,3 +42,13 @@ class ShaurmaAdmin(admin.ModelAdmin):
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = [ 'address', 'description' ]
+
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'picture']
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['user', 'shaurma', 'date']

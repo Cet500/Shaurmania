@@ -11,5 +11,17 @@
 
 
 {% block main %}
-
+<div class="wrapper">
+    <div class="user__pic">
+        <img class="user__pic-img" src="../../static/main/img/users/Bilya_Herrington.jpg" alt="">
+        <p>Bilya Herrington</p>
+    </div>
+<div class="user__stats">
+    <div class="user__stats-orders">
+        <p class="user__stats-order-p">Создано заказов: 239 шаурм. </p>
+        <p class="user__stats-order-p">Любимая шаурма:</p>
+    </div>
+    <a class='user__stats-order-btn btn' href="{% url 'product' product_id=13 %}">шаурма-говядина</a></p>
+</div>
+</div>
 {% endblock %}

@@ -37,3 +37,14 @@ class Location( models.Model ):
         verbose_name = 'заведениe'
         verbose_name_plural = 'заведения'
         ordering = ['address']
+
+
+class User( models.Model ):
+    username = models.CharField( max_length = 60, verbose_name = 'Юзернейм' )
+    picture = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
+
+
+class Order( models.Model ):
+    user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
+    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
+    date = models.DateTimeField(auto_now_add = True)
