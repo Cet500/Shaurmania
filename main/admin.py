@@ -5,9 +5,10 @@ from django.utils.safestring import mark_safe
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = [ 'name', 'text', 'get_stars', 'date' ]
+    list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date' ]
     list_display_links = [ 'name' ]
     list_filter = [ 'stars' ]
+    list_editable = [ 'shaurma' ]
 
     def get_stars( self, obj ):
         return f'{obj.stars} {'★' * obj.stars}'

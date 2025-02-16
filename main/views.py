@@ -44,9 +44,11 @@ def login(request):
 
 def product( request, product_id ):
     product = Shaurma.objects.get( id = product_id )
+    reviews = Review.objects.filter( shaurma = product_id )
 
     ctx = {
-        'product': product
+        'product': product,
+        'reviews': reviews
     }
 
     return render( request, 'main/product.html', context = ctx )
