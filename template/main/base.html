@@ -9,6 +9,10 @@
     <title>ШаурМания | {% block title %}Лучший сайт по продаже шаурмы{% endblock %}</title>
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{% static 'main/css/lib/colors.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/src/global.css' %}">
@@ -53,7 +57,7 @@
                     <p>Вкусная шаурма с доставкой.</p>
                 </div>
 
-                {% include 'main/_parts/navigation.html' %}
+                {% include 'main/_parts/navigation_footer.html' %}
             </div>
 
             <div class="footer__bottom">

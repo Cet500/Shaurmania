@@ -11,27 +11,26 @@
 
 
 {% block main %}
-    <h2 class="h1 text-center">Лучшая шаурма в мире</h2>
+    <h2 class="h1 text-center font-comfortaa-500">Лучшая шаурма в мире</h2>
 
     <div class="block block-columns block-columns-2">
         {% for food in shaurma %}
             <div class="block-columns-item grad-sand-orange block-shaurma">
                 <img src="{{ food.picture.url }}" alt="{{ food.name }}">
-                <div>
+                <div class="block-shaurma__content">
                     <h3>{{ food.name }}</h3>
                     <p class="description">{{ food.compound }}</p>
                     <p class="price">{{ food.price }}₽ / {{ food.weight }}гр</p>
-                    <p class="price"> </p>
-                    <p>
+                    <div>
                         <button class="btn">В корзину</button>
                         <a class="btn" href="{% url 'product' product_id=food.id %}">Подробнее</a>
-                    </p>
+                    </div>
                 </div>
             </div>
         {% endfor %}
     </div>
 
-    <h2 class="h2 text-center">Текущие акции</h2>
+    <h2 class="h2 text-center font-comfortaa-400">Текущие акции</h2>
 
     <div class="block block-columns block-columns-2">
         <div class="block-columns-item grad-sand-orange block-sale">
@@ -45,7 +44,7 @@
         </div>
     </div>
 
-    <h2 class="h2 text-center">Приходите за покупками</h2>
+    <h2 class="h2 text-center font-comfortaa-400">Приходите за покупками</h2>
 
     <div class="block block-columns block-columns-2">
         <div class="block-columns-item grad-sand-orange block-sale">

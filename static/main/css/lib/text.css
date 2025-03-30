@@ -48,4 +48,16 @@
     border-collapse: collapse;
     border: none;
     border-top: 1px solid var(--clr-gray);
+
+}
+/* ------------------------ fonts ----------------------- */
+
+.font-comfortaa-500{
+    font-family: "Comfortaa";
+    font-weight: 500;
+}
+
+.font-comfortaa-400{
+    font-family: "Comfortaa";
+    font-weight: 400;
 }

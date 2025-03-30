@@ -50,9 +50,10 @@
 .nav {
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: center;
     justify-content: flex-end;
     position: relative;
+    align-items: center;
     list-style: none;
     gap: 10px;
 }
