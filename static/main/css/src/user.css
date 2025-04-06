@@ -50,6 +50,7 @@
     background-color: var(--clr-sand);
     padding: 10px 30%;
     font-weight: 400;
+    margin: 10px 0;
 }
 
 .user__stats-order-p {
