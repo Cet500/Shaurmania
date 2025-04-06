@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block title %}Пользователь{% endblock %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'main/css/src/user.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<div class="wrapper">
+    <div class="user__pic">
+        <img class="user__pic-img" src="../../static/main/img/users/Bilya_Herrington.jpg" alt="">
+        <p class="font-comfortaa-400">Bilya Herrington</p>
+        <p class="font-comfortaa-400">+7 959 657 96 45</p>
+        <div class="user__pic-interactives">
+            <ul>
+                <li class="order-history user__pic-interactives-btns"><i class="fa fa-history"></i><a href="">История заказов</a></li>
+                <li class="report-btn user__pic-interactives-btns"><i class="fa fa-exclamation-triangle"></i><a href="">Жалоба на профиль</a></li>
+            </ul>
+        </div>
+    </div>
+<div class="user__stats">
+    <div class="user__stats-orders">
+        <p class="user__stats-order-p">Создано заказов: 239 шаурм. </p>
+        <p class="user__stats-order-p">Любимая шаурма:</p>
+    </div>
+    <a class='user__stats-order-btn btn' href="{% url 'product' product_id=13 %}">шаурма-говядина</a></p>
+</div>
+</div>
+{% endblock %}

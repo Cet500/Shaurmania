@@ -83,5 +83,8 @@ def search(request):
 
     return render( request, 'main/search.html', context = ctx )
 
-def user(request):
-    return render(request, 'main/user.html')
+def user_private(request):
+    return render(request, 'main/user_private.html')
+
+def user_public(request):
+    return render(request, 'main/user_public.html')

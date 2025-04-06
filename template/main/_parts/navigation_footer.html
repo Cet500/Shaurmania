@@ -35,8 +35,15 @@
     </li>
 
     <li>
-        <a href="{% url 'user' %}" class="btn">
+        <a href="{% url 'user_public' %}" class="btn">
             <i class="fa-solid fa-user"></i>
+            Пользователь
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url 'user_private' %}" class="btn">
+            <i class="fa-solid fa-lock"></i>
             Пользователь
         </a>
     </li>
