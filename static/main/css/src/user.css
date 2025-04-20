@@ -18,6 +18,9 @@
 .user__pic-interactives-btns{
     padding: 5px 0 5px 2px;
 }
+.user__pic-text {
+    font-size: 2rem;
+}
 .fa{
     padding: 0 3px 0 0;
 }
@@ -37,10 +40,7 @@
     border-radius: 50%;
     margin-top: 20px;
 }
-.user__pic p {
-    font-weight: 700;
-    font-size: 2rem;
-}
+
 
 .user__stats {
     font-size: 25px;
