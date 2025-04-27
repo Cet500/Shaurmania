@@ -52,9 +52,26 @@ class Location( models.Model ):
 class User( models.Model ):
     username = models.CharField( max_length = 60, verbose_name = 'Юзернейм' )
     picture = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
+    email = models.EmailField( max_length = 80 )
+    number = models.CharField( max_length = 12, verbose_name = 'Номер' )
+    last_address = models.CharField( max_length = 200, verbose_name = "Адрес последней доставки" )
+    reg_date = models.DateTimeField( auto_now_add = True )
+
+
 
 
 class Order( models.Model ):
     user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
     shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
     date = models.DateTimeField(auto_now_add = True)
+
+
+class Achievement( models.Model ):
+    name = models.CharField( max_length=60, verbose_name = "Название")
+    picture = models.ImageField( upload_to = "achievement_image", verbose_name = "Изображение" )
+
+
+class UserAchievement( models.Model ):
+    user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь')
+    achievement = models.ForeignKey( 'Achievement', on_delete = models.CASCADE, verbose_name = 'Достижение')
+    get_date = models.DateTimeField(auto_now_add = True)

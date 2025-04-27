@@ -1,13 +1,13 @@
 from django.contrib import admin
-from.models import Review, Shaurma, Location, User, Order
+from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement
 from django.utils.safestring import mark_safe
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date' ]
+    list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date', 'last_adress', 'reg_date' ]
     list_display_links = [ 'name' ]
-    list_filter = [ 'stars' ]
+    list_filter = [ 'stars', 'reg_date' ]
     list_editable = [ 'shaurma' ]
 
     def get_stars( self, obj ):
@@ -18,7 +18,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(Shaurma)
 class ShaurmaAdmin(admin.ModelAdmin):
-    list_display = [ 'name', 'get_picture', 'description', 'get_price', 'get_weight' ]
+    list_display = [ 'name', 'get_picture', 'description', 'get_price', 'get_weight']
     list_display_links = ['name']
 
     def get_picture( self, obj ):
@@ -47,9 +47,20 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'picture']
+    list_display = ['username', 'picture', 'number', 'email', '']
 
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'shaurma', 'date']
+
+
+@admin.register(Achievement)
+class AchievementAdmin(admin.ModelAdmin):
+    list_display = ['name', 'picture']
+
+
+@admin.register(UserAchievement)
+class UserAchievement(admin.ModelAdmin):
+    list_display = ['user', 'achievement', 'get_date']
+    list_filter  = ['get_date']
