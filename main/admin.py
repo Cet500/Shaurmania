@@ -5,9 +5,9 @@ from django.utils.safestring import mark_safe
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date', 'last_adress', 'reg_date' ]
+    list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date' ]
     list_display_links = [ 'name' ]
-    list_filter = [ 'stars', 'reg_date' ]
+    list_filter = [ 'stars' ]
     list_editable = [ 'shaurma' ]
 
     def get_stars( self, obj ):
@@ -47,8 +47,8 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'picture', 'number', 'email', '']
-
+    list_display = [ 'username', 'picture', 'number', 'email', 'last_address', 'reg_date' ]
+    list_filter  = [ 'reg_date' ]
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
