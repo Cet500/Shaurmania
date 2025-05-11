@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Review, Shaurma
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm, LoginForm
 
 
 def index( request ):
@@ -39,9 +41,6 @@ def feedback(request):
 def licenses(request):
     return render(request, 'main/licenses.html')
 
-def login(request):
-    return render(request, 'main/login.html')
-
 def product( request, product_id ):
     product = Shaurma.objects.get( id = product_id )
     reviews = Review.objects.filter( shaurma = product_id )
@@ -52,9 +51,6 @@ def product( request, product_id ):
     }
 
     return render( request, 'main/product.html', context = ctx )
-
-def reg(request):
-    return render(request, 'main/registration.html')
 
 def sales(request):
     return render(request, 'main/sales.html')
@@ -88,3 +84,20 @@ def user_private(request):
 
 def user_public(request):
     return render(request, 'main/user_public.html')
+
+def reg(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            print('залупень')
+            return render(request, 'main/registration.html', {'form': form})
+    else:
+        form = SignUpForm()
+        return render(request, 'main/registration.html', {'form': form})
+
+def login(request):
+    return render(request, 'main/login.html')

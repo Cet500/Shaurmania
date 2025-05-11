@@ -9,35 +9,10 @@
   
 <div class="form__wrapper">
     <div class="form-wrapper__title">Регистрация</div>
-
-    <form class="form" action="#">
-        <div class="form__row">
-            <i class="form__icon fas fa-user"></i>
-            <label>
-                <input class="form__input" type="text" placeholder="Логин" required />
-            </label>
-        </div>
-
-        <div class="form__row">
-            <i class="form__icon fas fa-envelope"></i>
-            <label>
-                <input class="form__input" type="email" placeholder="Почта" required />
-            </label>
-        </div>
-
-        <div class="form__row">
-            <i class="form__icon fas fa-lock"></i>
-            <label>
-                <input class="form__input" type="password" placeholder="Придумайте пароль" required />
-            </label>
-        </div>
-
-        <div class="form__row">
-            <i class="form__icon fas fa-repeat"></i>
-            <label>
-                <input class="form__input" type="password" placeholder="Повторите пароль" required />
-            </label>
-        </div>
+    <form class="form" method='POST'>
+        {% csrf_token %}
+        
+        {{ form }}
 
         <div class="form__row">
             <input class="form__button" type="submit" value="Продолжить" />
