@@ -6,13 +6,31 @@
 
 
 {% block main %}
-  
+
 <div class="form__wrapper">
     <div class="form-wrapper__title">Регистрация</div>
-    <form class="form" method='POST'>
+    <form class="form" autocomplete="off" method='POST'>
         {% csrf_token %}
         
-        {{ form }}
+        <div class="form__row">
+            <label for="id_username"><i class="form__icon fas fa-user"></i></label>
+            {{ form.username }}
+        </div>
+
+        <div class="form__row">
+            <label for="id_email"><i class="form__icon fas fa-envelope"></i></label>
+            {{ form.email }}
+        </div>
+
+        <div class="form__row">
+            <label for="id_password1"><i class="form__icon fas fa-lock"></i></label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="form__row">
+            <label for="id_password2"><i class="form__icon fas fa-repeat"></i></label>
+            {{ form.password2 }}
+        </div>
 
         <div class="form__row">
             <input class="form__button" type="submit" value="Продолжить" />
