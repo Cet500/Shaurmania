@@ -11,23 +11,19 @@
 
 
 {% block main %}
+
         <h2 class="h1 text-center font-comfortaa-400">Акции</h2>
 
+        {% for stock in stocks %}
         <div class="block block-trade">
-            <h3 class="text-big">Сейчас новогодие скидки до 50% на шаурму!</h3>
-            <p class="text">Скидки действуют тольуо для новых клиентов при покупке шаурмы более чем на 1000 рублей.</p>
-            <span class="block-trade__tag">-50%</span>
-            <span class="block-trade__tag">На весь ассортимент</span>
-            <span class="block-trade__tag">До: 02.01.2025</span>
-            <a class="block-trade__tag block-trade__link" href="{% url 'catalog'%}">Шаурма</a>
+            <h3 class="text-big">{{ stock.name }}</h3>
+            <p class="text">{{ stock.description }}</p>
+            <span class="block-trade__tag">Скидка {{ stock.discount }}%</span>
+            <span class="block-trade__tag">{{ stock.сondition }}</span>
+            <span class="block-trade__tag">{{ stock.date_end }}</span>
+            <a class="block-trade__tag block-trade__link" href="{% url 'catalog'%}">{{ stock.product }}</a>
         </div>
-
-        <div class="block block-trade">
-            <h3 class="text-big">Каждую пятницу скидка на одну из шаверм 20%</h3>
-            <p class="text">Скидка действует на только одну шаурму которую вы выбрали.</p>
-            <span class="block-trade__tag">-20%</span>
-            <span class="block-trade__tag">Одна шаурма</span>
-            <span class="block-trade__tag">До: 29.12.2024</span>
-            <a class="block-trade__link block-trade__tag" href="{% url 'catalog'%}">Шаурма</a>
-        </div>
+    
+        {% endfor %}
+        
 {% endblock %}

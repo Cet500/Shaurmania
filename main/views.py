@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Review, Shaurma
+from .models import Review, Shaurma, Stock
 
 
 def index( request ):
@@ -57,7 +57,12 @@ def reg(request):
     return render(request, 'main/registration.html')
 
 def sales(request):
-    return render(request, 'main/sales.html')
+    stocks = Stock.objects.all()
+
+    ctx = {
+        'stocks': stocks
+    }    
+    return render(request, 'main/sales.html', context = ctx)
 
 def search(request):
     if 'search' in request.GET:

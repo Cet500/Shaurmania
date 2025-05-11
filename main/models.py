@@ -75,3 +75,21 @@ class UserAchievement( models.Model ):
     user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь')
     achievement = models.ForeignKey( 'Achievement', on_delete = models.CASCADE, verbose_name = 'Достижение')
     get_date = models.DateTimeField(auto_now_add = True)
+
+
+class Stock( models.Model ):
+    name = models.CharField( max_length=60, verbose_name = "Название")
+    description = models.CharField( max_length=150, verbose_name= "Описание")
+    discount = models.SmallIntegerField( verbose_name="Скидка в %")
+    product = models.CharField( max_length=40, verbose_name="Товар")
+    сondition = models.CharField( max_length=40, verbose_name="Условие")
+    date_start = models.DateTimeField(auto_now_add = True)
+    date_end = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.name}"
+    
+    class Meta:
+        verbose_name = 'акция'
+        verbose_name_plural = 'акции'
+        ordering = ['name']

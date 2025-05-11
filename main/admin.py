@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement
+from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement,Stock
 from django.utils.safestring import mark_safe
 
 
@@ -64,3 +64,8 @@ class AchievementAdmin(admin.ModelAdmin):
 class UserAchievement(admin.ModelAdmin):
     list_display = ['user', 'achievement', 'get_date']
     list_filter  = ['get_date']
+
+
+@admin.register(Stock)
+class Stock(admin.ModelAdmin):
+    list_display = ['name', 'description','product','сondition','discount','date_start','date_end']
