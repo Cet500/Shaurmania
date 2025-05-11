@@ -16,5 +16,6 @@ urlpatterns = [
     path ('sales', views.sales, name = 'sales'),
     path ('search', views.search, name = 'search'),
     path ('user_private', views.user_private, name = 'user_private'),
-    path ('user_public', views.user_public, name = 'user_public')
+    path ('user_public', views.user_public, name = 'user_public'),
+    path ('logout', views.logout_jopa, name = 'logout')
 ]

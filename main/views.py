@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Review, Shaurma
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login as login_django, logout, authenticate
 from .forms import SignUpForm, LoginForm
 
 
@@ -90,7 +90,7 @@ def reg(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login_django(request, user)
             return redirect('index')
         else:
             print('залупень')
@@ -100,4 +100,17 @@ def reg(request):
         return render(request, 'main/registration.html', {'form': form})
 
 def login(request):
-    return render(request, 'main/login.html')
+    form = LoginForm(data=request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None: 
+                login_django(request, user)
+                return redirect('index')
+    return render(request, 'main/login.html', {'form': form})
+
+def logout_jopa(request):
+    logout(request)
+    return redirect('index')
