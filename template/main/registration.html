@@ -32,6 +32,10 @@
             {{ form.password2 }}
         </div>
 
+        {% if form.non_field_errors %}
+            <div style="color: red;">{{ form.non_field_errors }}</div>
+        {% endif %}
+
         <div class="form__row">
             <input class="form__button" type="submit" value="Продолжить" />
         </div>

@@ -11,12 +11,12 @@ class SignUpForm(UserCreationForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        password_confirm = cleaned_data.get("password_confirm")
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
 
-        if password and password_confirm and password != password_confirm:
-            raise forms.ValidationError("Пароли не совпадают.")
-
+        if password1 != password2:
+            raise forms.ValidationError("Пароли не совпадают")
+        
         return cleaned_data
 
     class Meta:

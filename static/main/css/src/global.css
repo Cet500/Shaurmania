@@ -91,6 +91,9 @@
     gap: 5px;
 }
 
+.errorlist{
+    list-style-type: none;
+}
 /* ------------------------ media ----------------------- */
 
 @media screen and ( max-width: 1300px ) {
