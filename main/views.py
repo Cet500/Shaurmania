@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Review, Shaurma, Stock
+from .models import Review, Shaurma, Stock ,Location
 
 
 def index( request ):
@@ -14,7 +14,13 @@ def about( request ):
     return render( request, 'main/about.html' )
 
 def address(request):
-    return render(request, 'main/address.html')
+    locations = Location.objects.all()
+
+    ctx = {
+        'locations': locations
+    }    
+
+    return render(request, 'main/address.html', context = ctx )
 
 def cart(request):
     return render(request, 'main/cart.html')

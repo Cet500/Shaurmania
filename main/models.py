@@ -39,9 +39,14 @@ class Shaurma( models.Model ):
 class Location( models.Model ):
     address     = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
     description = models.TextField( max_length = 600, verbose_name = 'Описание' )
+    picture = models.ImageField( upload_to = 'locations', verbose_name = 'Изображение' )
+    name = models.CharField( max_length=60, verbose_name = "Название")
+    сontacts = models.CharField( max_length = 18, verbose_name = 'Номер' )
+    city = models.CharField( max_length = 30, verbose_name = 'Город')
+    opening_hours = models.CharField( max_length= 20, verbose_name='Время работы')
     
     def __str__(self):
-        return f"{self.address}"
+        return f"{self.name}"
     
     class Meta:
         verbose_name = 'заведениe'
