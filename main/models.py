@@ -7,17 +7,18 @@ class Review( models.Model ):
     name    = models.CharField( max_length = 60,  verbose_name = 'Имя' )
     text    = models.TextField( max_length = 600, verbose_name = 'Текст отзыва' )
     stars   = models.SmallIntegerField( validators = [ MinValueValidator(1), MaxValueValidator(5) ],
-                                      verbose_name = 'Оценка' )
+                                        verbose_name = 'Оценка' )
     shaurma = models.ForeignKey( 'Shaurma', on_delete = models.PROTECT, default = 3, verbose_name = 'Шаурма' )
-    date    = models.CharField( max_length = 30, verbose_name = 'Дата/Время записи' )
+    date    = models.CharField( max_length = 30, verbose_name = 'Время записи' )
 
     def __str__(self):
-        return f"Отзыв от {self.name} ( {self.stars} / 5 )"
+        return f'Отзыв от {self.name} ( {self.stars} / 5 )'
 
     class Meta:
         verbose_name = 'отзыв'
         verbose_name_plural = 'отзывы'
         ordering = [ 'name' ]
+
 
 class Shaurma( models.Model ):
     name        = models.CharField( max_length = 60,  verbose_name = 'Название' )
@@ -28,39 +29,39 @@ class Shaurma( models.Model ):
     weight      = models.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
 
     def __str__(self):
-        return f"{self.name}"
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'шаурма'
         verbose_name_plural = 'шаурма'
-        ordering = ['name']
+        ordering = [ 'name' ]
 
 
 class Location( models.Model ):
-    address     = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
-    description = models.TextField( max_length = 600, verbose_name = 'Описание' )
-    picture = models.ImageField( upload_to = 'locations', verbose_name = 'Изображение' )
-    name = models.CharField( max_length=60, verbose_name = "Название")
-    сontacts = models.CharField( max_length = 18, verbose_name = 'Номер' )
-    city = models.CharField( max_length = 30, verbose_name = 'Город')
-    opening_hours = models.CharField( max_length= 20, verbose_name='Время работы')
+    address       = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
+    description   = models.TextField( max_length = 600, verbose_name = 'Описание' )
+    picture       = models.ImageField( upload_to = 'locations', verbose_name = 'Изображение' )
+    name          = models.CharField( max_length = 60, verbose_name = 'Название' )
+    contacts      = models.CharField( max_length = 18, verbose_name = 'Номер' )
+    city          = models.CharField( max_length = 30, verbose_name = 'Город' )
+    opening_hours = models.CharField( max_length = 20, verbose_name = 'Время работы' )
     
     def __str__(self):
-        return f"{self.name}"
+        return f'{self.name}'
     
     class Meta:
         verbose_name = 'заведениe'
         verbose_name_plural = 'заведения'
-        ordering = ['address']
+        ordering = [ 'address' ]
 
 
-class UserManager(BaseUserManager):
+class UserManager( BaseUserManager ):
     def create_user(self, email, username, password, **extra_fields):
         if not username:
-            raise ValueError('vvedi username!!!')
+            raise ValueError('Введите имя пользователя')
         
         if not email:
-            raise ValueError('Ne email!!')
+            raise ValueError('Это не Email')
         
         email = self.normalize_email(email)
         user = self.model( email = email, username = username, **extra_fields )
@@ -78,22 +79,22 @@ class UserManager(BaseUserManager):
 
 
 class User( AbstractBaseUser, PermissionsMixin ):
-    username = models.CharField( max_length = 60, unique = True,verbose_name = 'Юзернейм' )
-    picture = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
-    email = models.EmailField( max_length = 80 )
-    number = models.CharField( max_length = 12, verbose_name = 'Номер' )
-    last_address = models.CharField( max_length = 200, verbose_name = "Адрес последней доставки" )
-    reg_date = models.DateTimeField( auto_now_add = True )
+    username     = models.CharField( max_length = 60, unique = True, verbose_name = 'Никнейм' )
+    picture      = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
+    email        = models.EmailField( max_length = 80, verbose_name = 'Email' )
+    number       = models.CharField( max_length = 12, verbose_name = 'Номер' )
+    last_address = models.CharField( max_length = 200, verbose_name = 'Адрес последней доставки' )
+    reg_date     = models.DateTimeField( auto_now_add = True, verbose_name = 'время регистрации' )
 
-    is_open   = models.BooleanField( default = True )
-    is_active = models.BooleanField( default = True )
-    is_staff  = models.BooleanField( default = False )
+    is_open   = models.BooleanField( default = True, verbose_name = 'Открытый профиль?' )
+    is_active = models.BooleanField( default = True, verbose_name = 'Профиль активен?' )
+    is_staff  = models.BooleanField( default = False, verbose_name = 'Это сотрудник сайта?' )
 
     objects = UserManager()
 
     USERNAME_FIELD  = 'username'
     EMAIL_FIELD     = 'email'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = [ 'email' ]
 
     def __str__(self):
         return f'{self.username} | {self.email}'
@@ -101,13 +102,16 @@ class User( AbstractBaseUser, PermissionsMixin ):
     class Meta:
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
-        ordering = ['username']
+        ordering = [ 'username' ]
 
 
 class Order( models.Model ):
-    user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
+    user    = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
     shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
-    date = models.DateTimeField(auto_now_add = True)
+    date    = models.DateTimeField( auto_now_add = True )
+
+    def __str__(self):
+        return f'Заказ {self.shaurma.name} от {self.user.username}'
 
     class Meta:
         verbose_name = 'заказ'
@@ -115,29 +119,45 @@ class Order( models.Model ):
 
 
 class Achievement( models.Model ):
-    name = models.CharField( max_length=60, verbose_name = "Название")
-    picture = models.ImageField( upload_to = "achievement_image", verbose_name = "Изображение" )
+    name    = models.CharField( max_length = 60, verbose_name = 'Название' )
+    picture = models.ImageField( upload_to = 'achievement_image', verbose_name = 'Изображение' )
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'достижение'
+        verbose_name_plural = 'достижения'
+        ordering = [ 'name' ]
 
 
 class UserAchievement( models.Model ):
-    user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь')
-    achievement = models.ForeignKey( 'Achievement', on_delete = models.CASCADE, verbose_name = 'Достижение')
-    get_date = models.DateTimeField(auto_now_add = True)
+    user        = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
+    achievement = models.ForeignKey( 'Achievement', on_delete = models.CASCADE, verbose_name = 'Достижение' )
+    get_date    = models.DateTimeField( auto_now_add = True, verbose_name = 'Время получения' )
+
+    def __str__(self):
+        return f'{self.user.username} - {self.achievement.name}'
+
+    class Meta:
+        verbose_name = 'достижение пользователя'
+        verbose_name_plural = 'достижения пользователей'
+        ordering = [ 'get_date' ]
 
 
 class Stock( models.Model ):
-    name = models.CharField( max_length=60, verbose_name = "Название")
-    description = models.CharField( max_length=150, verbose_name= "Описание")
-    discount = models.SmallIntegerField( verbose_name="Скидка в %")
-    product = models.CharField( max_length=40, verbose_name="Товар")
-    сondition = models.CharField( max_length=40, verbose_name="Условие")
-    date_start = models.DateTimeField(auto_now_add = True)
-    date_end = models.DateTimeField()
+    name        = models.CharField( max_length = 60, verbose_name = 'Название' )
+    description = models.CharField( max_length = 150, verbose_name = 'Описание' )
+    discount    = models.SmallIntegerField( verbose_name = 'Скидка в %' )
+    product     = models.CharField( max_length = 40, verbose_name = 'Товар' )
+    condition   = models.CharField( max_length = 40, verbose_name = 'Условие' )
+    date_start  = models.DateTimeField( auto_now_add = True, verbose_name = 'Дата начала' )
+    date_end    = models.DateTimeField( verbose_name = 'Дата конца' )
 
     def __str__(self):
-        return f"{self.name}"
+        return f'{self.name}'
     
     class Meta:
         verbose_name = 'акция'
         verbose_name_plural = 'акции'
-        ordering = ['name']
+        ordering = [ 'name' ]

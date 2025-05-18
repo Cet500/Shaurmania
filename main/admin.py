@@ -68,4 +68,4 @@ class UserAchievement(admin.ModelAdmin):
 
 @admin.register(Stock)
 class Stock(admin.ModelAdmin):
-    list_display = ['name', 'description','product','сondition','discount','date_start','date_end']
+    list_display = [ 'name', 'description', 'discount', 'product', 'condition', 'date_start', 'date_end' ]
