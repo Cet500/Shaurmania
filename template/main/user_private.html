@@ -23,6 +23,13 @@
             <ul>
                 <li class="order-history user__pic-interactives-btns"><i class="fa fa-history"></i><a href="">История заказов</a></li>
             </ul>
+                {% if request.user.is_authenticated %}
+                <a class="btn" href="{% url 'logout' %}">
+                    <i class="fa-solid fa-sign-out"></i>
+                    Выход
+                </a>
+                    {{ else }}
+                {% endif %}
         </div>
     </div>
 <div class="user__stats">
@@ -32,6 +39,7 @@
     </div>
     <a class='user__stats-order-btn btn' href="{% url 'product' product_id=13 %}">шаурма-говядина</a></p>
     <a class='user__stats-order-btn btn' href="{% url 'feedback' %}">Отзывы</a></p>
+
 </div>
 </div>
 {% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Review, Shaurma, Stock ,Location
+from django.shortcuts import render, redirect
+from .models import Review, Shaurma, Stock, Location
+from django.contrib.auth import login as login_django, logout, authenticate
+from .forms import SignUpForm, LoginForm
 
 
 def index( request ):
@@ -45,9 +47,6 @@ def feedback(request):
 def licenses(request):
     return render(request, 'main/licenses.html')
 
-def login(request):
-    return render(request, 'main/login.html')
-
 def product( request, product_id ):
     product = Shaurma.objects.get( id = product_id )
     reviews = Review.objects.filter( shaurma = product_id )
@@ -58,9 +57,6 @@ def product( request, product_id ):
     }
 
     return render( request, 'main/product.html', context = ctx )
-
-def reg(request):
-    return render(request, 'main/registration.html')
 
 def sales(request):
     stocks = Stock.objects.all()
@@ -99,3 +95,33 @@ def user_private(request):
 
 def user_public(request):
     return render(request, 'main/user_public.html')
+
+def reg(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login_django(request, user)
+            return redirect('index')
+        else:
+            print('залупень')
+            return render(request, 'main/registration.html', {'form': form})
+    else:
+        form = SignUpForm()
+        return render(request, 'main/registration.html', {'form': form})
+
+def login(request):
+    form = LoginForm(data=request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None: 
+                login_django(request, user)
+                return redirect('index')
+    return render(request, 'main/login.html', {'form': form})
+
+def logout_jopa(request):
+    logout(request)
+    return redirect('index')

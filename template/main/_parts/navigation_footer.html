@@ -35,23 +35,24 @@
     </li>
 
     <li>
-        <a href="{% url 'user_public' %}" class="btn">
-            <i class="fa-solid fa-user"></i>
-            Пользователь
-        </a>
-    </li>
-
-    <li>
-        <a href="{% url 'user_private' %}" class="btn">
-            <i class="fa-solid fa-lock"></i>
-            Пользователь
-        </a>
-    </li>
-
-    <li>
         <a class="btn" href="{% url 'address' %}">
             <i class="fa-solid fa-location-dot"></i>
             Адрес
         </a>
     </li>
+    {% if request.user.is_authenticated %}
+    <li>
+        <a href="{% url 'user_private' %}" class="btn">
+            <i class="fa-solid fa-user"></i>
+            Пользователь
+        </a>
+    </li>
+{% else %}
+    <li>
+        <a href="{% url 'user_public' %}" class="btn">
+            <i class="fa-solid fa-user"></i>
+            Пользователь
+        </a>
+    </li>
+{% endif %}
 </ul>

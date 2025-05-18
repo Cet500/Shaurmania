@@ -6,38 +6,35 @@
 
 
 {% block main %}
-  
+
 <div class="form__wrapper">
     <div class="form-wrapper__title">Регистрация</div>
-
-    <form class="form" action="#">
+    <form class="form" autocomplete="off" method='POST'>
+        {% csrf_token %}
+        
         <div class="form__row">
-            <i class="form__icon fas fa-user"></i>
-            <label>
-                <input class="form__input" type="text" placeholder="Логин" required />
-            </label>
+            <label for="id_username"><i class="form__icon fas fa-user"></i></label>
+            {{ form.username }}
         </div>
 
         <div class="form__row">
-            <i class="form__icon fas fa-envelope"></i>
-            <label>
-                <input class="form__input" type="email" placeholder="Почта" required />
-            </label>
+            <label for="id_email"><i class="form__icon fas fa-envelope"></i></label>
+            {{ form.email }}
         </div>
 
         <div class="form__row">
-            <i class="form__icon fas fa-lock"></i>
-            <label>
-                <input class="form__input" type="password" placeholder="Придумайте пароль" required />
-            </label>
+            <label for="id_password1"><i class="form__icon fas fa-lock"></i></label>
+            {{ form.password1 }}
         </div>
 
         <div class="form__row">
-            <i class="form__icon fas fa-repeat"></i>
-            <label>
-                <input class="form__input" type="password" placeholder="Повторите пароль" required />
-            </label>
+            <label for="id_password2"><i class="form__icon fas fa-repeat"></i></label>
+            {{ form.password2 }}
         </div>
+
+        {% if form.non_field_errors %}
+            <div style="color: red;">{{ form.non_field_errors }}</div>
+        {% endif %}
 
         <div class="form__row">
             <input class="form__button" type="submit" value="Продолжить" />

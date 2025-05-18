@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class Review( models.Model ):
@@ -17,7 +18,6 @@ class Review( models.Model ):
         verbose_name = 'отзыв'
         verbose_name_plural = 'отзывы'
         ordering = [ 'name' ]
-
 
 class Shaurma( models.Model ):
     name        = models.CharField( max_length = 60,  verbose_name = 'Название' )
@@ -54,21 +54,64 @@ class Location( models.Model ):
         ordering = ['address']
 
 
-class User( models.Model ):
-    username = models.CharField( max_length = 60, verbose_name = 'Юзернейм' )
+class UserManager(BaseUserManager):
+    def create_user(self, email, username, password, **extra_fields):
+        if not username:
+            raise ValueError('vvedi username!!!')
+        
+        if not email:
+            raise ValueError('Ne email!!')
+        
+        email = self.normalize_email(email)
+        user = self.model( email = email, username = username, **extra_fields )
+
+        user.set_password( password )
+        user.save()
+
+        return user
+
+    def create_superuser( self, username, email, password, **extra_fields ):
+        extra_fields.setdefault( 'is_staff', True )
+        extra_fields.setdefault( 'is_superuser', True )
+
+        return self.create_user( email, username, password, **extra_fields )
+
+
+class User( AbstractBaseUser, PermissionsMixin ):
+    username = models.CharField( max_length = 60, unique = True,verbose_name = 'Юзернейм' )
     picture = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
     email = models.EmailField( max_length = 80 )
     number = models.CharField( max_length = 12, verbose_name = 'Номер' )
     last_address = models.CharField( max_length = 200, verbose_name = "Адрес последней доставки" )
     reg_date = models.DateTimeField( auto_now_add = True )
 
+    is_open   = models.BooleanField( default = True )
+    is_active = models.BooleanField( default = True )
+    is_staff  = models.BooleanField( default = False )
 
+    objects = UserManager()
+
+    USERNAME_FIELD  = 'username'
+    EMAIL_FIELD     = 'email'
+    REQUIRED_FIELDS = ['email']
+
+    def __str__(self):
+        return f'{self.username} | {self.email}'
+    
+    class Meta:
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'
+        ordering = ['username']
 
 
 class Order( models.Model ):
     user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
     shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
     date = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        verbose_name = 'заказ'
+        verbose_name_plural = 'заказы'
 
 
 class Achievement( models.Model ):
