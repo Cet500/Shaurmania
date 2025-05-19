@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from slugify import slugify
 
 
 class Review( models.Model ):
@@ -21,12 +22,28 @@ class Review( models.Model ):
 
 
 class Shaurma( models.Model ):
-    name        = models.CharField( max_length = 60,  verbose_name = 'Название' )
-    compound    = models.TextField( max_length = 600, verbose_name = 'Состав' )
-    description = models.TextField( max_length = 600, verbose_name = 'Описание' )
-    picture     = models.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
-    price       = models.PositiveSmallIntegerField( verbose_name = 'Цена в ₽' )
-    weight      = models.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
+    name          = models.CharField( max_length = 60, unique = True, verbose_name = 'Название' )
+    slug          = models.SlugField( max_length = 70, blank = True, verbose_name = "URL-адрес" )
+    category      = models.ForeignKey( 'ShaurmaCategory', on_delete = models.SET_NULL,
+                                       null = True, blank = True, verbose_name = 'Категория' )
+    compound      = models.TextField( max_length = 600, verbose_name = 'Состав' )
+    short_text    = models.TextField( max_length = 200, blank = True, verbose_name = 'Краткое описание' )
+    description   = models.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )
+    picture       = models.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
+    price         = models.PositiveSmallIntegerField( verbose_name = 'Цена в ₽' )
+    weight        = models.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
+    calories      = models.PositiveIntegerField( default = 0, verbose_name = "Калории (ккал)" )
+    proteins      = models.FloatField( default = 0, verbose_name = "Белки (г)" )
+    fats          = models.FloatField( default = 0, verbose_name = "Жиры (г)" )
+    carbohydrates = models.FloatField( default = 0, verbose_name = "Углеводы (г)" )
+    is_available  = models.BooleanField( default = True, verbose_name = "Доступна для заказа" )
+    created_at    = models.DateTimeField( auto_now_add = True, verbose_name = "Дата создания" )
+    updated_at    = models.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
+
+    def save( self, *args, **kwargs ):
+        if not self.slug:
+            self.slug = slugify( self.name )
+        super().save( *args, **kwargs )
 
     def __str__(self):
         return f'{self.name}'
@@ -37,14 +54,31 @@ class Shaurma( models.Model ):
         ordering = [ 'name' ]
 
 
+class ShaurmaCategory( models.Model ):
+    name        = models.CharField( max_length = 60, verbose_name = 'Название' )
+    description = models.TextField( max_length = 200, verbose_name = 'Описание' )
+    order       = models.PositiveSmallIntegerField( default = 0, verbose_name = "Порядок сортировки" )
+    created_at  = models.DateTimeField( auto_now_add = True, verbose_name = "Дата создания" )
+    updated_at  = models.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'категория шаурмы'
+        verbose_name_plural = 'категории шаурмы'
+        ordering = [ 'order', 'name' ]
+
+
 class Location( models.Model ):
-    address       = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
-    description   = models.TextField( max_length = 600, verbose_name = 'Описание' )
-    picture       = models.ImageField( upload_to = 'locations', verbose_name = 'Изображение' )
-    name          = models.CharField( max_length = 60, verbose_name = 'Название' )
-    contacts      = models.CharField( max_length = 18, verbose_name = 'Номер' )
-    city          = models.CharField( max_length = 30, verbose_name = 'Город' )
-    opening_hours = models.CharField( max_length = 20, verbose_name = 'Время работы' )
+    address     = models.CharField( max_length = 60,  verbose_name = 'Адрес' )
+    description = models.TextField( max_length = 600, verbose_name = 'Описание' )
+    picture     = models.ImageField( upload_to = 'locations', verbose_name = 'Изображение' )
+    name        = models.CharField( max_length = 60, verbose_name = 'Название' )
+    contacts    = models.CharField( max_length = 18, verbose_name = 'Номер' )
+    city        = models.CharField( max_length = 30, verbose_name = 'Город' )
+    open_hours  = models.TimeField( verbose_name = 'Начало' )
+    close_hours = models.TimeField( verbose_name = 'Конец' )
     
     def __str__(self):
         return f'{self.name}'

@@ -2,13 +2,15 @@ from django.contrib import admin
 from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement,Stock
 from django.utils.safestring import mark_safe
 
+from main.models import ShaurmaCategory
+
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date' ]
     list_display_links = [ 'name' ]
     list_filter = [ 'stars' ]
-    list_editable = [ 'shaurma' ]
+    list_editable = [  ]
 
     def get_stars( self, obj ):
         return f'{obj.stars} {'★' * obj.stars}'
@@ -18,8 +20,9 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(Shaurma)
 class ShaurmaAdmin(admin.ModelAdmin):
-    list_display = [ 'name', 'get_picture', 'description', 'get_price', 'get_weight']
-    list_display_links = ['name']
+    list_display = [ 'id', 'name', 'get_picture', 'compound', 'category', 'get_energy_value', 'get_price', 'get_weight', 'created_at' ]
+    list_display_links = [ 'name' ]
+    list_filter = [ 'created_at' ]
 
     def get_picture( self, obj ):
         if obj.picture:
@@ -28,6 +31,11 @@ class ShaurmaAdmin(admin.ModelAdmin):
             return mark_safe( f'<b>нет</b>' )
 
     get_picture.short_description = 'Изображение'
+
+    def get_energy_value( self, obj ):
+        return f'{obj.calories} ккал   {obj.proteins} / {obj.fats} / {obj.carbohydrates}'
+
+    get_energy_value.short_description = 'Данные КБЖУ'
 
     def get_price( self, obj ):
         return f'{obj.price} ₽'
@@ -38,6 +46,25 @@ class ShaurmaAdmin(admin.ModelAdmin):
         return f'{obj.weight} гр'
 
     get_weight.short_description = 'Вес в гр'
+
+
+class ShaurmaInline( admin.TabularInline  ):
+    model = Shaurma
+    extra = 0
+    fields = [ 'name', 'price', 'weight', 'calories', 'is_available', 'created_at' ]
+    readonly_fields = [ 'name', 'created_at' ]
+    show_change_link = True
+    can_delete = False
+    can_add = False
+
+
+@admin.register( ShaurmaCategory )
+class ShaurmaCategoryAdmin( admin.ModelAdmin ):
+    list_display       = [ 'name', 'description', 'created_at' ]
+    list_display_links = [ 'name' ]
+    list_filter        = [ 'created_at' ]
+
+    inlines = [ ShaurmaInline ]
 
 
 @admin.register(Location)

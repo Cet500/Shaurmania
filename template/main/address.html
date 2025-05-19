@@ -17,9 +17,9 @@
         <div class="block block-trade">
             <h3 class="text-big">{{ location.name }}</h3>
             <p class="text">{{ location.description }}</p>
-            <span class="block-trade__tag">{{ location.сontacts }}</span>
-            <span class="block-trade__tag">{{ location.city  }}</span>
-            <span class="block-trade__tag">{{ location.opening_hours  }}</span>            
+            <span class="block-trade__tag">{{ location.contacts }} |</span>
+            <span class="block-trade__tag">{{ location.city  }} |</span>
+            <span class="block-trade__tag">{{ location.open_hours  }} - {{ location.close_hours }}</span>
         </div>
     {% endfor %}
 
