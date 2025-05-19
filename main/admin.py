@@ -9,7 +9,7 @@ from main.models import ShaurmaCategory
 class ReviewAdmin(admin.ModelAdmin):
     list_display = [ 'name', 'text', 'get_stars', 'shaurma', 'date' ]
     list_display_links = [ 'name' ]
-    list_filter = [ 'stars' ]
+    list_filter = [ 'stars', 'date' ]
     list_editable = [  ]
 
     def get_stars( self, obj ):

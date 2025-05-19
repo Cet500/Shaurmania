@@ -9,8 +9,9 @@ class Review( models.Model ):
     text    = models.TextField( max_length = 600, verbose_name = 'Текст отзыва' )
     stars   = models.SmallIntegerField( validators = [ MinValueValidator(1), MaxValueValidator(5) ],
                                         verbose_name = 'Оценка' )
-    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.PROTECT, default = 3, verbose_name = 'Шаурма' )
-    date    = models.CharField( max_length = 30, verbose_name = 'Время записи' )
+    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.SET_NULL,
+                                 null = True, blank = True, verbose_name = 'Шаурма' )
+    date    = models.DateTimeField( auto_now_add = True, verbose_name = 'Время записи' )
 
     def __str__(self):
         return f'Отзыв от {self.name} ( {self.stars} / 5 )'
