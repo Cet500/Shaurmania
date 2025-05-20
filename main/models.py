@@ -119,7 +119,7 @@ class User( AbstractBaseUser, PermissionsMixin ):
     username     = models.CharField( max_length = 60, unique = True, verbose_name = 'Никнейм' )
     picture      = models.ImageField( upload_to = 'user_images', verbose_name = 'Изображение' )
     email        = models.EmailField( max_length = 80, verbose_name = 'Email' )
-    number       = models.CharField( max_length = 12, verbose_name = 'Номер' )
+    number       = models.CharField( max_length = 17, verbose_name = 'Номер' )
     last_address = models.CharField( max_length = 200, verbose_name = 'Адрес последней доставки' )
     reg_date     = models.DateTimeField( auto_now_add = True, verbose_name = 'время регистрации' )
 

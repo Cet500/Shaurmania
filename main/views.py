@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Review, Shaurma, Stock, Location
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Review, Shaurma, Stock, Location, User
 from django.contrib.auth import login as login_django, logout as logout_django, authenticate
 from .forms import SignUpForm, LoginForm
 
@@ -92,8 +92,18 @@ def search(request):
 
     return render( request, 'main/search.html', context = ctx )
 
-def user(request):
-    return render( request, 'main/user.html')
+def user(request, username):
+    profile_user = get_object_or_404(User, username=username)
+    is_owner = request.user.is_authenticated and request.user.username == username
+    if not is_owner and not profile_user.is_open:
+        return redirect('user_closed')
+    return render(request, 'main/user.html', {
+        'profile_user': profile_user,
+        'is_owner': is_owner,
+    })
+
+def user_closed(request):
+    return render(request, 'main/_parts/user_closed.html')
 
 def reg(request):
     if request.method == 'POST':

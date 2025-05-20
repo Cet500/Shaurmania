@@ -18,7 +18,8 @@ urlpatterns = [
     path ('logout', views.logout, name = 'logout' ),
 
     # USER =================================================
-    path ('user', views.user, name = 'user'),
+    path ('user/<str:username>', views.user, name = 'user'),
+    path ('profile_closed', views.user_closed, name = 'user_closed'),
 
     # MISC =================================================
     path ('about',    views.about,    name = 'about'),
