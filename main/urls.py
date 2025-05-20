@@ -17,9 +17,8 @@ urlpatterns = [
     path ('reg',    views.reg,    name = 'reg'),
     path ('logout', views.logout, name = 'logout' ),
 
-    # USERS ================================================
-    path ('user_private', views.user_private, name = 'user_private'),
-    path ('user_public',  views.user_public,  name = 'user_public'),
+    # USER =================================================
+    path ('user', views.user, name = 'user'),
 
     # MISC =================================================
     path ('about',    views.about,    name = 'about'),

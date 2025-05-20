@@ -92,11 +92,8 @@ def search(request):
 
     return render( request, 'main/search.html', context = ctx )
 
-def user_private(request):
-    return render(request, 'main/user_private.html')
-
-def user_public(request):
-    return render(request, 'main/user_public.html')
+def user(request):
+    return render( request, 'main/user.html')
 
 def reg(request):
     if request.method == 'POST':

@@ -42,17 +42,11 @@
     </li>
     {% if request.user.is_authenticated %}
     <li>
-        <a href="{% url 'user_private' %}" class="btn">
+        <a href="{% url 'user' %}" class="btn">
             <i class="fa-solid fa-user"></i>
             Пользователь
         </a>
     </li>
-{% else %}
-    <li>
-        <a href="{% url 'user_public' %}" class="btn">
-            <i class="fa-solid fa-user"></i>
-            Пользователь
-        </a>
-    </li>
-{% endif %}
+    {% else %}
+    {% endif %}
 </ul>
