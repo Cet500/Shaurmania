@@ -33,15 +33,13 @@
     <h2 class="h2 text-center font-comfortaa-400">Текущие акции</h2>
 
     <div class="block block-columns block-columns-2">
-        <div class="block-columns-item grad-sand-orange block-sale">
-            <p>Новогодняя распродажа, скидки 50% на всё!</p>
-            <a href="{% url 'sales'%}" class="btn">Подробнее</a>
-        </div>
-
-        <div class="block-columns-item grad-sand-orange block-sale">
-            <p>Каждую пятницу скидка 20% на случайную шаурму!</p>
-            <a href="{% url 'sales'%}" class="btn">Подробнее</a>
-        </div>
+	    {% for stock in stocks %}
+	        <div class="block-columns-item grad-sand-orange block-sale">
+	            <h3 class="text-big">{{ stock.name }}</h3>
+		        <p>{{ stock.short_text }}</p>
+	            <a href="{% url 'stocks'%}" class="btn">Подробнее</a>
+	        </div>
+	    {% endfor %}
     </div>
 
     <h2 class="h2 text-center font-comfortaa-400">Приходите за покупками</h2>

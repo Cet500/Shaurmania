@@ -1,6 +1,8 @@
+import uuid
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils import timezone
 from slugify import slugify
 
 
@@ -182,12 +184,14 @@ class UserAchievement( models.Model ):
 
 class Stock( models.Model ):
     name        = models.CharField( max_length = 60, verbose_name = 'Название' )
-    description = models.CharField( max_length = 150, verbose_name = 'Описание' )
+    short_text  = models.CharField( max_length = 150, blank = True, verbose_name = 'Краткое описание' )
+    description = models.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )
+    condition   = models.TextField( max_length = 1000, blank = True, verbose_name = 'Условия акции' )
+    image       = models.ImageField( upload_to = 'stocks', verbose_name = 'Изображение' )
     discount    = models.SmallIntegerField( verbose_name = 'Скидка в %' )
-    product     = models.CharField( max_length = 40, verbose_name = 'Товар' )
-    condition   = models.CharField( max_length = 40, verbose_name = 'Условие' )
-    date_start  = models.DateTimeField( auto_now_add = True, verbose_name = 'Дата начала' )
-    date_end    = models.DateTimeField( verbose_name = 'Дата конца' )
+    categories  = models.ManyToManyField( 'ShaurmaCategory', blank = True, verbose_name = 'Категория' )
+    date_start  = models.DateField( verbose_name = 'Старт' )
+    date_end    = models.DateField( verbose_name = 'Завершение' )
 
     def __str__(self):
         return f'{self.name}'
@@ -196,3 +200,26 @@ class Stock( models.Model ):
         verbose_name = 'акция'
         verbose_name_plural = 'акции'
         ordering = [ 'name' ]
+
+
+class Promocode( models.Model ):
+    code_name = models.CharField( max_length = 20, unique = True, verbose_name = 'Промокод' )
+    code_uuid = models.UUIDField( default=uuid.uuid4, editable=False, verbose_name = 'Промокод UUID' )
+    duration  = models.SmallIntegerField( default = 7, verbose_name = 'Время жизни ( в днях )' )
+    discount  = models.SmallIntegerField( default = 5, verbose_name = 'Скидка в %' )
+    date_add  = models.DateField( verbose_name = 'Дата создания' )
+    date_end  = models.DateField( null = True, blank = True, editable=False, verbose_name = 'Дата конца' )
+
+    def save( self, *args, **kwargs ):
+        if not self.id:
+            self.date_end = self.date_add + timezone.timedelta( days = self.duration )
+
+        super().save( *args, **kwargs )
+
+    def __str__(self):
+        return f'{self.code_name} ( {self.duration}d / {self.discount}%) )'
+
+    class Meta:
+        verbose_name = 'промокод'
+        verbose_name_plural = 'промокоды'
+        ordering = [ '-date_end' ]

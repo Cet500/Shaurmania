@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Review, Shaurma, Stock, Location
-from django.contrib.auth import login as login_django, logout, authenticate
+from django.contrib.auth import login as login_django, logout as logout_django, authenticate
 from .forms import SignUpForm, LoginForm
 
 
 def index( request ):
     shaurma = Shaurma.objects.all()
+    stocks  = Stock.objects.all()
 
     ctx = {
-        'shaurma': shaurma
+        'shaurma': shaurma,
+        'stocks': stocks
     }    
     return render( request, 'main/index.html', context = ctx )
 
@@ -58,13 +60,13 @@ def product( request, product_id ):
 
     return render( request, 'main/product.html', context = ctx )
 
-def sales(request):
+def stocks(request):
     stocks = Stock.objects.all()
 
     ctx = {
         'stocks': stocks
     }    
-    return render(request, 'main/sales.html', context = ctx)
+    return render( request, 'main/stocks.html', context = ctx )
 
 def search(request):
     if 'search' in request.GET:
@@ -122,6 +124,6 @@ def login(request):
                 return redirect('index')
     return render(request, 'main/login.html', {'form': form})
 
-def logout_jopa(request):
-    logout(request)
+def logout( request ):
+    logout_django(request)
     return redirect('index')

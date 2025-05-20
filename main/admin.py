@@ -2,7 +2,7 @@ from django.contrib import admin
 from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement,Stock
 from django.utils.safestring import mark_safe
 
-from main.models import ShaurmaCategory
+from main.models import Promocode, ShaurmaCategory
 
 
 @admin.register(Review)
@@ -60,11 +60,16 @@ class ShaurmaInline( admin.TabularInline  ):
 
 @admin.register( ShaurmaCategory )
 class ShaurmaCategoryAdmin( admin.ModelAdmin ):
-    list_display       = [ 'name', 'description', 'created_at' ]
+    list_display       = [ 'name', 'shaurma_count', 'description', 'created_at' ]
     list_display_links = [ 'name' ]
     list_filter        = [ 'created_at' ]
 
     inlines = [ ShaurmaInline ]
+
+    def shaurma_count( self, obj ):
+        return obj.shaurma_set.count()
+
+    shaurma_count.short_description = "Размер"
 
 
 @admin.register(Location)
@@ -88,11 +93,43 @@ class AchievementAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserAchievement)
-class UserAchievement(admin.ModelAdmin):
+class UserAchievementAdmin(admin.ModelAdmin):
     list_display = ['user', 'achievement', 'get_date']
     list_filter  = ['get_date']
 
 
 @admin.register(Stock)
-class Stock(admin.ModelAdmin):
-    list_display = [ 'name', 'description', 'discount', 'product', 'condition', 'date_start', 'date_end' ]
+class StockAdmin(admin.ModelAdmin):
+    list_display = [ 'name', 'get_image', 'short_text', 'display_categories', 'get_discount', 'get_dates' ]
+    # filter_horizontal = [ 'categories', ]
+
+    def get_image( self, obj ):
+        if obj.image:
+            return mark_safe( f'<img src="{obj.image.url}" width="100" />' )
+        else:
+            return mark_safe( f'<b>нет</b>' )
+
+    get_image.short_description = 'Изображение'
+
+    def display_categories( self, obj ):
+        return ", ".join( [category.name for category in obj.categories.all()] )
+
+    display_categories.short_description = 'Категории'
+
+    def get_discount( self, obj ):
+        return f'{obj.discount} %'
+
+    get_discount.short_description = 'Скидка'
+
+    def get_dates( self, obj ):
+        if obj.date_start == obj.date_end:
+            return f'{obj.date_end}'
+        else:
+            return f'{obj.date_start} - {obj.date_end}'
+
+    get_dates.short_description = 'Время акции'
+
+@admin.register( Promocode )
+class PromocodeAdmin( admin.ModelAdmin ):
+    list_display = [ 'code_name', 'code_uuid', 'duration', 'discount', 'date_add', 'date_end' ]
+    list_filter = [ 'date_add', 'date_end' ]
