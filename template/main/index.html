@@ -23,7 +23,7 @@
                     <p class="price">{{ food.price }}₽ / {{ food.weight }}гр</p>
                     <div>
                         <button class="btn">В корзину</button>
-                        <a class="btn" href="{% url 'product' product_id=food.id %}">Подробнее</a>
+                        <a class="btn" href="{% url 'product' slug=food.slug %}">Подробнее</a>
                     </div>
                 </div>
             </div>

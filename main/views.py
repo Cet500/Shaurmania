@@ -49,9 +49,9 @@ def feedback(request):
 def licenses(request):
     return render(request, 'main/licenses.html')
 
-def product( request, product_id ):
-    product = Shaurma.objects.get( id = product_id )
-    reviews = Review.objects.filter( shaurma = product_id )
+def product( request, slug ):
+    product = Shaurma.objects.get( slug = slug )
+    reviews = Review.objects.filter( shaurma = product.id )
 
     ctx = {
         'product': product,

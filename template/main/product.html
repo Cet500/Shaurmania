@@ -21,7 +21,9 @@
             
             <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
             
-            <p class="text-big text-left">Вес:{{ product.weight }}г</p>
+            <p class="text-big text-left">{{ product.weight }}г / {{product.calories}}ккал</p>
+
+            <p class="text-big text-left">БЖУ:{{ product.proteins }}/{{ product.fats }}/{{ product.carbohydrates }}</p>
             
             <div class="product-buttons">
                 <input class="product-buttons" type="submit" value="Добавить в корзину" />
@@ -36,7 +38,7 @@
             </p>
 
             <p class="text-big text-left">
-                {{ product.description }}
+                {{ product.description|linebreaksbr }}
             </p>
 
             {% for review in reviews %}
