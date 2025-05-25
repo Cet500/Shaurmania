@@ -8,7 +8,7 @@ urlpatterns = [
 
     # CATALOG ==============================================
     path ('catalog', views.catalog, name = 'catalog'),
-    path ('product/<int:product_id>', views.product, name = 'product'),
+    path ('product/<slug:slug>', views.product, name = 'product'),
     path ('search',  views.search,  name = 'search'),
     path ('cart',    views.cart,    name = 'cart'),
 
