@@ -6,3 +6,8 @@
 .address__block-buttons {
     width: 100%;
 }
+
+.picture-location {
+    border-radius: 20px;
+    width: 800px;
+}
