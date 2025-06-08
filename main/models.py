@@ -143,17 +143,25 @@ class User( AbstractBaseUser, PermissionsMixin ):
 
 
 class Order( models.Model ):
+    ORDER_STATUS_CHOICES = [
+        ('carted', 'В корзине'),
+        ('cancelled', 'Отменен'),
+        ('ordered', 'Куплен'),
+        ('completed', 'Завершен'),
+    ]
+
     user    = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name = 'Пользователь' )
-    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
+    status  = models.CharField( max_length = 20, choices = ORDER_STATUS_CHOICES, default = 'carted', verbose_name = 'Статус')
     date    = models.DateTimeField( auto_now_add = True )
 
+
     def __str__(self):
-        return f'Заказ {self.shaurma.name} от {self.user.username}'
+        return f'Заказ {self.id} от {self.user.username} - Статус: {self.status}'
 
     class Meta:
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
-
+        ordering = ['id']
 
 class Achievement( models.Model ):
     name    = models.CharField( max_length = 60, verbose_name = 'Название' )
