@@ -60,6 +60,15 @@ def product( request, slug ):
 
     return render( request, 'main/product.html', context = ctx )
 
+def stock( request, slug ):
+    stock = Stock.objects.get( slug = slug )
+
+    ctx = {
+        'stock': stock,
+    }
+
+    return render( request, 'main/stock.html', context = ctx )
+
 def stocks(request):
     stocks = Stock.objects.all()
 

@@ -19,13 +19,13 @@ urlpatterns = [
 
     # USER =================================================
     path ('user/<str:username>', views.user, name = 'user'),
-    path ('profile_closed', views.user_closed, name = 'user_closed'),
+    path ('profile_closed',      views.user_closed, name = 'user_closed'),
 
     # MISC =================================================
-    path ('about',    views.about,    name = 'about'),
-    path ('address',  views.address,  name = 'address'),
-    path ('feedback', views.feedback, name = 'feedback'),
-    path ('licenses', views.licenses, name = 'licenses'),
-    path ('stocks',   views.stocks,   name = 'stocks'),
-
+    path ('about',             views.about,    name = 'about'),
+    path ('address',           views.address,  name = 'address'),
+    path ('feedback',          views.feedback, name = 'feedback'),
+    path ('licenses',          views.licenses, name = 'licenses'),
+    path ('stocks',            views.stocks,   name = 'stocks'),
+    path ('stock/<slug:slug>', views.stock,    name = 'stock'),
 ]

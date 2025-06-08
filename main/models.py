@@ -183,6 +183,7 @@ class UserAchievement( models.Model ):
 
 
 class Stock( models.Model ):
+    slug        = models.SlugField( max_length = 70, blank = True, verbose_name = "URL-адрес" )
     name        = models.CharField( max_length = 60, verbose_name = 'Название' )
     short_text  = models.CharField( max_length = 150, blank = True, verbose_name = 'Краткое описание' )
     description = models.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )
@@ -192,6 +193,11 @@ class Stock( models.Model ):
     categories  = models.ManyToManyField( 'ShaurmaCategory', blank = True, verbose_name = 'Категория' )
     date_start  = models.DateField( verbose_name = 'Старт' )
     date_end    = models.DateField( verbose_name = 'Завершение' )
+
+    def save( self, *args, **kwargs ):
+        if not self.slug:
+            self.slug = slugify( self.name )
+        super().save( *args, **kwargs )
 
     def __str__(self):
         return f'{self.name}'

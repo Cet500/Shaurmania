@@ -27,7 +27,7 @@
 			        <span class="block-trade__tag">{{ stock.date_start }} - {{ stock.date_end }}</span>
 		        {% endif %}
 
-	            <a class="block-trade__tag block-trade__link" href="">Подробнее</a>
+	            <a class="block-trade__tag block-trade__link" href="{% url 'stock' slug=stock.slug %}">Подробнее</a>
 	        </div>
         {% endfor %}
         

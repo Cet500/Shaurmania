@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block title %}Акции{% endblock %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'main/css/src/stock.css' %}">
+{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="h1 text-center">{{ stock.name }}</h2>
+
+    <div class="block-stock">
+        
+        <div class="block-stock_column-left">
+            <img class="block-stock_image" src="{{ stock.image.url }}" alt="{{ stock.name }}">
+            
+            <p class="text-big text-left"></p>
+            
+            <p class="text-big text-left"></p>
+
+            <p class="text-big text-left"></p>
+            
+            <div class="stock-buttons">
+                <input class="stock-buttons" type="submit" value="" />
+            </div>
+        
+        </div>
+    </div>
+
+{% endblock %}
