@@ -4,7 +4,9 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message
 
-TOKEN = 'EXAMPLE_TOKEN'
+from settings import TELEGRAM_BOT_TOKEN
+
+TOKEN = TELEGRAM_BOT_TOKEN
 
 dp = Dispatcher()
 
@@ -27,4 +29,4 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-          
+        
