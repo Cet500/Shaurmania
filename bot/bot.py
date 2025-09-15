@@ -6,35 +6,51 @@ from aiogram.types import Message
 
 from settings import TELEGRAM_BOT_TOKEN
 
-bot = Bot( token = TELEGRAM_BOT_TOKEN )
+bot = Bot(token=str(TELEGRAM_BOT_TOKEN))
 dp = Dispatcher()
 
 
-# Command handler
 @dp.message(Command("start"))
 async def command_start_handler(message: Message) -> None:
-    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    button_catalog = types.InlineKeyboardButton(text="Каталог", callback_data="catalog")
+    button_site = types.InlineKeyboardButton(text="Перейти на сайт", url="https://shaurmaniaexample.ru")
+    button_discount = types.InlineKeyboardButton(text="Скидки", callback_data="discounts")
+    button_cart = types.InlineKeyboardButton(text="Корзина", callback_data="cart")
+    button_orders = types.InlineKeyboardButton(text="Заказы", callback_data="orders")
+    button_empty = types.InlineKeyboardButton(text="", callback_data="empty")
 
-    button1 = types.InlineKeyboardButton(text="Кнопка 1", callback_data="btn1")
-    button2 = types.InlineKeyboardButton(text="Кнопка 2", callback_data="btn2")
+    keyboard = types.InlineKeyboardMarkup(
+        inline_keyboard=[
+            [button_catalog, button_site],
+            [button_discount, button_cart],
+            [button_orders, button_empty]
+        ]
+    )
 
-    keyboard.add(button1, button2)
+    photo_path = "media/user_images/2d51e674fc5ca701af28f48f2db3f9fd.jpg"  # путь к фото
+    photo = types.FSInputFile(photo_path)
+    await message.answer_photo(photo, caption="Здравствуйте, это проект Shaurmania!", reply_markup=keyboard)
 
-    await message.answer("Здравствуйте, это проект Shaurmania!", reply_markup=keyboard)
-
-@dp.callback_query_handler(lambda c: c.data and c.data.startswith('btn'))
+@dp.callback_query()
 async def process_callback(callback_query: types.CallbackQuery):
     code = callback_query.data
-    if code == 'btn1:':
-        await bot.answer_callback_query(callback_query.id, text="Кнопка 1")
-    elif code == 'btn2':
-        await bot.answer_callback_query(callback_query.id, text="Кнопка 2")
+    if callback_query.message:
+        if code == 'catalog':
+            await callback_query.message.answer("Открыт каталог!")
+        elif code == 'discounts':
+            await callback_query.message.answer("Тут будут скидки!")
+        elif code == 'cart':
+            await callback_query.message.answer("Ваша корзина пуста!")
+        elif code == 'orders':
+            await callback_query.message.answer("Ваши заказы!")
+        elif code == 'empty':
+            await callback_query.message.answer("Пустая кнопка!")
+    await callback_query.answer()
 
 @dp.message(Command("test"))
 async def command_test_handler(message: Message) -> None:
     await message.answer("Ну допустим я ответил и чё?")
 
-# Run the bot
 async def main() -> None:
     await dp.start_polling(bot)
 
