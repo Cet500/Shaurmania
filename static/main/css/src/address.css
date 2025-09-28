@@ -1,13 +1,21 @@
-.address {
-    box-sizing: border-box;
-    display: flex;
-}
-
-.address__block-buttons {
-    width: 100%;
-}
-
 .picture-location {
-    border-radius: 20px;
-    width: 800px;
+    width: 25%;
+    border-radius: 15px;
+}
+
+.text-big {
+    margin: 0;
+}
+
+.block-trade {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid var(--clr-sand);
+    background: linear-gradient(-30deg, var(--clr-orange-w20), var(--clr-orange));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+.location-description {
+    margin: 0 20px;
 }
