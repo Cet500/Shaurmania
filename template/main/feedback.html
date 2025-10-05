@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
+{% load filters %}
 
 {% block title %}Отзывы на шаурму{% endblock %}
 
@@ -18,6 +18,8 @@
 
         {% for review in reviews %}
             <p class="block-feedback__tag">
+                <img src="{% static 'main/img/avatar/avatar_' %}{{ ''|random_image_url }}" alt="" class="avatar">
+                
                 <span class="name">{{ review.name }}</span>
                 <span class="stars">
                     {% if review.stars == 5 %}
