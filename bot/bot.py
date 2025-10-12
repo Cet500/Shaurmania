@@ -27,7 +27,7 @@ async def command_start_handler(message: Message) -> None:
         ]
     )
 
-    photo_path = "media/user_images/2d51e674fc5ca701af28f48f2db3f9fd.jpg"  # путь к фото
+    photo_path = "media/user_images/Bilya_Herrington.jpg"  # путь к фото
     photo = types.FSInputFile(photo_path)
     await message.answer_photo(photo, caption="Здравствуйте, это проект Shaurmania!", reply_markup=keyboard)
 

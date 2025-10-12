@@ -16,6 +16,9 @@
     display: inline-block;
     width: calc(100% - 20px);
 }
+.block-feedback__tag .avatar{
+    width: 48px;
+}
 .block-feedback__tag .name{
     font-weight: 700;
 }
