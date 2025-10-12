@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement,Stock
+from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement, Stock, Cart
 from django.utils.safestring import mark_safe
 
 from main.models import Promocode, ShaurmaCategory
@@ -86,6 +86,9 @@ class UserAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'shaurma', 'date']
 
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['user', 'shaurma', 'quanity']
 
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):

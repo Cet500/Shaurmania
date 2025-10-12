@@ -154,6 +154,15 @@ class Order( models.Model ):
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
 
+class Cart( models.Model ):
+    user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name='Пользователь' )
+    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
+    quanity = models.PositiveSmallIntegerField( 'Quanity', default=1 )
+
+    class Meta:
+        verbose_name = 'корзина'
+        verbose_name_plural = 'корзины'
+
 
 class Achievement( models.Model ):
     name    = models.CharField( max_length = 60, verbose_name = 'Название' )
