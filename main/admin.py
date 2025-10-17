@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement, Stock, Cart
+from .models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement, Stock, Cart
 from django.utils.safestring import mark_safe
 
 from main.models import Promocode, ShaurmaCategory
@@ -88,7 +88,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ['user', 'shaurma', 'quanity']
+    list_display = ('user', 'item', 'quanity')  # было 'shaurma' — заменено на 'item' и 'quanity' (как в модели)
+    list_filter = ('user',)
+    search_fields = ('user__username', 'item__name')
 
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):

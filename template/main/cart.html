@@ -1,27 +1,38 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
+{% block title %}Ваша корзина{% endblock %}
 
-{% block title %}Вход в систему{% endblock %}
-
+{% block links %}
+    <link rel="stylesheet" href="{% static 'main/css/src/cart.css' %}">
+{% endblock %}
 
 {% block main %}
     <h2 class="h1 text-center font-comfortaa-500">Ваша корзина</h2>
 
-    <div class="">
+    {% for item in cart %}
+    <div class="cart-item">
+        <h3 class="">{{ item.shaurma.name }}</h3>
 
-        <h3 class="">{{shaurma.name}}</h3>
+        <img class="cart-item-image" src="{{ item.shaurma.picture.url }}" alt="">
 
-        <img clas="" src="" alt="">
+        <p class="">{{ item.shaurma.price }}₽</p>
 
-        <p class="">{{ food.price }}₽</p>
+        <div class="cart-item-quantity">
+            <a class="btn-qty" href="{% url 'cart_remove' item.shaurma.id %}">−</a>
+            <span class="qty">{{ item.quantity }}</span>
+            <a class="btn-qty" href="{% url 'cart_add' item.shaurma.id %}">+</a>
+        </div>
 
-        <button class=" -1 +1 "></button>
-
-        <a class="btn" href="">Оплатить</a>
-
-        <a class="btn" href="">Подробнее</a>
-
+        <div class="cart-item-buttons">
+            <a class="btn" href="{% url 'product' item.shaurma.slug %}">Подробнее</a>
+            <a class="btn btn-pay" href="#">Оплатить {{ item.total }}₽</a>
+        </div>
     </div>
+    {% empty %}
+    <p>Корзина пуста.</p>
+    {% endfor %}
+
+    <hr>
+    <p>Итого: {{ cart_total }}₽</p>
 {% endblock %}
-
-

@@ -156,7 +156,7 @@ class Order( models.Model ):
 
 class Cart( models.Model ):
     user = models.ForeignKey( 'User', on_delete = models.CASCADE, verbose_name='Пользователь' )
-    shaurma = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
+    item = models.ForeignKey( 'Shaurma', on_delete = models.CASCADE, verbose_name = 'Шаурма' )
     quanity = models.PositiveSmallIntegerField( 'Quanity', default=1 )
 
     class Meta:

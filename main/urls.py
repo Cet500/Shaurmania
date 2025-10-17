@@ -10,7 +10,11 @@ urlpatterns = [
     path ('catalog', views.catalog, name = 'catalog'),
     path ('product/<slug:slug>', views.product, name = 'product'),
     path ('search',  views.search,  name = 'search'),
+
+    # CART =================================================
     path ('cart',    views.cart,    name = 'cart'),
+    path ('cart_add/<int:shaurma_id>', views.cart_add, name='cart_add'),
+    path ('cart_remove/<int:shaurma_id>', views.cart_remove, name='cart_remove'),
 
     # LOGIN SYSTEM =========================================
     path ('login',  views.login,  name = 'login'),
