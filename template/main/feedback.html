@@ -1,12 +1,13 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% load filters %}
+
 
 {% block title %}Отзывы на шаурму{% endblock %}
 
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
 {% endblock %}
 
 
@@ -14,32 +15,8 @@
     <h2 class="h1 text-center font-comfortaa-500">Легендарные отзывы на нашу шаурму</h2>
 
     <div class="block_feedback">
-        <span class="block-feedback__tag">Здесь вы можете прочитать отзывы от наших реальных покупателей.</span>
-
         {% for review in reviews %}
-            <p class="block-feedback__tag">
-                <img src="{% static 'main/img/avatar/avatar_' %}{{ ''|random_image_url }}" alt="" class="avatar">
-                
-                <span class="name">{{ review.name }}</span>
-                <span class="stars">
-                    {% if review.stars == 5 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 4 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 3 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 2 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 1 %}
-                    <i class="fa-solid fa-star"></i>
-                    {% endif %}
-                </span>
-                <span class="text">
-                    {{ review.text }}
-                </span>
-                <span class="time">{{ review.date }}</span>
-            </p>
+	        {% include 'main/_parts/comment.html' %}
         {% endfor %}
-
     </div>
 {% endblock %}

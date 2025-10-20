@@ -8,6 +8,7 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/product.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
 {% endblock %}
 
 
@@ -42,27 +43,8 @@
             </p>
 
             {% for review in reviews %}
-            <p class="block-feedback__tag">
-                <span class="name">{{ review.name }}</span>
-                <span class="stars">
-                    {% if review.stars == 5 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 4 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 3 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 2 %}
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    {% elif review.stars == 1 %}
-                    <i class="fa-solid fa-star"></i>
-                    {% endif %}
-                </span>
-                <span class="text">
-                    {{ review.text }}
-                </span>
-                <span class="time">{{ review.date }}</span>
-            </p>
-        {% endfor %}
+                {% include 'main/_parts/comment.html' %}
+            {% endfor %}
 
         </div>
         

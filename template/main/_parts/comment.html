@@ -1,0 +1,34 @@
+{% load static %}
+{% load filters %}
+
+<div class="part-comment">
+	<img src="{% static 'main/img/avatar/avatar_' %}{{ ''|random_image_url }}" alt="" class="part-comment__avatar">
+
+	<div class="part-comment__body">
+		<h3 class="part-comment-body__name">
+			{{ review.name }}
+		</h3>
+
+		<span class="part-comment-body__stars">
+		    {% if review.stars == 5 %}
+		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+		    {% elif review.stars == 4 %}
+		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+		    {% elif review.stars == 3 %}
+		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+		    {% elif review.stars == 2 %}
+		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+		    {% elif review.stars == 1 %}
+		        <i class="fa-solid fa-star"></i>
+		    {% endif %}
+		</span>
+
+		<p class="part-comment-body__text text">
+		    {{ review.text }}
+		</p>
+
+		<span class="part-comment-body__time">
+			{{ review.date }}
+		</span>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+/* ----------------------------- parts / comment ---------------------------- */
+
+/* --------------------- base styles -------------------- */
+
+.part-comment{
+	display: flex;
+	gap: 20px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+
+	width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+
+	color: black;
+	background-color: white;
+}
+
+/* -------------------- inner blocks -------------------- */
+
+.part-comment__avatar{
+    width: 96px;
+	height: 96px;
+	border-radius: 50px;
+}
+.part-comment__body{
+
+}
+
+/* -------------------- body of comment ----------------- */
+
+.part-comment-body__name{
+	font-weight: 700;
+	font-size: 20px;
+	display: inline-block;
+}
+.part-comment-body__stars{
+    color: var(--clr-orange);
+}
+.part-comment-body__text{
+    display: block;
+    margin: 5px 0;
+}
+.part-comment-body__time{
+    color: #333333;
+}

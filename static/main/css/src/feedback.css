@@ -7,29 +7,3 @@
     padding: 20px;
     margin: 10px;
 }
-.block-feedback__tag{
-    background-color: white;
-    padding: 10px;
-    margin: 5px 0;
-    color: black;
-    border-radius: 10px;
-    display: inline-block;
-    width: calc(100% - 20px);
-}
-.block-feedback__tag .avatar{
-    width: 48px;
-}
-.block-feedback__tag .name{
-    font-weight: 700;
-}
-.block-feedback__tag .stars{
-    color: yellow;
-}
-.block-feedback__tag .text{
-    display: block;
-    margin: 5px 0;
-
-}
-.block-feedback__tag .time{
-    color: #333333;
-}
