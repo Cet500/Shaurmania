@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement, Stock, Cart
 from django.utils.safestring import mark_safe
 
-from main.models import Promocode, ShaurmaCategory
+from main.models import Promocode, ShaurmaCategory, ShaurmaImage
 
 
 @admin.register(Review)
@@ -70,6 +70,21 @@ class ShaurmaCategoryAdmin( admin.ModelAdmin ):
         return obj.shaurma_set.count()
 
     shaurma_count.short_description = "Размер"
+
+
+@admin.register( ShaurmaImage )
+class ShaurmaImageAdmin( admin.ModelAdmin ):
+    list_display       = [ 'shaurma', 'caption', 'get_image', 'created_at' ]
+    list_display_links = [ 'shaurma' ]
+    list_filter        = [ 'shaurma', 'created_at' ]
+
+    def get_image( self, obj ):
+        if obj.image:
+            return mark_safe( f'<img src="{obj.image.url}" width="200" />' )
+        else:
+            return mark_safe( f'<b>нет</b>' )
+
+    get_image.short_description = 'Изображение'
 
 
 @admin.register(Location)

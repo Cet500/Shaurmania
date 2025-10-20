@@ -32,6 +32,7 @@ class Shaurma( m.Model ):
     compound      = m.TextField( max_length = 600, verbose_name = 'Состав' )
     short_text    = m.TextField( max_length = 200, blank = True, verbose_name = 'Краткое описание' )
     description   = m.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )
+    history       = m.TextField( max_length = 1000, blank = True, verbose_name = 'История' )
     picture       = m.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
     price         = m.PositiveSmallIntegerField( verbose_name = 'Цена в ₽' )
     weight        = m.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
@@ -58,7 +59,7 @@ class Shaurma( m.Model ):
 
 
 class ShaurmaCategory( m.Model ):
-    name        = m.CharField( max_length = 60, verbose_name = 'Название' )
+    name        = m.CharField( max_length = 60,  verbose_name = 'Название' )
     description = m.TextField( max_length = 200, verbose_name = 'Описание' )
     order       = m.PositiveSmallIntegerField( default = 0, verbose_name = "Порядок сортировки" )
     created_at  = m.DateTimeField( auto_now_add = True, verbose_name = "Дата создания" )
@@ -71,6 +72,23 @@ class ShaurmaCategory( m.Model ):
         verbose_name = 'категория шаурмы'
         verbose_name_plural = 'категории шаурмы'
         ordering = [ 'order', 'name' ]
+
+
+class ShaurmaImage( m.Model ):
+    shaurma    = m.ForeignKey( Shaurma,  on_delete = m.CASCADE,  related_name = 'images', verbose_name = 'Шаурма' )
+    image      = m.ImageField( upload_to = 'shaurma_additional', verbose_name = 'Изображение' )
+    caption    = m.CharField( default = 'Фото нашей шаурмы', max_length = 100,  blank = True,  verbose_name = 'Подпись' )
+    order      = m.PositiveIntegerField( default = 0, verbose_name='Порядок отображения' )
+    created_at = m.DateTimeField( auto_now_add = True,  verbose_name = 'Дата добавления' )
+    updated_at = m.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
+
+    def __str__(self):
+        return f'Изображение {self.id} для {self.shaurma.name}'
+
+    class Meta:
+        verbose_name = 'изображение шаурмы'
+        verbose_name_plural = 'изображения шаурмы'
+        ordering = ['shaurma', 'order']
 
 
 class Location( m.Model ):
