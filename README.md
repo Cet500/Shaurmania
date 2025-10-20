@@ -4,7 +4,7 @@
 
 На данном этапе мы работаем с базой данных и доработками страниц.
 
-> Версия данных: 4
+> Версия данных: 5
 
 ## Сохранение данных
 
@@ -15,6 +15,7 @@
     python -Xutf8 manage.py dumpdata main.Achievement -o main/fixtures/achievements.json
     python -Xutf8 manage.py dumpdata main.Stock -o main/fixtures/stocks.json
 	python -Xutf8 manage.py dumpdata main.Promocode -o main/fixtures/promocodes.json
+	python -Xutf8 manage.py dumpdata main.ShaurmaImage -o main/fixtures/shaurma_images.json
 
 ## Загрузка данных
 
@@ -25,3 +26,4 @@
     python manage.py loaddata achievements.json
     python manage.py loaddata stocks.json
 	python manage.py loaddata promocodes.json
+	python manage.py loaddata shaurma_images.json
