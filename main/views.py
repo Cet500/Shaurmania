@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Review, Shaurma, Stock, Location, User, Cart
+from .models import Review, Shaurma, Stock, Location, User, Cart, ShaurmaImage
 from django.contrib.auth import login as login_django, logout as logout_django, authenticate
 from .forms import SignUpForm, LoginForm
 
@@ -126,10 +126,12 @@ def licenses(request):
 def product( request, slug ):
     product = Shaurma.objects.get( slug = slug )
     reviews = Review.objects.filter( shaurma = product.id )
+    photos  = ShaurmaImage.objects.filter( shaurma = product.id )
 
     ctx = {
         'product': product,
-        'reviews': reviews
+        'reviews': reviews,
+        'photos' : photos
     }
 
     return render( request, 'main/product.html', context = ctx )

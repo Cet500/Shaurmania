@@ -8,6 +8,8 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/product.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
+	<link rel="stylesheet" href="{% static "main/css/src/slider.css" %}">
+
 	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
 {% endblock %}
 
@@ -15,39 +17,79 @@
 {% block main %}
     <h2 class="h1 text-center">{{ product.name }}</h2>
 
-    <div class="block-product">
-        
-        <div class="block-product_column-left">
-            <img class="block-product_image" src="{{ product.picture.url }}" alt="{{ product.name }}">
-            
-            <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
-            
-            <p class="text-big text-left">{{ product.weight }}г / {{product.calories}}ккал</p>
+    <div class="block-product grad-sand-orange">
 
-            <p class="text-big text-left">БЖУ:{{ product.proteins }}/{{ product.fats }}/{{ product.carbohydrates }}</p>
-            
-            <div class="product-buttons">
-                <input class="product-buttons" type="submit" value="Добавить в корзину" />
-            </div>
-        
-        </div>
-        <div class="block-product_column-right">
-            <span class="stars"></span>
+	    <div class="block block-columns block-columns-2">
+		    <div class="block block-columns-item">
+			    <img class="block-product_image" src="{{ product.picture.url }}" alt="{{ product.name }}">
 
-            <p class="text-big text-left">
-                Состав:{{ product.compound }}
-            </p>
+			    <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
 
-            <p class="text-big text-left">
-                {{ product.description|linebreaksbr }}
-            </p>
+			    <p class="text-big text-left">{{ product.weight }}г / {{product.calories}}ккал</p>
 
-            {% for review in reviews %}
-                {% include 'main/_parts/comment.html' %}
-            {% endfor %}
+                <p class="text-big text-left">БЖУ: {{ product.proteins }} / {{ product.fats }} / {{ product.carbohydrates }}</p>
 
-        </div>
-        
-        
+			    <button class="btn">Добавить в корзину</button>
+		    </div>
+
+		    <div class="block block-columns-item">
+			    <h2>Состав</h2>
+
+				<p class="text text-left">
+	                {{ product.compound }}
+	            </p>
+
+			    <h2>Описание</h2>
+
+			    <p class="text text-left">
+	                {{ product.description|linebreaksbr }}
+	            </p>
+		    </div>
+	    </div>
+
+        {% if photos %}
+	        <div class="block-slider">
+		        <div class="slider">
+			        {% for photo in photos %}
+				        <div class="slider__slide">
+							<img class="slider__image" src="{{ photo.image.url }}" alt="{{ photo.caption }}">
+				        </div>
+					{% endfor %}
+		        </div>
+
+				<div class="slider-nav">
+					{% for photo in photos %}
+						<div class="slider-nav__dot"></div>
+					{% endfor %}
+		        </div>
+	        </div>
+
+	        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+		    <script>
+		        var slider = tns({
+		            container: '.slider',
+
+		            controls: false,
+		            navPosition: 'bottom',
+		            navContainer: '.slider-nav',
+		            navAsThumbnails: true,
+
+		            items: 2,
+		            gutter: 20,
+
+		            autoplay: false,
+		            autoplayTimeout: 3500,
+
+		            arrowKeys: true,
+		            mouseDrag: true
+		        });
+		    </script>
+
+	        {% for review in reviews %}
+	            {% include 'main/_parts/comment.html' %}
+	        {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
