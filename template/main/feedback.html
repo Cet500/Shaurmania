@@ -7,6 +7,7 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/_parts/pagination.css' %}">
 	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
 {% endblock %}
 
@@ -15,8 +16,12 @@
     <h2 class="h1 text-center font-comfortaa-500">Легендарные отзывы на нашу шаурму</h2>
 
     <div class="block_feedback">
-        {% for review in reviews %}
+        {% for review in page_obj %}
 	        {% include 'main/_parts/comment.html' %}
+        {% empty %}
+	        <h2>Отзывов нет, невероятно, но факт.</h2>
         {% endfor %}
     </div>
+
+	{% include 'main/_parts/pagination.html' %}
 {% endblock %}

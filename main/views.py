@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Review, Shaurma, Stock, Location, User, Cart, ShaurmaImage
 from django.contrib.auth import login as login_django, logout as logout_django, authenticate
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
+
+from .models import Review, Shaurma, Stock, Location, User, Cart, ShaurmaImage
 from .forms import SignUpForm, LoginForm
+
 
 
 def index( request ):
@@ -113,9 +116,13 @@ def catalog(request):
 
 def feedback(request):
     reviews = Review.objects.all()
+    paginator = Paginator( reviews, 50 )
+
+    page_number = request.GET.get( 'page' )
+    page_obj = paginator.get_page( page_number )
 
     ctx = {
-        'reviews': reviews
+        'page_obj': page_obj
     }
 
     return render( request, 'main/feedback.html', context = ctx )
