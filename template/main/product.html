@@ -86,10 +86,10 @@
 		            mouseDrag: true
 		        });
 		    </script>
-
-	        {% for review in reviews %}
-	            {% include 'main/_parts/comment.html' %}
-	        {% endfor %}
         {% endif %}
+
+        {% for review in reviews %}
+            {% include 'main/_parts/comment.html' %}
+        {% endfor %}
     </div>
 {% endblock %}
