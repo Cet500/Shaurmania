@@ -15,13 +15,11 @@
 {% block main %}
     <h2 class="h1 text-center font-comfortaa-500">Легендарные отзывы на нашу шаурму</h2>
 
-    <div class="block_feedback">
-        {% for review in page_obj %}
-	        {% include 'main/_parts/comment.html' %}
-        {% empty %}
-	        <h2>Отзывов нет, невероятно, но факт.</h2>
-        {% endfor %}
+    <div id="feedback-list-container">
+        {% include 'main/_parts/feedback_list.html' %}
+        {% include 'main/_parts/pagination.html' %}
     </div>
 
-	{% include 'main/_parts/pagination.html' %}
+	<script src="{% static 'main/js/src/feedback_ajax_loader.js' %}"></script>
 {% endblock %}
+

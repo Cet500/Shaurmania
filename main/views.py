@@ -1,6 +1,8 @@
 from django.contrib.auth import login as login_django, logout as logout_django, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 from .models import Review, Shaurma, Stock, Location, User, Cart, ShaurmaImage
 from .forms import SignUpForm, LoginForm
@@ -124,6 +126,12 @@ def feedback(request):
     ctx = {
         'page_obj': page_obj
     }
+
+    if request.headers.get( 'x-requested-with' ) == 'XMLHttpRequest':
+        reviews_html = render_to_string( 'main/_parts/feedback_list.html', ctx, request = request )
+        pagination_html = render_to_string( 'main/_parts/pagination.html', ctx, request = request )
+
+        return HttpResponse( reviews_html + pagination_html )
 
     return render( request, 'main/feedback.html', context = ctx )
 
