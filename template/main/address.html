@@ -14,16 +14,7 @@
     <h2 class="h1 text-center font-comfortaa-500">Наши заведения</h2>
   
     {% for location in locations %}
-        <div class="block block-trade">
-            <img class="picture-location" src="{{ location.picture.url }}" alt="">
-            <div class="location-description">    
-                <h3 class="text-big">{{ location.name }}</h3>
-                <p class="text">{{ location.description }}</p>
-                <span class="block-trade__tag">{{ location.contacts }} |</span>
-                <span class="block-trade__tag">{{ location.city  }} |</span>
-                <span class="block-trade__tag">{{ location.open_hours  }} - {{ location.close_hours }}</span>
-            </div>
-        </div>
+		{% include 'main/_parts/location.html' %}
     {% endfor %}
 
 {% endblock %}
