@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const feedbackContainer = document.getElementById('feedback-list-container');
+    const container = document.querySelector('[data-pagination-container]');
+    if (!container) return;
 
     document.addEventListener('click', function(e) {
         const link = e.target.closest('.pagination a');
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.text())
         .then(data => {
-            feedbackContainer.innerHTML = data;
+            container.innerHTML = data;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(err => console.error(err));

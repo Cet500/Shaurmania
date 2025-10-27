@@ -6,20 +6,18 @@
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
-	<link rel="stylesheet" href="{% static 'main/css/_parts/pagination.css' %}">
 	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/_parts/pagination.css' %}">
 {% endblock %}
 
 
 {% block main %}
     <h2 class="h1 text-center font-comfortaa-500">Легендарные отзывы на нашу шаурму</h2>
 
-    <div id="feedback-list-container">
+    <div data-pagination-container="feedback-list-container">
         {% include 'main/_parts/feedback_list.html' %}
         {% include 'main/_parts/pagination.html' %}
     </div>
 
-	<script src="{% static 'main/js/src/feedback_ajax_loader.js' %}"></script>
+	<script src="{% static 'main/js/src/universal_ajax_loader.js' %}"></script>
 {% endblock %}
-

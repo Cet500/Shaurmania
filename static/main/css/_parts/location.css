@@ -1,0 +1,59 @@
+/* ---------------------------- parts / location ---------------------------- */
+
+/* --------------------- base styles -------------------- */
+
+.part-location{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	gap: 20px;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 10px;
+	width: calc(100% - 40px);
+
+	background-color: var(--clr-white);
+}
+.part-location:first-child{
+	margin-top: 0;
+}
+.part-location:last-child{
+	margin-bottom: 0;
+}
+
+/* -------------------- inner blocks -------------------- */
+
+.part-location__image{
+	width: 40%;
+	border-radius: 10px;
+}
+.part-location__data{
+	width: 100%;
+}
+
+/* ------------------- data of location ----------------- */
+
+.part-location-data__description{
+	padding: 10px 20px;
+	border-radius: 10px;
+	background-color: var(--clr-white);
+	outline: 1px solid var(--clr-darker-gray);
+	margin-bottom: 10px;
+}
+
+.part-location-main__button{
+	display: block;
+	width: calc(100% - 40px);
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 10px;
+	background-color: var(--clr-gray);
+	color: var(--clr-white);
+}
+.part-location-main__button:hover{
+	background-color: var(--clr-dark-gray);
+}
+.part-location-main__button:active{
+	background-color: var(--clr-darker-gray);
+}

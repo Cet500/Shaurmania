@@ -17,6 +17,12 @@
 	color: black;
 	background-color: white;
 }
+.part-comment:first-child{
+	margin-top: 0;
+}
+.part-comment:last-child{
+	margin-bottom: 0;
+}
 
 /* -------------------- inner blocks -------------------- */
 

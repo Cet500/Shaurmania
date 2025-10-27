@@ -25,6 +25,10 @@
     margin: 10px 0;
     font-size: 18px;
 }
+.text-sm{
+    margin: 6px 0;
+    font-size: 16px;
+}
 
 /* --------------------- text aligns -------------------- */
 
@@ -51,6 +55,11 @@
 
 }
 /* ------------------------ fonts ----------------------- */
+
+.font-comfortaa-600{
+    font-family: "Comfortaa";
+    font-weight: 600;
+}
 
 .font-comfortaa-500{
     font-family: "Comfortaa";

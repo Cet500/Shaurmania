@@ -6,15 +6,18 @@
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/address.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/_parts/location.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/_parts/pagination.css' %}">
 {% endblock %}
 
 
 {% block main %}
     <h2 class="h1 text-center font-comfortaa-500">Наши заведения</h2>
-  
-    {% for location in locations %}
-		{% include 'main/_parts/location.html' %}
-    {% endfor %}
 
+	<div data-pagination-container="locations-list-container">
+		{% include 'main/_parts/locations_list.html' %}
+		{% include 'main/_parts/pagination.html' %}
+	</div>
+
+	<script src="{% static 'main/js/src/universal_ajax_loader.js' %}"></script>
 {% endblock %}

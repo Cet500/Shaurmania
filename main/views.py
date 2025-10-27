@@ -24,10 +24,20 @@ def about( request ):
 
 def address(request):
     locations = Location.objects.all()
+    paginator = Paginator( locations, 5 )
+
+    page_number = request.GET.get( 'page' )
+    page_obj = paginator.get_page( page_number )
 
     ctx = {
-        'locations': locations
-    }    
+        'page_obj': page_obj
+    }
+
+    if request.headers.get( 'x-requested-with' ) == 'XMLHttpRequest':
+        locations_html = render_to_string( 'main/_parts/locations_list.html', ctx, request = request )
+        pagination_html = render_to_string( 'main/_parts/pagination.html', ctx, request = request )
+
+        return HttpResponse( locations_html + pagination_html )
 
     return render(request, 'main/address.html', context = ctx )
 
