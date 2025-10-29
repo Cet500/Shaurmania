@@ -1,0 +1,14 @@
+{% extends "main/base.jinja" %}
+
+
+{% block title%}Профиль{% endblock %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{{ static( 'main/css/src/user.css' ) }}">
+{% endblock %}
+
+
+{% block main %}
+	<h2 class="text-center">Этот пользователь предпочел скрыть свой профиль.</h2>
+{% endblock %}

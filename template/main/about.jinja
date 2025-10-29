@@ -1,15 +1,13 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}О нас{% endblock %}
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static "main/css/src/about.css" %}">
-	<link rel="stylesheet" href="{% static "main/css/src/slider.css" %}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <link rel="stylesheet" href="{{ static( "main/css/src/about.css"  ) }}">
+	<link rel="stylesheet" href="{{ static( "main/css/src/slider.css" ) }}">
+    <link rel="stylesheet" href="{{ static( "main/assets/tiny-slider/css/tiny-slider.css" ) }}">
 {% endblock %}
 
 
@@ -49,36 +47,36 @@
             </div>
         </div>
 
-        <img class="about-chef" src="{% static 'main/img/images/chef.png' %}" alt="">
+        <img class="about-chef" src="{{ static( 'main/img/images/chef.png' ) }}" alt="">
     </div>
 
     <div class="slider">
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_1.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_1.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_2.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_2.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_3.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_3.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_4.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_4.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_5.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_5.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_6.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_6.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_7.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_7.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_8.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_8.png' ) }}" alt="О ШаурМании">
         </div>
         <div class="slider__slide">
-            <img class="slider__image" src="{% static 'main/img/images/shaurma_about_9.png' %}" alt="О ШаурМании">
+            <img class="slider__image" src="{{ static( 'main/img/images/shaurma_about_9.png' ) }}" alt="О ШаурМании">
         </div>
     </div>
 
@@ -94,7 +92,7 @@
         <div class="slider-nav__dot"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script src="{{ static( "main/assets/tiny-slider/js/tiny-slider.js" ) }}"></script>
 
     <script>
         var slider = tns({

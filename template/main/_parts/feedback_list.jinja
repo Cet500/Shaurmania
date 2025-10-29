@@ -1,7 +1,7 @@
 <div class="block-content grad-orange-red">
     {% for review in page_obj %}
-        {% include 'main/_parts/comment.html' %}
-    {% empty %}
+        {% include 'main/_parts/comment.jinja' %}
+    {% else %}
         <h2>Отзывов нет, невероятно, но факт.</h2>
     {% endfor %}
 </div>

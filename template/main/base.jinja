@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,21 +6,21 @@
 
     <title>ШаурМания | {% block title %}Лучший сайт по продаже шаурмы{% endblock %}</title>
 
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ static( 'favicon.ico' ) }}" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="{% static 'main/css/lib/colors.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/src/global.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/src/catalog.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/lib/buttons.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/lib/blocks.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/lib/text.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/lib/forms.css' %}">
-    <link rel="stylesheet" href="{% static 'main/assets/fontawesome/css/fontawesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'main/assets/fontawesome/css/solid.min.css' %}">
+    <link rel="stylesheet" href="{{ static( 'main/css/lib/colors.css'                         ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/global.css'                         ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/catalog.css'                        ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/lib/buttons.css'                        ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/lib/blocks.css'                         ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/lib/text.css'                           ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/lib/forms.css'                          ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/fontawesome.min.css' ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/solid.min.css'       ) }}">
 
     {% block links %}{% endblock %}
 </head>
@@ -30,12 +28,12 @@
 <body class="body">
     <header class="header">
         <div class="header__inner">
-            <a class="logo" href="{% url 'index' %}">
-                <img src="{% static 'main/img/logo/minimal.png' %}" alt="">
+            <a class="logo" href="{{ url( 'index' ) }}">
+                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
                 <h1>ШаурМания</h1>
             </a>
 
-            {% include 'main/_parts/navigation.html' %}
+            {% include 'main/_parts/navigation.jinja' %}
         </div>
     </header>
     
@@ -49,15 +47,15 @@
         <div class="footer__inner">
             <div class="footer_row">
                 <div>
-                    <a class="logo" href="{% url 'index' %}">
-                        <img src="{% static 'main/img/logo/minimal.png' %}" alt="">
+                    <a class="logo" href="{{ url( 'index' ) }}">
+                        <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
                         <h1>ШаурМания</h1>
                     </a>
 
                     <p>Вкусная шаурма с доставкой.</p>
                 </div>
 
-                {% include 'main/_parts/navigation_footer.html' %}
+                {% include 'main/_parts/navigation_footer.jinja' %}
             </div>
 
             <div class="footer__bottom">

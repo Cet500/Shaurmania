@@ -1,12 +1,11 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}Главная{% endblock %}
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/index.css' %}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/index.css' ) }}">
 {% endblock %}
 
 
@@ -23,7 +22,7 @@
                     <p class="price">{{ food.price }}₽ / {{ food.weight }}гр</p>
                     <div>
                         <button class="btn">В корзину</button>
-                        <a class="btn" href="{% url 'product' slug=food.slug %}">Подробнее</a>
+                        <a class="btn" href="{{ url( 'product', slug=food.slug ) }}">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +36,7 @@
 	        <div class="block-columns-item grad-sand-orange block-sale">
 	            <h3 class="text-big">{{ stock.name }}</h3>
 		        <p>{{ stock.short_text }}</p>
-	            <a href="{% url 'stocks'%}" class="btn">Подробнее</a>
+	            <a href="{{ url( 'stocks' ) }}" class="btn">Подробнее</a>
 	        </div>
 	    {% endfor %}
     </div>
@@ -47,33 +46,32 @@
     <div class="block block-columns block-columns-2">
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Болоте шрека.</p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
 
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Звезде смерти.</p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
 
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Пушкина 22.</p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
 
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания в Дворце Путина.</p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
 
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Ленина 5. </p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
-
 
         <div class="block-columns-item grad-sand-orange block-sale">
             <p>Наше ШаурМания на Сталина 8. </p>
-            <a href="{% url 'address'%}" class="btn">За покупками</a>
+            <a href="{{ url( 'address' ) }}" class="btn">За покупками</a>
         </div>
     </div>
 {% endblock %}

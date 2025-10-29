@@ -1,62 +1,62 @@
 <ul class="nav">
     <li>
-        <a href="{% url 'catalog' %}" class="btn">
+        <a href="{{ url( 'catalog' ) }}" class="btn">
             <i class="fa-solid fa-warehouse"></i>
             Каталог
         </a>
     </li>
 
     <li>
-        <a href="{% url 'search' %}" class="btn">
+        <a href="{{ url( 'search' ) }}" class="btn">
             <i class="fa-solid fa-magnifying-glass"></i>
             Поиск
         </a>
     </li>
 
     <li>
-        <a class="btn" href="{% url 'stocks' %}">
+        <a class="btn" href="{{ url( 'stocks' ) }}">
             <i class="fa-solid fa-percent"></i>
             Акции
         </a>
     </li>
 
     <li>
-        <a href="{% url 'feedback' %}" class="btn">
+        <a href="{{ url( 'feedback' ) }}" class="btn">
             <i class="fa-solid fa-comment"></i>
             Отзывы
         </a>
     </li>
 
     <li>
-        <a class="btn" href="{% url 'address' %}">
+        <a class="btn" href="{{ url( 'address' ) }}">
             <i class="fa-solid fa-location-dot"></i>
             Адрес
         </a>
     </li>
 
     <li>
-        <a href="{% url 'cart' %}" class="btn">
+        <a href="{{ url( 'cart' ) }}" class="btn">
             <i class="fa-solid fa-basket-shopping-simple"></i>
             Корзина
         </a>
     </li>
     {% if request.user.is_authenticated %}
     <li>
-        <a href="{% url 'user' request.user.username %}" class="btn">
+        <a href="{{ url( 'user', request.user.username ) }}" class="btn">
             <i class="fa-solid fa-user"></i>
             Пользователь
         </a>
     </li>
     {% else %}
     <li>
-        <a class="btn" href="{% url 'login' %}">
+        <a class="btn" href="{{ url( 'login' ) }}">
             <i class="fa-solid fa-envelope"></i>
             Вход
         </a>
     </li>
 
     <li>
-        <a href="{% url 'reg' %}" class="btn">
+        <a href="{{ url( 'reg' ) }}" class="btn">
             <i class="fa-solid fa-address-card"></i>
             Регистрация
         </a>

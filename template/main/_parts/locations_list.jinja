@@ -1,7 +1,7 @@
 <div class="block-content grad-orange-red">
     {% for location in page_obj %}
-		{% include 'main/_parts/location.html' %}
-    {% empty %}
+		{% include 'main/_parts/location.jinja' %}
+    {% else %}
         <h2 class="h2 text-center">Заведений нет, невероятно, но факт.</h2>
     {% endfor %}
 </div>

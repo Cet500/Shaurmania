@@ -1,12 +1,11 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}Каталог{% endblock %}
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/catalog.css' %}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/catalog.css' ) }}">
 {% endblock %}
 
 
@@ -17,8 +16,14 @@
         {% for food in shaurma %}
             <div class="block-columns-item catalog">
                 <p class="catalog__name">{{ food.name }}</p>
+
                 <img class="catalog__picture" src="{{ food.picture.url }}" alt="{{ food.name }}">
-                <div class="catalog__button"><a class="btn_catalog" href="{% url 'cart_add' food.id %}">{{ food.price }}₽<i class="fa-solid fa-basket-shopping-simple basket"></i></a></div>
+
+                <div class="catalog__button">
+	                <a class="btn_catalog" href="{{ url( 'cart_add', food.id ) }}">{{ food.price }}₽
+		                <i class="fa-solid fa-basket-shopping-simple basket"></i>
+	                </a>
+                </div>
             </div>
         {% endfor %}
     </div>    

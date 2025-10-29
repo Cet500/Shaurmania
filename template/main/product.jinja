@@ -1,16 +1,14 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}Наша продукция{% endblock %}
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/product.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/src/feedback.css' %}">
-	<link rel="stylesheet" href="{% static "main/css/src/slider.css" %}">
-
-	<link rel="stylesheet" href="{% static 'main/css/_parts/comment.css' %}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/product.css'    ) }}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/feedback.css'   ) }}">
+	<link rel="stylesheet" href="{{ static( "main/css/src/slider.css"     ) }}">
+	<link rel="stylesheet" href="{{ static( 'main/css/_parts/comment.css' ) }}">
 {% endblock %}
 
 
@@ -64,8 +62,8 @@
 		        </div>
 	        </div>
 
-	        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+	        <link rel="stylesheet" href="{{ static( "main/assets/tiny-slider/css/tiny-slider.css" ) }}">
+		    <script src="{{ static( "main/assets/tiny-slider/js/tiny-slider.js" ) }}"></script>
 
 		    <script>
 		        var slider = tns({
@@ -89,7 +87,7 @@
         {% endif %}
 
         {% for review in reviews %}
-            {% include 'main/_parts/comment.html' %}
+            {% include 'main/_parts/comment.jinja' %}
         {% endfor %}
     </div>
 {% endblock %}

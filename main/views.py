@@ -17,10 +17,10 @@ def index( request ):
         'shaurma': shaurma,
         'stocks': stocks
     }    
-    return render( request, 'main/index.html', context = ctx )
+    return render( request, 'main/index.jinja', context = ctx )
 
 def about( request ):
-    return render( request, 'main/about.html' )
+    return render( request, 'main/about.jinja' )
 
 def address(request):
     locations = Location.objects.all()
@@ -34,12 +34,12 @@ def address(request):
     }
 
     if request.headers.get( 'x-requested-with' ) == 'XMLHttpRequest':
-        locations_html = render_to_string( 'main/_parts/locations_list.html', ctx, request = request )
-        pagination_html = render_to_string( 'main/_parts/pagination.html', ctx, request = request )
+        locations_html = render_to_string( 'main/_parts/locations_list.jinja', ctx, request = request )
+        pagination_html = render_to_string( 'main/_parts/pagination.jinja', ctx, request = request )
 
         return HttpResponse( locations_html + pagination_html )
 
-    return render(request, 'main/address.html', context = ctx )
+    return render( request, 'main/address.jinja', context = ctx )
 
 def cart(request):
     if request.user.is_authenticated:
@@ -72,7 +72,7 @@ def cart(request):
                 continue
 
     ctx = {'cart': cart_items, 'cart_total': cart_total}
-    return render(request, 'main/cart.html', context=ctx)
+    return render( request, 'main/cart.jinja', context=ctx )
 
 def cart_add(request, shaurma_id):
     sh = get_object_or_404(Shaurma, id=shaurma_id)
@@ -124,7 +124,7 @@ def catalog(request):
     ctx = {
         'shaurma': shaurma
     }    
-    return render( request, 'main/catalog.html', context = ctx )
+    return render( request, 'main/catalog.jinja', context = ctx )
 
 def feedback(request):
     reviews = Review.objects.all()
@@ -138,15 +138,15 @@ def feedback(request):
     }
 
     if request.headers.get( 'x-requested-with' ) == 'XMLHttpRequest':
-        reviews_html = render_to_string( 'main/_parts/feedback_list.html', ctx, request = request )
-        pagination_html = render_to_string( 'main/_parts/pagination.html', ctx, request = request )
+        reviews_html = render_to_string( 'main/_parts/feedback_list.jinja', ctx, request = request )
+        pagination_html = render_to_string( 'main/_parts/pagination.jinja', ctx, request = request )
 
         return HttpResponse( reviews_html + pagination_html )
 
-    return render( request, 'main/feedback.html', context = ctx )
+    return render( request, 'main/feedback.jinja', context = ctx )
 
 def licenses(request):
-    return render(request, 'main/licenses.html')
+    return render( request, 'main/licenses.jinja' )
 
 def product( request, slug ):
     product = Shaurma.objects.get( slug = slug )
@@ -159,7 +159,7 @@ def product( request, slug ):
         'photos' : photos
     }
 
-    return render( request, 'main/product.html', context = ctx )
+    return render( request, 'main/product.jinja', context = ctx )
 
 def stock( request, slug ):
     stock = Stock.objects.get( slug = slug )
@@ -168,7 +168,7 @@ def stock( request, slug ):
         'stock': stock,
     }
 
-    return render( request, 'main/stock.html', context = ctx )
+    return render( request, 'main/stock.jinja', context = ctx )
 
 def stocks(request):
     stocks = Stock.objects.all()
@@ -176,7 +176,7 @@ def stocks(request):
     ctx = {
         'stocks': stocks
     }    
-    return render( request, 'main/stocks.html', context = ctx )
+    return render( request, 'main/stocks.jinja', context = ctx )
 
 def search(request):
     if 'search' in request.GET:
@@ -200,20 +200,20 @@ def search(request):
             'search': 'Введите запрос'
         }
 
-    return render( request, 'main/search.html', context = ctx )
+    return render( request, 'main/search.jinja', context = ctx )
 
 def user(request, username):
     profile_user = get_object_or_404(User, username=username)
     is_owner = request.user.is_authenticated and request.user.username == username
     if not is_owner and not profile_user.is_open:
         return redirect('user_closed')
-    return render(request, 'main/user.html', {
+    return render( request, 'main/user.jinja', {
         'profile_user': profile_user,
         'is_owner': is_owner,
-    })
+    } )
 
 def user_closed(request):
-    return render(request, 'main/_parts/user_closed.html')
+    return render( request, 'main/_parts/user_closed.jinja' )
 
 def reg(request):
     if request.method == 'POST':
@@ -224,10 +224,10 @@ def reg(request):
             return redirect('index')
         else:
             print('залупень')
-            return render(request, 'main/registration.html', {'form': form})
+            return render( request, 'main/registration.jinja', { 'form': form } )
     else:
         form = SignUpForm()
-        return render(request, 'main/registration.html', {'form': form})
+        return render( request, 'main/registration.jinja', { 'form': form } )
 
 def login(request):
     form = LoginForm(data=request.POST or None)
@@ -239,20 +239,20 @@ def login(request):
             if user is not None: 
                 login_django(request, user)
                 return redirect('index')
-    return render(request, 'main/login.html', {'form': form})
+    return render( request, 'main/login.jinja', { 'form': form } )
 
 def logout( request ):
     logout_django(request)
     return redirect('index')
 
 def error_400(request, exception):
-    return render(request, 'main/error/400.html', status = 400)
+    return render( request, 'main/error/400.jinja', status = 400 )
 
 def error_403(request, exception):
-    return render(request, 'main/error/403.html', status = 403)
+    return render( request, 'main/error/403.jinja', status = 403 )
 
 def error_404(request, exception):
-    return render(request, 'main/error/404.html', status = 404)
+    return render( request, 'main/error/404.jinja', status = 404 )
 
 def error_500(request):
-    return render(request, 'main/error/500.html', status = 500)
+    return render( request, 'main/error/500.jinja', status = 500 )

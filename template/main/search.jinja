@@ -1,5 +1,4 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}Поиск{% endblock %}
@@ -31,7 +30,7 @@
         {% for row in finded_rows %}
 
             <div class="block-columns-item grad-sand-orange block-search">
-               <a href="{% url 'product' slug=row.slug %}">{{ row.name }}</a>
+               <a href="{{ url( 'product', slug=row.slug ) }}">{{ row.name }}</a>
             </div>
         {% endfor %}
     </div>

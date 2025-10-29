@@ -1,8 +1,5 @@
-{% load static %}
-{% load filters %}
-
 <div class="part-comment">
-	<img src="{% static 'main/img/avatar/avatar_' %}{{ ''|random_image_url }}" alt="" class="part-comment__avatar">
+	<img src="{{ static( 'main/img/avatar/avatar_' ) }}{{ random_image_url() }}" alt="" class="part-comment__avatar">
 
 	<div class="part-comment__body">
 		<h3 class="part-comment-body__name">

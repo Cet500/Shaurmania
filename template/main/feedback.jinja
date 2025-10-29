@@ -1,0 +1,22 @@
+{% extends 'main/base.jinja' %}
+
+
+{% block title %}Отзывы на шаурму{% endblock %}
+
+
+{% block links %}
+	<link rel="stylesheet" href="{{ static( 'main/css/_parts/comment.css'    ) }}">
+	<link rel="stylesheet" href="{{ static( 'main/css/_parts/pagination.css' ) }}">
+{% endblock %}
+
+
+{% block main %}
+    <h2 class="h1 text-center font-comfortaa-500">Легендарные отзывы на нашу шаурму</h2>
+
+    <div data-pagination-container="feedback-list-container">
+        {% include 'main/_parts/feedback_list.jinja' %}
+        {% include 'main/_parts/pagination.jinja' %}
+    </div>
+
+	<script src="{{ static( 'main/js/src/universal_ajax_loader.js' ) }}"></script>
+{% endblock %}

@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "django_jinja",
+
     "main.apps.MainConfig",
 ]
 
@@ -50,8 +52,43 @@ MIDDLEWARE = [
 
 TEMPLATES = [
     {
+        "BACKEND": "django_jinja.jinja2.Jinja2",
+        "DIRS": [ BASE_DIR / "template" ],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            'match_extension': '.jinja',
+            'match_regex'    : None,
+            'app_dirname'    : 'templates',
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'extensions': [
+                'jinja2.ext.i18n',
+                'django_jinja.builtins.extensions.DebugExtension',
+                'django_jinja.builtins.extensions.StaticFilesExtension',
+                'django_jinja.builtins.extensions.CacheExtension',
+                'django_jinja.builtins.extensions.CsrfExtension',
+                'django_jinja.builtins.extensions.UrlsExtension',
+                "django_jinja.builtins.extensions.TimezoneExtension",
+                'django_jinja.builtins.extensions.DjangoFiltersExtension',
+            ],
+            "policies": {
+                "ext.i18n.trimmed": True,
+            },
+            "bytecode_cache": {
+                "name": "default",
+                "backend": "django_jinja.cache.BytecodeCache",
+                "enabled": True,
+            },
+            "autoescape": True,
+        }
+    },
+    {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["template"],
+        "DIRS": [ BASE_DIR / "template" ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

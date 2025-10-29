@@ -1,17 +1,15 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.jinja' %}
 
 
 {% block title %}Акции{% endblock %}
 
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'main/css/src/stock.css' %}">
+    <link rel="stylesheet" href="{{ static( 'main/css/src/stock.css' ) }}">
 {% endblock %}
 
 
 {% block main %}
-
     <h2 class="h1 text-center">{{ stock.name }}</h2>
 
     <div class="block-stock">
@@ -31,5 +29,4 @@
         
         </div>
     </div>
-
 {% endblock %}
