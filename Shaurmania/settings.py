@@ -48,6 +48,12 @@ INSTALLED_APPS = [
     "main.apps.MainConfig",
 ]
 
+DEBUG_TOOLBAR_CONFIG = {
+    'DISABLE_PANELS': [
+        'debug_toolbar.panels.cache.CachePanel',
+    ],
+}
+
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 
