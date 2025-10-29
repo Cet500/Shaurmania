@@ -7,3 +7,4 @@ db.sqlite3
 desktop.ini
 static_root/CACHE/
 media/CACHE/
+logs/
