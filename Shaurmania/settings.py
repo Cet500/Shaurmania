@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "debug_toolbar",
+    "compressor",
     "django_jinja",
 
     "main.apps.MainConfig",
@@ -90,6 +91,7 @@ TEMPLATES = [
                 'django_jinja.builtins.extensions.UrlsExtension',
                 "django_jinja.builtins.extensions.TimezoneExtension",
                 'django_jinja.builtins.extensions.DjangoFiltersExtension',
+                'compressor.contrib.jinja2ext.CompressorExtension'
             ],
             "policies": {
                 "ext.i18n.trimmed": True,
@@ -163,13 +165,23 @@ USE_TZ = True
 
 # STATIC FILES =================================================================
 
-STATIC_URL = "static/"
+STATIC_URL = env('STATIC_URL', default='static/')
+STATIC_ROOT = BASE_DIR / 'static_root'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-MEDIA_URL  = 'media/'
-MEDIA_ROOT = 'media'
+MEDIA_URL  = env('MEDIA_URL', default='media/')
+MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder'
+)
+
+COMPRESS_ENABLED = env('IS_COMPRESS_ENABLED', default = True)
 
 
 # OTHER SETTINGS ===============================================================

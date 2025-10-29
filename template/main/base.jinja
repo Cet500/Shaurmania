@@ -11,18 +11,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{{ static( 'main/css/lib/colors.css'                         ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/src/global.css'                         ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/src/catalog.css'                        ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/lib/buttons.css'                        ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/lib/blocks.css'                         ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/lib/text.css'                           ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/lib/forms.css'                          ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/fontawesome.min.css' ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/solid.min.css'       ) }}">
 
-    {% block links %}{% endblock %}
+	{% compress css %}
+	    <link rel="stylesheet" href="{{ static( 'main/css/lib/colors.css'                         ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/src/global.css'                         ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/src/catalog.css'                        ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/lib/buttons.css'                        ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/lib/blocks.css'                         ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/lib/text.css'                           ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/css/lib/forms.css'                          ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/fontawesome.min.css' ) }}">
+	    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/solid.min.css'       ) }}">
+	{% endcompress %}
+
+	{% compress css %}
+		{% block links %}{% endblock %}
+	{% endcompress %}
 </head>
 
 <body class="body">
