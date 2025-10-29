@@ -4,6 +4,9 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 from slugify import slugify
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
+from imagekit.cachefiles import ImageCacheFile
 
 
 class Review( m.Model ):
@@ -34,6 +37,18 @@ class Shaurma( m.Model ):
     description   = m.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )
     history       = m.TextField( max_length = 1000, blank = True, verbose_name = 'История' )
     picture       = m.ImageField( upload_to = 'shaurma_images', verbose_name = 'Изображение' )
+    thumbnail_md  = ImageSpecField(
+        source     = 'picture',
+        processors = [ ResizeToFill( 640, 450) ],
+        format     = 'PNG',
+        options    = { 'quality': 90 },
+    )
+    thumbnail_sm  = ImageSpecField(
+        source     = 'picture',
+        processors = [ ResizeToFill( 285, 200) ],
+        format     = 'PNG',
+        options    = { 'quality': 90 },
+    )
     price         = m.PositiveSmallIntegerField( verbose_name = 'Цена в ₽' )
     weight        = m.PositiveSmallIntegerField( verbose_name = 'Вес в гр' )
     calories      = m.PositiveIntegerField( default = 0, verbose_name = "Калории (ккал)" )
@@ -48,6 +63,10 @@ class Shaurma( m.Model ):
         if not self.slug:
             self.slug = slugify( self.name )
         super().save( *args, **kwargs )
+
+        if self.picture:
+            ImageCacheFile( self.thumbnail_md ).generate()
+            ImageCacheFile( self.thumbnail_sm ).generate()
 
     def __str__(self):
         return f'{self.name}'
@@ -75,12 +94,24 @@ class ShaurmaCategory( m.Model ):
 
 
 class ShaurmaImage( m.Model ):
-    shaurma    = m.ForeignKey( Shaurma,  on_delete = m.CASCADE,  related_name = 'images', verbose_name = 'Шаурма' )
-    image      = m.ImageField( upload_to = 'shaurma_additional', verbose_name = 'Изображение' )
-    caption    = m.CharField( default = 'Фото нашей шаурмы', max_length = 100,  blank = True,  verbose_name = 'Подпись' )
-    order      = m.PositiveIntegerField( default = 0, verbose_name='Порядок отображения' )
-    created_at = m.DateTimeField( auto_now_add = True,  verbose_name = 'Дата добавления' )
-    updated_at = m.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
+    shaurma      = m.ForeignKey( Shaurma,  on_delete = m.CASCADE,  related_name = 'images', verbose_name = 'Шаурма' )
+    image        = m.ImageField( upload_to = 'shaurma_additional', verbose_name = 'Изображение' )
+    thumbnail_md = ImageSpecField(
+        source     = 'image',
+        processors = [ ResizeToFill( 550, 310 ) ],
+        format     = 'PNG',
+        options    = { 'quality': 90 },
+    )
+    caption      = m.CharField( default = 'Фото нашей шаурмы', max_length = 100,  blank = True,  verbose_name = 'Подпись' )
+    order        = m.PositiveIntegerField( default = 0, verbose_name='Порядок отображения' )
+    created_at   = m.DateTimeField( auto_now_add = True,  verbose_name = 'Дата добавления' )
+    updated_at   = m.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
+
+    def save( self, *args, **kwargs ):
+        super().save( *args, **kwargs )
+
+        if self.image:
+            ImageCacheFile( self.thumbnail_md ).generate()
 
     def __str__(self):
         return f'Изображение {self.id} для {self.shaurma.name}'

@@ -17,7 +17,7 @@
     <div class="block block-columns block-columns-2">
         {% for food in shaurma %}
             <div class="block-columns-item grad-sand-orange block-shaurma">
-                <img src="{{ food.picture.url }}" alt="{{ food.name }}">
+                <img src="{{ food.thumbnail_sm.url }}" alt="{{ food.name }}">
                 <div class="block-shaurma__content">
                     <h3>{{ food.name }}</h3>
                     <p class="description">{{ food.compound }}</p>

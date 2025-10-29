@@ -6,7 +6,6 @@
 
 {% block links %}
     <link rel="stylesheet" href="{{ static( 'main/css/src/product.css'    ) }}">
-    <link rel="stylesheet" href="{{ static( 'main/css/src/feedback.css'   ) }}">
 	<link rel="stylesheet" href="{{ static( "main/css/src/slider.css"     ) }}">
 	<link rel="stylesheet" href="{{ static( 'main/css/_parts/comment.css' ) }}">
 {% endblock %}
@@ -19,7 +18,7 @@
 
 	    <div class="block block-columns block-columns-2">
 		    <div class="block block-columns-item">
-			    <img class="block-product_image" src="{{ product.picture.url }}" alt="{{ product.name }}">
+			    <img class="block-product_image" src="{{ product.thumbnail_md.url }}" alt="{{ product.name }}">
 
 			    <p class="text-big text-left">Цена:{{ product.price  }}₽</p>
 
@@ -50,7 +49,7 @@
 		        <div class="slider">
 			        {% for photo in photos %}
 				        <div class="slider__slide">
-							<img class="slider__image" src="{{ photo.image.url }}" alt="{{ photo.caption }}">
+							<img class="slider__image" src="{{ photo.thumbnail_md.url }}" alt="{{ photo.caption }}">
 				        </div>
 					{% endfor %}
 		        </div>

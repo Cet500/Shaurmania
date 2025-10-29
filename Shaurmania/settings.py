@@ -16,8 +16,9 @@ environ.Env.read_env( path.join( BASE_DIR, '.env' ) )
 
 # SECURITY SETTINGS ============================================================
 
-SECRET_KEY = env( "SECRET_KEY" )
-DEBUG = env( "DEBUG" )
+SECRET_KEY    = env( "SECRET_KEY" )
+DEBUG         = env( "DEBUG" )
+IS_DDT_ACTIVE = env( "IS_DDT_ACTIVE", default = False )
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -42,22 +43,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "debug_toolbar",
     "compressor",
+    "imagekit",
     "django_jinja",
 
     "main.apps.MainConfig",
 ]
 
-DEBUG_TOOLBAR_CONFIG = {
-    'DISABLE_PANELS': [
-        'debug_toolbar.panels.cache.CachePanel',
-    ],
-}
-
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -66,6 +59,23 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+
+# DJANGO DEBUG TOOL ============================================================
+
+if IS_DDT_ACTIVE:
+    INSTALLED_APPS += [ "debug_toolbar", ]
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'DISABLE_PANELS': [
+            'debug_toolbar.panels.cache.CachePanel',
+        ],
+    }
+
+    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+
+
+# TEMPLATES SETTINGS ===========================================================
 
 TEMPLATES = [
     {
