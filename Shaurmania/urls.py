@@ -8,6 +8,8 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from main import views as main_views
 
+
+
 urlpatterns = [
     path( 'admin/', admin.site.urls ),
     path( '', include( 'main.urls' ) ),
@@ -24,4 +26,9 @@ handler404 = 'main.views.error_404'
 handler500 = 'main.views.error_500'
 
 if settings.DEBUG:
+    from debug_toolbar.toolbar import debug_toolbar_urls
+    import mimetypes
+
+    mimetypes.add_type( "application/javascript", ".js", True )
     urlpatterns += static( settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
+    urlpatterns += debug_toolbar_urls()

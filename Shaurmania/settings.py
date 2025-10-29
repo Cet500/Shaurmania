@@ -19,7 +19,14 @@ environ.Env.read_env( path.join( BASE_DIR, '.env' ) )
 SECRET_KEY = env( "SECRET_KEY" )
 DEBUG = env( "DEBUG" )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 
 # APPLICATION DEFINITION =======================================================
@@ -35,12 +42,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "debug_toolbar",
     "django_jinja",
 
     "main.apps.MainConfig",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
