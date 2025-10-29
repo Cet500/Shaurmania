@@ -91,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.feature_flags'
             ],
             'extensions': [
                 'jinja2.ext.i18n',
@@ -373,6 +374,11 @@ STATICFILES_FINDERS = (
 
 COMPRESS_ENABLED = env('IS_COMPRESS_ENABLED', default = True)
 
+
+# TEMPORAL EVENTS ==============================================================
+
+IS_HALLOWEEN  = env( 'IS_HALLOWEEN', default = False )
+IS_NEW_YEAR   = env( 'IS_NEW_YEAR',  default = False )
 
 # OTHER SETTINGS ===============================================================
 
