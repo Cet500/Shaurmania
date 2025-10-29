@@ -24,6 +24,10 @@
 	    <link rel="stylesheet" href="{{ static( 'main/assets/fontawesome/css/solid.min.css'       ) }}">
 	{% endcompress %}
 
+	{% if IS_HALLOWEEN %}
+		<link rel="stylesheet" href="{{ static( 'main/css/events/halloween.css' ) }}">
+	{% endif %}
+
 	{% compress css %}
 		{% block links %}{% endblock %}
 	{% endcompress %}
@@ -32,10 +36,17 @@
 <body class="body">
     <header class="header">
         <div class="header__inner">
-            <a class="logo" href="{{ url( 'index' ) }}">
-                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
-                <h1>ШаурМания</h1>
-            </a>
+	        {% if IS_HALLOWEEN %}
+		        <a class="logo" href="{{ url( 'index' ) }}">
+	                <img src="{{ static( 'main/img/events/halloween/logo.png' ) }}" alt="">
+	                <h1>ТыкваМания</h1>
+	            </a>
+	        {% else %}
+	            <a class="logo" href="{{ url( 'index' ) }}">
+	                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
+	                <h1>ШаурМания</h1>
+	            </a>
+	        {% endif %}
 
             {% include 'main/_parts/navigation.jinja' %}
         </div>
@@ -51,12 +62,21 @@
         <div class="footer__inner">
             <div class="footer_row">
                 <div>
-                    <a class="logo" href="{{ url( 'index' ) }}">
-                        <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
-                        <h1>ШаурМания</h1>
-                    </a>
+                    {% if IS_HALLOWEEN %}
+				        <a class="logo" href="{{ url( 'index' ) }}">
+			                <img src="{{ static( 'main/img/events/halloween/logo.png' ) }}" alt="">
+			                <h1>ТыкваМания</h1>
+			            </a>
 
-                    <p>Вкусная шаурма с доставкой.</p>
+	                    <p>Страшная шаурма с доставкой.</p>
+			        {% else %}
+			            <a class="logo" href="{{ url( 'index' ) }}">
+			                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
+			                <h1>ШаурМания</h1>
+			            </a>
+
+	                    <p>Вкусная шаурма с доставкой.</p>
+			        {% endif %}
                 </div>
 
                 {% include 'main/_parts/navigation_footer.jinja' %}

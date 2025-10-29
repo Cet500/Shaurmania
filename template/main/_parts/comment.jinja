@@ -1,24 +1,44 @@
 <div class="part-comment">
-	<img src="{{ static( 'main/img/avatar/avatar_' ) }}{{ random_image_url() }}" alt="" class="part-comment__avatar">
+	{% if IS_HALLOWEEN %}
+		<img src="{{ static( 'main/img/events/halloween/avatar.png' ) }}" alt="" class="part-comment__avatar">
+	{% else %}
+		<img src="{{ static( 'main/img/avatar/avatar_' ) }}{{ random_image_url() }}" alt="" class="part-comment__avatar">
+	{% endif %}
 
 	<div class="part-comment__body">
 		<h3 class="part-comment-body__name">
 			{{ review.name }}
 		</h3>
 
-		<span class="part-comment-body__stars">
-		    {% if review.stars == 5 %}
-		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-		    {% elif review.stars == 4 %}
-		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-		    {% elif review.stars == 3 %}
-		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-		    {% elif review.stars == 2 %}
-		        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-		    {% elif review.stars == 1 %}
-		        <i class="fa-solid fa-star"></i>
-		    {% endif %}
-		</span>
+		{% if IS_HALLOWEEN %}
+			<span class="part-comment-body__stars">
+			    {% if review.stars == 5 %}
+			        <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i>
+			    {% elif review.stars == 4 %}
+			        <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i>
+			    {% elif review.stars == 3 %}
+			        <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i>
+			    {% elif review.stars == 2 %}
+			        <i class="fa-solid fa-jack-o-lantern"></i> <i class="fa-solid fa-jack-o-lantern"></i>
+			    {% elif review.stars == 1 %}
+			        <i class="fa-solid fa-jack-o-lantern"></i>
+			    {% endif %}
+			</span>
+		{% else %}
+			<span class="part-comment-body__stars">
+			    {% if review.stars == 5 %}
+			        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+			    {% elif review.stars == 4 %}
+			        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+			    {% elif review.stars == 3 %}
+			        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+			    {% elif review.stars == 2 %}
+			        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+			    {% elif review.stars == 1 %}
+			        <i class="fa-solid fa-star"></i>
+			    {% endif %}
+			</span>
+		{% endif %}
 
 		<p class="part-comment-body__text text">
 		    {{ review.text }}

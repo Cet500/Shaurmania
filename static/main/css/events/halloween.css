@@ -1,0 +1,10 @@
+.body{
+	cursor: url("../../img/events/halloween/cursor.png"), default;
+}
+.main{
+	background-image: url("../../img/events/halloween/background.png");
+}
+.main__inner{
+	background-color: var(--clr-white);
+	padding: 20px;
+}
