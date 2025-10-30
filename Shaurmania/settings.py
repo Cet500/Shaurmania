@@ -191,7 +191,7 @@ LOGGING = {
             'formatter': 'simple',
         },
         'file': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'logs.log',
             'maxBytes': 1024 * 1024 * env('LOG_MAIN_FILE_SIZE', default = 6),
             'backupCount': env('LOG_BACKUP_COUNT', default = 10),
@@ -200,7 +200,7 @@ LOGGING = {
         },
         # custom
         'file_django': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'django' / 'django.log',
             'maxBytes': 1024 * 1024 * env('LOG_FILE_SIZE', default = 2),
             'backupCount': env('LOG_BACKUP_COUNT', default = 10),
@@ -208,7 +208,7 @@ LOGGING = {
             'encoding': 'utf-8'
         },
         'file_security': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'security' / 'security.log',
             'maxBytes': 1024 * 1024 * 2 * env('LOG_FILE_SIZE', default = 2),  # x2
             'backupCount': 2 * env('LOG_BACKUP_COUNT', default = 10),         # x2
@@ -216,7 +216,7 @@ LOGGING = {
             'encoding': 'utf-8'
         },
         'file_third': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'third-party' / 'apps.log',
             'maxBytes': 1024 * 1024 * env('LOG_FILE_SIZE', default = 2),
             'backupCount': env('LOG_BACKUP_COUNT', default = 10),
@@ -224,7 +224,7 @@ LOGGING = {
             'encoding': 'utf-8'
         },
         'file_server': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'server' / 'server.log',
             'maxBytes': 1024 * 1024 * env('LOG_FILE_SIZE', default = 2),
             'backupCount': env('LOG_BACKUP_COUNT', default = 10),
@@ -232,7 +232,7 @@ LOGGING = {
             'encoding': 'utf-8'
         },
         'file_database': {
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': LOG_DIR / 'database' / 'database.log',
             'maxBytes': 1024 * 1024 * env('LOG_FILE_SIZE', default = 2),
             'backupCount': env('LOG_BACKUP_COUNT', default = 10),
@@ -241,12 +241,12 @@ LOGGING = {
         },
         # errors
         'file_error': {
-            'class'      : 'logging.handlers.RotatingFileHandler',
-            'filename'   : LOG_DIR / 'errors.log',
-            'maxBytes'   : 1024 * 1024 * env( 'LOG_FILE_SIZE', default = 2 ),
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
+            'filename': LOG_DIR / 'errors.log',
+            'maxBytes': 1024 * 1024 * env( 'LOG_FILE_SIZE', default = 2 ),
             'backupCount': env( 'LOG_BACKUP_COUNT', default = 10 ),
-            'formatter'  : 'errors',
-            'level'      : 'ERROR',
+            'formatter': 'errors',
+            'level': 'ERROR',
         },
     },
 

@@ -7,6 +7,7 @@ annotated-types==0.7.0
 asgiref==3.10.0
 attrs==25.4.0
 certifi==2025.10.5
+concurrent-log-handler==0.9.28
 Django==6.0b1
 django-appconf==1.1.0
 django-compressor==4.5.1
@@ -20,11 +21,13 @@ magic-filter==1.0.12
 MarkupSafe==3.0.3
 multidict==6.7.0
 pillow==12.0.0
+portalocker==3.2.0
 propcache==0.4.1
 pydantic==2.12.3
 pydantic_core==2.41.4
 python-dateutil==2.9.0.post0
 python-slugify==8.0.4
+pywin32==311
 rcssmin==1.2.2
 rjsmin==1.2.5
 six==1.17.0
