@@ -382,10 +382,16 @@ STATICFILES_FINDERS = (
 COMPRESS_ENABLED = env('IS_COMPRESS_ENABLED', default = True)
 
 
+# TESTS SETTINGS ===============================================================
+
+TEST_MAX_RESPONSE_TIME = env( 'TEST_MAX_RESPONSE_TIME', default = 1.0 )
+
+
 # TEMPORAL EVENTS ==============================================================
 
 IS_HALLOWEEN  = env( 'IS_HALLOWEEN', default = False )
 IS_NEW_YEAR   = env( 'IS_NEW_YEAR',  default = False )
+
 
 # OTHER SETTINGS ===============================================================
 
