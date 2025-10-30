@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django_jinja",
 
     "main.apps.MainConfig",
+	"cart.apps.CartConfig"
 ]
 
 MIDDLEWARE = [
@@ -318,6 +319,12 @@ LOGGING = {
         },
         # main
         'main': {
+            'handlers': [ 'console', 'file', 'file_error', 'file_server' ],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        # cart
+        'cart': {
             'handlers': [ 'console', 'file', 'file_error', 'file_server' ],
             'level': 'DEBUG',
             'propagate': False,

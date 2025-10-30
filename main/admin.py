@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Review, Shaurma, Location, User, Order, Achievement, UserAchievement, Stock, Cart
+from .models import Review, Shaurma, Location, User, Achievement, UserAchievement, Stock
 from django.utils.safestring import mark_safe
 
-from main.models import Promocode, ShaurmaCategory, ShaurmaImage
+from main.models import ShaurmaCategory, ShaurmaImage
 
 
 @admin.register(Review)
@@ -107,15 +107,6 @@ class UserAdmin(admin.ModelAdmin):
     list_display = [ 'username', 'picture', 'number', 'email', 'last_address', 'reg_date' ]
     list_filter  = [ 'reg_date' ]
 
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['user', 'shaurma', 'date']
-
-@admin.register(Cart)
-class CartAdmin(admin.ModelAdmin):
-    list_display = ('user', 'item', 'quanity')  # было 'shaurma' — заменено на 'item' и 'quanity' (как в модели)
-    list_filter = ('user',)
-    search_fields = ('user__username', 'item__name')
 
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):
@@ -159,7 +150,3 @@ class StockAdmin(admin.ModelAdmin):
 
     get_dates.short_description = 'Время акции'
 
-@admin.register( Promocode )
-class PromocodeAdmin( admin.ModelAdmin ):
-    list_display = [ 'code_name', 'code_uuid', 'duration', 'discount', 'date_add', 'date_end' ]
-    list_filter = [ 'date_add', 'date_end' ]

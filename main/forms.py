@@ -23,8 +23,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form__input'}), label='Username', max_length=128)
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form__input'}), label='Password', max_length=128)
-
-    
