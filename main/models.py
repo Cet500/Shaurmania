@@ -63,8 +63,8 @@ class Shaurma( m.Model ):
         super().save( *args, **kwargs )
 
         if self.picture:
-            ImageCacheFile( self.thumbnail_md ).generate()
-            ImageCacheFile( self.thumbnail_sm ).generate()
+            self.thumbnail_md.generate()
+            self.thumbnail_sm.generate()
 
     def __str__(self):
         return f'{self.name}'
