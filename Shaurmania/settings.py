@@ -304,17 +304,22 @@ LOGGING = {
         # third-party
         'compressor': {
             'handlers': [ 'file', 'file_error', 'file_third' ],
-            'level': 'INFO',
+            'level': env( 'THIRD_LOG_LEVEL', default = 'INFO' ),
             'propagate': False,
         },
         'imagekit': {
             'handlers': [ 'file', 'file_error', 'file_third' ],
-            'level': 'INFO',
+            'level': env( 'THIRD_LOG_LEVEL', default = 'INFO' ),
             'propagate': False,
         },
         'django_jinja': {
             'handlers': [ 'file', 'file_error', 'file_third' ],
-            'level': 'WARNING',
+            'level': env( 'THIRD_LOG_LEVEL', default = 'INFO' ),
+            'propagate': False,
+        },
+        'faker': {
+            'handlers': [ 'file', 'file_error', 'file_third' ],
+            'level': env( 'THIRD_LOG_LEVEL', default = 'INFO' ),
             'propagate': False,
         },
         # main
@@ -385,6 +390,7 @@ COMPRESS_ENABLED = env('IS_COMPRESS_ENABLED', default = True)
 # TESTS SETTINGS ===============================================================
 
 TEST_MAX_RESPONSE_TIME = env( 'TEST_MAX_RESPONSE_TIME', default = 1.0 )
+TEST_FAKER_SEED        = env( 'TEST_FAKER_SEED',        default = -1  )
 
 
 # TEMPORAL EVENTS ==============================================================
