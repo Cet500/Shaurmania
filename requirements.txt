@@ -9,6 +9,7 @@ attrs==25.4.0
 certifi==2025.10.5
 colorama==0.4.6
 concurrent-log-handler==0.9.28
+coverage==7.11.0
 Django==6.0b1
 django-appconf==1.1.0
 django-compressor==4.5.1

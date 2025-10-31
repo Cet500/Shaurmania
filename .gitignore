@@ -1,9 +1,11 @@
 **/__pycache__
+.coverage
 .env
 .idea
 .pytest_cashe/
 .venv
 .vscode
+coverage_html/
 db.sqlite3
 desktop.ini
 logs/

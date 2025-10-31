@@ -1,0 +1,20 @@
+[run]
+branch = True
+source =
+    cart
+    main
+    Shaurmania
+omit =
+    */migrations/*
+    */tests/*
+    Shaurmania/wsgi.py
+    Shaurmania/asgi.py
+    manage.py
+
+[report]
+show_missing = True
+skip_covered = False
+precision = 1
+
+[html]
+directory = coverage_html
