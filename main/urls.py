@@ -28,4 +28,10 @@ urlpatterns = [
     path ('stocks',            views.stocks,   name = 'stocks'),
     path ('stock/<slug:slug>', views.stock,    name = 'stock'),
 
+    # DEV ==================================================
+    path( 'dev', views.dev, name = 'dev' ),
+
+    # ADMIN ================================================
+    path('admin/factories',            views.admin_factories,        name = 'admin_factories'),
+    path('admin/factories/<str:name>', views.admin_factory_generate, name = 'admin_factory_generate'),
 ]
