@@ -13,18 +13,23 @@
 	{% if is_owner %}
 		<div class="wrapper">
 		    <div class="user__pic">
-		        <img class="user__pic-img" src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
-
-		        {% if request.user.is_staff %}
-		            <p class="font-comfortaa-400">{{request.user.username}}
-		                <i style="color: orangered;" class="fa fa-star"></i>
-			        </p>
+		        {% if profile_user.picture %}
+		        	<img class="user__pic-img" src="{{ profile_user.picture.url }}" alt="">
+		        {% else %}
+		        	<img class="user__pic-img" src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
 		        {% endif %}
 
-		        <p class="font-comfortaa-400">{{ request.user.number }}</p>
-		        <p class="font-comfortaa-400">{{ request.user.email }}</p>
-		        <p class="font-comfortaa-400">Последний адрес: {{request.user.last_address}}</p>
-		        <p class="font-comfortaa-400">На сайте с {{ request.user.reg_date }}</p>
+		        <p class="font-comfortaa-400 user__pic-text">
+		        	{{ profile_user.username }}
+		        	{% if profile_user.is_staff %}
+		        		<i style="color: orangered;" class="fa fa-star"></i>
+		        	{% endif %}
+		        </p>
+
+		        <p class="font-comfortaa-400">{{ profile_user.number }}</p>
+		        <p class="font-comfortaa-400">{{ profile_user.email }}</p>
+		        <p class="font-comfortaa-400">Последний адрес: {{ profile_user.last_address }}</p>
+		        <p class="font-comfortaa-400">На сайте с {{ profile_user.reg_date }}</p>
 
 		        <div class="user__pic-interactives">
 		            <ul>
@@ -39,23 +44,51 @@
 	                </a>
 		        </div>
 		    </div>
+		    <div class="user__stats">
+		    	<p class="user__stats-order-p">Добро пожаловать в ваш профиль!</p>
+		    	<a class="btn user__stats-order-btn" href="{{ url('catalog') }}">Перейти в каталог</a>
+		    	<div class="user__stats-achievements">
+		    		<span><i class="fa fa-award"></i></span>
+		    		<span><i class="fa fa-heart"></i></span>
+		    		<span><i class="fa fa-crown"></i></span>
+		    	</div>
+		    </div>
 		</div>
 	{% else %}
 		<div class="wrapper">
 		    <div class="user__pic">
-		        <p class="font-comfortaa-400 user__pic-text">{{ profile_user.username }}</p>
+		        {% if profile_user.picture %}
+		        	<img class="user__pic-img" src="{{ profile_user.picture.url }}" alt="">
+		        {% else %}
+		        	<img class="user__pic-img" src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
+		        {% endif %}
+		        <p class="font-comfortaa-400 user__pic-text">
+		        	{{ profile_user.username }}
+		        	{% if profile_user.is_staff %}
+		        		<i style="color: orangered;" class="fa fa-star"></i>
+		        	{% endif %}
+		        </p>
 		        <p class="font-comfortaa-400">На сайте с: {{ profile_user.reg_date }}</p>
 
 		        <div class="user__pic-interactives">
 		            <ul>
 		                <li class="order-history user__pic-interactives-btns">
-			                <i class="fa fa-history"></i><a href="">История заказов (239)</a>
+			                <i class="fa fa-history"></i><a href="">История заказов</a>
 		                </li>
 		                <li class="report-btn user__pic-interactives-btns">
 			                <i class="fa fa-exclamation-triangle"></i><a href="">Жалоба на профиль</a>
 		                </li>
 		            </ul>
 		        </div>
+		    </div>
+		    <div class="user__stats">
+		    	<p class="user__stats-order-p">Это публичный профиль пользователя.</p>
+		    	<a class="btn user__stats-order-btn" href="{{ url('catalog') }}">Смотреть каталог</a>
+		    	<div class="user__stats-achievements">
+		    		<span><i class="fa fa-award"></i></span>
+		    		<span><i class="fa fa-heart"></i></span>
+		    		<span><i class="fa fa-crown"></i></span>
+		    	</div>
 		    </div>
 		</div>
 	{% endif %}
