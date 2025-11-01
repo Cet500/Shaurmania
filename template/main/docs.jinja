@@ -1,7 +1,7 @@
 {% extends 'main/base.jinja' %}
 
 
-{% block title %}Наши официальные документы{% endblock %}
+{% block title %}Наши документы{% endblock %}
 
 
 {% block links %}
@@ -16,6 +16,110 @@
 		<div class="block-docs">
             <h3 class="docs__name">
 	            <i class="fa-solid fa-file-contract"></i>
+	            <span>Политика в отношении обработки персональных данных</span>
+            </h3>
+
+            <p class="docs__description">
+	            Документ описывает, какие данные пользователей мы собираем, как их обрабатываем, храним и защищаем.
+            </p>
+
+			<p class="docs__legal">
+	            Обязательный документ согласно 152-ФЗ «О персональных данных». Информирует пользователей об их
+				правах и наших обязательствах.
+            </p>
+
+			<div class="docs__meta">
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-calendar"></i> 1 ноября 2025 г.
+                </p>
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-signature"></i> ШаурМания
+                </p>
+				<p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы РФ
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'privacy_policy' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+		<div class="block-docs">
+            <h3 class="docs__name">
+	            <i class="fa-solid fa-file-contract"></i>
+	            <span>Пользовательское соглашение сайта и сервиса доставки «Шаурмания»</span>
+            </h3>
+
+            <p class="docs__description">
+	            Определяет правила использования нашего сайта, телеграм-бота и услуги доставки.
+	            Регулирует отношения между компанией и клиентом.
+            </p>
+
+			<p class="docs__legal">
+	            Является публичной офертой. Регламентирует права, обязанности и ответственность сторон, что
+				снижает юридические риски.
+            </p>
+
+			<div class="docs__meta">
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-calendar"></i> 1 ноября 2025 г.
+                </p>
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-signature"></i> ШаурМания
+                </p>
+				<p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы РФ
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'user_agreement' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+		<div class="block-docs">
+            <h3 class="docs__name">
+	            <i class="fa-solid fa-file-contract"></i>
+	            <span>Форма согласия на обработку персональных данных</span>
+            </h3>
+
+            <p class="docs__description">
+	            Документ, который пользователь подписывает (или подтверждает электронно), давая нам разрешение на работу
+	            с его персональными данными.
+            </p>
+
+			<p class="docs__legal">
+	            Прямое основание для легальной обработки персональных данных, требуемое ст. 9 152-ФЗ.
+            </p>
+
+			<div class="docs__meta">
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-calendar"></i> 1 ноября 2025 г.
+                </p>
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-signature"></i> ШаурМания
+                </p>
+				<p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы РФ
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'user_consent' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+	</div>
+
+	<h2 class="h1 text-center font-comfortaa-400">Наше наследие</h2>
+
+	<div class="block-content grad-orange-red">
+		<div class="block-docs">
+            <h3 class="docs__name">
+	            <i class="fa-solid fa-file-contract"></i>
 	            <span>Лицензия на товарный знак «Шаурмания»</span>
             </h3>
 
@@ -24,7 +128,7 @@
 	            продаже шаурмы в рамках содействия мировой кулинарной революции.
             </p>
 
-			<p class="docs__lelal">
+			<p class="docs__legal">
 	            Легитимизирует бренд «Шаурмания» как правопреемника идей Троцкого в сфере гастрономии. Является
 				краеугольным камнем всей юридической конструкции проекта.
             </p>
@@ -36,9 +140,46 @@
                 <p class="docs-meta__item">
 	                <i class="fa-solid fa-signature"></i> Лев Троцкий
                 </p>
+				<p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы космоса
+                </p>
             </div>
 
             <a class="btn_catalog" href="{{ url( 'license' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+		<div class="block-docs">
+            <h3 class="docs__name">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <span>Приложение №1 к Лицензии</span>
+            </h3>
+
+            <p class="docs__description">
+                Официальное дополнение к основной Лицензии, легализующее разработку и продажу экспериментальных видов
+                шаурмы с использованием инопланетных ингредиентов и свойств, нарушающих законы физики.
+            </p>
+
+	        <p class="docs__legal">
+                Расширяет действие основной лицензии на уникальную продуктовую линейку, защищая рецептуры как ноу-хау в
+		        рамках вымышленной Межгалактической конвенции.
+            </p>
+
+            <div class="docs__meta">
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-calendar"></i> 1 января 1924 г.
+                </p>
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-rocket"></i> Межгалактическая конвенция
+                </p>
+	            <p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы космоса
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'add_license_1' ) }}">
                 Открыть документ
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -55,7 +196,7 @@
                 главным органом по её распространению на Земле и в космосе.
             </p>
 
-	        <p class="docs__lelal">
+	        <p class="docs__legal">
                 Устанавливает монопольное право «Шаурмании» на идеологическое руководство в сфере шаурмы. Создает
 		        исторический контекст и миссию бренда.
             </p>
@@ -66,6 +207,9 @@
                 </p>
                 <p class="docs-meta__item">
                     <i class="fa-solid fa-signature"></i> ВЦИК и СНК
+                </p>
+	            <p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы космоса
                 </p>
             </div>
 
@@ -86,7 +230,7 @@
                 — от Повара-Революционера до Курьера-Интернационалиста.
             </p>
 
-	        <p class="docs__lelal">
+	        <p class="docs__legal">
                 Декларирует внутренние корпоративные стандарты, нарушение которых является основанием для применения
 		        санкций в рамках трудовых отношений. Для клиентов — демонстрирует серьёзность подхода.
             </p>
@@ -97,6 +241,9 @@
                 </p>
                 <p class="docs-meta__item">
                     <i class="fa-solid fa-users"></i> Коллегия Вкуса
+                </p>
+	            <p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы космоса
                 </p>
             </div>
 
@@ -117,7 +264,7 @@
                 шаурмы, от выбора сырья до межгалактической доставки.
             </p>
 
-	        <p class="docs__lelal">
+	        <p class="docs__legal">
                 Пародийно заменяет реальные СанПиНы, демонстрируя клиентам, что вопросам гигиены и качества в
 		        «Шаурмании» уделяется высочайшее, почти идеологическое, внимание.
             </p>
@@ -129,40 +276,12 @@
                 <p class="docs-meta__item">
                     <i class="fa-solid fa-hospital"></i> НКЗ
                 </p>
+	            <p class="docs-meta__item">
+                    <i class="fa-solid fa-book"></i> Законы космоса
+                </p>
             </div>
 
             <a class="btn_catalog" href="{{ url( 'san_rules' ) }}">
-                Открыть документ
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <div class="block-docs">
-            <h3 class="docs__name">
-                <i class="fa-solid fa-file-circle-plus"></i>
-                <span>Приложение №1 к Лицензии</span>
-            </h3>
-
-            <p class="docs__description">
-                Официальное дополнение к основной Лицензии, легализующее разработку и продажу экспериментальных видов
-                шаурмы с использованием инопланетных ингредиентов и свойств, нарушающих законы физики.
-            </p>
-
-	        <p class="docs__lelal">
-                Расширяет действие основной лицензии на уникальную продуктовую линейку, защищая рецептуры как ноу-хау в
-		        рамках вымышленной Межгалактической конвенции.
-            </p>
-
-            <div class="docs__meta">
-                <p class="docs-meta__item">
-                    <i class="fa-solid fa-calendar"></i> 1 января 1924 г.
-                </p>
-                <p class="docs-meta__item">
-                    <i class="fa-solid fa-rocket"></i> Межгалактическая конвенция
-                </p>
-            </div>
-
-            <a class="btn_catalog" href="{{ url( 'add_license_1' ) }}">
                 Открыть документ
                 <i class="fa-solid fa-arrow-right"></i>
             </a>

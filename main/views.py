@@ -82,6 +82,15 @@ def feedback(request):
 def docs( request ):
     return render( request, 'main/docs.jinja' )
 
+def privacy_policy( request ):
+    return render( request, 'main/docs/privacy_policy.jinja' )
+
+def user_agreement( request ):
+    return render( request, 'main/docs/user_agreement.jinja' )
+
+def user_consent( request ):
+    return render( request, 'main/docs/user_consent.jinja' )
+
 def license(request):
     return render( request, 'main/docs/license.jinja' )
 

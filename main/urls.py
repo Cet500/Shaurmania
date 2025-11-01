@@ -21,13 +21,15 @@ urlpatterns = [
     path ('profile_closed',      v.user_closed, name = 'user_closed'),
 
     # DOCS =================================================
-
-    path( 'docs',               v.docs,          name = 'docs' ),
-    path( 'docs/license',       v.license,       name = 'license' ),
-    path( 'docs/add_license_1', v.add_license_1, name = 'add_license_1' ),
-    path( 'docs/san_rules',     v.san_rules,     name = 'san_rules' ),
-    path( 'docs/codex',         v.codex,         name = 'codex' ),
-    path( 'docs/decree',        v.decree,        name = 'decree' ),
+    path( 'docs',                v.docs,           name = 'docs' ),
+    path( 'docs/privacy_policy', v.privacy_policy, name = 'privacy_policy' ),
+    path( 'docs/user_agreement', v.user_agreement, name = 'user_agreement' ),
+    path( 'docs/user_consent',   v.user_consent,   name = 'user_consent' ),
+    path( 'docs/license',        v.license,        name = 'license' ),
+    path( 'docs/add_license_1',  v.add_license_1,  name = 'add_license_1' ),
+    path( 'docs/san_rules',      v.san_rules,      name = 'san_rules' ),
+    path( 'docs/codex',          v.codex,          name = 'codex' ),
+    path( 'docs/decree',         v.decree,         name = 'decree' ),
 
     # MISC =================================================
     path ('about',             v.about,    name = 'about'),

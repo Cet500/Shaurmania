@@ -102,6 +102,27 @@
     margin: 10px 0 0 40px;
 }
 
+.block-document-modern{
+    background-color: #eeeeee;
+    width: calc(100% - 80px);
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 20px;
+}
+.block-document-modern p,
+.block-document-modern ul,
+.block-document-modern li{
+    margin: 14px 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    line-height: 1.3;
+    color: rgba(0, 0, 0, 0.9);
+}
+.block-document-modern li{
+    margin: 10px 0 0 40px;
+}
+
+
 /* ------------------- block of search ------------------ */
 
 .block-search{
