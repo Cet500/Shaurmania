@@ -11,8 +11,9 @@ from main.factories import (
 class PublicPagesTest(TestCase):
     def test_public_pages_ok(self):
         urls = [
-            'index', 'catalog', 'about', 'docs', 'license', 'add_license_1', 'san_rules',
-            'codex', 'decree', 'feedback', 'address', 'login', 'reg', 'stocks'
+            'index', 'catalog', 'about', 'docs', 'privacy_policy', 'user_agreement', 'user_consent',
+            'license', 'add_license_1', 'san_rules', 'codex', 'decree', 'feedback', 'address',
+            'login', 'reg', 'stocks'
         ]
         for name in urls:
             with self.subTest(name=name):
