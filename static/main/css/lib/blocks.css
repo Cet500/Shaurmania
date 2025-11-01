@@ -81,24 +81,24 @@
     width: max( 200px, 40% );
 }
 
-/* ------------------- block of license ----------------- */
+/* ------------------ block of document ----------------- */
 
-.block-trotcky-license{
+.block-document{
     background-image: url("../../img/bg/paper.png");
     width: calc(100% - 60px);
     margin: 40px auto;
     padding: 30px;
     border-radius: 20px;
 }
-.block-trotcky-license p,
-.block-trotcky-license ul,
-.block-trotcky-license li{
+.block-document p,
+.block-document ul,
+.block-document li{
     margin: 10px 0;
     font-family: 'Segoe Print', 'Times New Roman', Times, serif;
     font-size: 18px;
     color: rgba(0, 0, 0, 0.8);
 }
-.block-trotcky-license li{
+.block-document li{
     margin: 10px 0 0 40px;
 }
 

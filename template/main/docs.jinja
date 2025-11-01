@@ -1,0 +1,171 @@
+{% extends 'main/base.jinja' %}
+
+
+{% block title %}Наши официальные документы{% endblock %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{{ static( 'main/css/src/docs.css' ) }}">
+{% endblock %}
+
+
+{% block main %}
+    <h2 class="h1 text-center font-comfortaa-400">Наши официальные документы</h2>
+
+	<div class="block-content grad-orange-red">
+		<div class="block-docs">
+            <h3 class="docs__name">
+	            <i class="fa-solid fa-file-contract"></i>
+	            <span>Лицензия на товарный знак «Шаурмания»</span>
+            </h3>
+
+            <p class="docs__description">
+	            Основополагающий документ, предоставляющий право на использование бренда «Шаурмания» и деятельность по
+	            продаже шаурмы в рамках содействия мировой кулинарной революции.
+            </p>
+
+			<p class="docs__lelal">
+	            Легитимизирует бренд «Шаурмания» как правопреемника идей Троцкого в сфере гастрономии. Является
+				краеугольным камнем всей юридической конструкции проекта.
+            </p>
+
+			<div class="docs__meta">
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-calendar"></i> 7 ноября 1923 г.
+                </p>
+                <p class="docs-meta__item">
+	                <i class="fa-solid fa-signature"></i> Лев Троцкий
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'license' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="block-docs">
+            <h3 class="docs__name">
+                <i class="fa-solid fa-scroll"></i>
+                <span>Декрет ВЦИК и СНК</span>
+            </h3>
+
+            <p class="docs__description">
+                Исторический манифест, объявляющий шаурму блюдом пролетарской солидарности и назначающий «Шаурманию»
+                главным органом по её распространению на Земле и в космосе.
+            </p>
+
+	        <p class="docs__lelal">
+                Устанавливает монопольное право «Шаурмании» на идеологическое руководство в сфере шаурмы. Создает
+		        исторический контекст и миссию бренда.
+            </p>
+
+            <div class="docs__meta">
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-calendar"></i> 27 октября 1923 г.
+                </p>
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-signature"></i> ВЦИК и СНК
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'decree' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="block-docs">
+            <h3 class="docs__name">
+                <i class="fa-solid fa-book"></i>
+                <span>Кодекс Шаурмиста</span>
+            </h3>
+
+            <p class="docs__description">
+                Внутренний устав, определяющий идеологию, стандарты качества и поведения для всех сотрудников компании
+                — от Повара-Революционера до Курьера-Интернационалиста.
+            </p>
+
+	        <p class="docs__lelal">
+                Декларирует внутренние корпоративные стандарты, нарушение которых является основанием для применения
+		        санкций в рамках трудовых отношений. Для клиентов — демонстрирует серьёзность подхода.
+            </p>
+
+            <div class="docs__meta">
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-calendar"></i> 8 ноября 1923 г.
+                </p>
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-users"></i> Коллегия Вкуса
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'codex' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="block-docs">
+            <h3 class="docs__name">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>САНПИН 23-Ш</span>
+            </h3>
+
+            <p class="docs__description">
+                Юмористический, но строгий свод санитарно-гигиенических норм, регулирующих все этапы приготовления
+                шаурмы, от выбора сырья до межгалактической доставки.
+            </p>
+
+	        <p class="docs__lelal">
+                Пародийно заменяет реальные СанПиНы, демонстрируя клиентам, что вопросам гигиены и качества в
+		        «Шаурмании» уделяется высочайшее, почти идеологическое, внимание.
+            </p>
+
+            <div class="docs__meta">
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-calendar"></i> 15 ноября 1923 г.
+                </p>
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-hospital"></i> НКЗ
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'san_rules' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="block-docs">
+            <h3 class="docs__name">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <span>Приложение №1 к Лицензии</span>
+            </h3>
+
+            <p class="docs__description">
+                Официальное дополнение к основной Лицензии, легализующее разработку и продажу экспериментальных видов
+                шаурмы с использованием инопланетных ингредиентов и свойств, нарушающих законы физики.
+            </p>
+
+	        <p class="docs__lelal">
+                Расширяет действие основной лицензии на уникальную продуктовую линейку, защищая рецептуры как ноу-хау в
+		        рамках вымышленной Межгалактической конвенции.
+            </p>
+
+            <div class="docs__meta">
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-calendar"></i> 1 января 1924 г.
+                </p>
+                <p class="docs-meta__item">
+                    <i class="fa-solid fa-rocket"></i> Межгалактическая конвенция
+                </p>
+            </div>
+
+            <a class="btn_catalog" href="{{ url( 'add_license_1' ) }}">
+                Открыть документ
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+{% endblock %}

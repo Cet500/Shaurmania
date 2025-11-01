@@ -79,8 +79,23 @@ def feedback(request):
 
     return render( request, 'main/feedback.jinja', context = ctx )
 
-def licenses(request):
-    return render( request, 'main/licenses.jinja' )
+def docs( request ):
+    return render( request, 'main/docs.jinja' )
+
+def license(request):
+    return render( request, 'main/docs/license.jinja' )
+
+def add_license_1( request ):
+    return render( request, 'main/docs/add_licence_1.jinja' )
+
+def san_rules(request):
+    return render( request, 'main/docs/san_rules.jinja' )
+
+def codex(request):
+    return render( request, 'main/docs/codex.jinja' )
+
+def decree(request):
+    return render( request, 'main/docs/decree.jinja' )
 
 def product( request, slug ):
     product = Shaurma.objects.get( slug = slug )

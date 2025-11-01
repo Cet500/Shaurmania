@@ -28,6 +28,7 @@
 .discount > .btn:active {
     background-color: darkred;
 }
+
 .btn_catalog{
     text-decoration: none;
     color: var(--clr-white);
