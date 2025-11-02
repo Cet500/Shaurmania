@@ -1,4 +1,4 @@
-aiofiles==25.1.0
+aiofiles==24.1.0
 aiogram==3.22.0
 aiohappyeyeballs==2.6.1
 aiohttp==3.12.15
@@ -32,16 +32,16 @@ pillow==12.0.0
 pluggy==1.6.0
 portalocker==3.2.0
 propcache==0.4.1
-pydantic==2.12.3
-pydantic_core==2.41.4
+pydantic==2.11.7
+pydantic_core==2.33.2
 Pygments==2.19.2
 pytest==8.4.2
 pytest-django==4.11.1
 python-dateutil==2.9.0.post0
 python-slugify==8.0.4
 pywin32==311
-rcssmin==1.2.2
-rjsmin==1.2.5
+rcssmin==1.1.2
+rjsmin==1.2.2
 six==1.17.0
 sqlparse==0.5.3
 text-unidecode==1.3
