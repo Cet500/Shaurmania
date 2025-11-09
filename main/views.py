@@ -119,6 +119,15 @@ def product( request, slug ):
 
     return render( request, 'main/product.jinja', context = ctx )
 
+def location_detail( request, slug ):
+    location_detail = Location.objects.get( slug = slug )
+
+    ctx = {
+        'location_detail': location_detail,
+    }
+
+    return render( request, 'main/location_detailed.jinja', context = ctx)
+
 def stock( request, slug ):
     stock = Stock.objects.get( slug = slug )
 

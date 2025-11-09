@@ -32,11 +32,12 @@ urlpatterns = [
     path( 'docs/decree',         v.decree,         name = 'decree' ),
 
     # MISC =================================================
-    path ('about',             v.about,    name = 'about'),
-    path ('address',           v.address,  name = 'address'),
-    path ('feedback',          v.feedback, name = 'feedback'),
-    path ('stocks',            v.stocks,   name = 'stocks'),
-    path ('stock/<slug:slug>', v.stock,    name = 'stock'),
+    path ('about',                v.about,            name = 'about'),
+    path ('address',              v.address,          name = 'address'),
+    path ('location/<slug:slug>', v.location_detail,  name = 'location' ),
+    path ('feedback',             v.feedback,         name = 'feedback'),
+    path ('stocks',               v.stocks,           name = 'stocks'),
+    path ('stock/<slug:slug>',    v.stock,            name = 'stock'),
 
     # DEV ==================================================
     path( 'dev', v.dev, name = 'dev' ),
