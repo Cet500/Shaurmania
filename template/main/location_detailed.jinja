@@ -9,10 +9,18 @@
 
 {% endblock %}
 
+    <div class="part-location_detail">
+
+	<img class="part-location_detail__image"
+	     src="{{ location_detail.picture.url }}"
+	     alt="Изображение локации {{ location_detail.name }}">
+
+	<div class="part-location__data">
 
 {% block main %}
 
 	<h1>{{ location_detail.name }}</h1>
+	<p class="text">{{ location_detail.description }}</p>
 
 
 {% endblock %}
