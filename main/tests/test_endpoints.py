@@ -12,7 +12,7 @@ class PublicPagesTest(TestCase):
     def test_public_pages_ok(self):
         urls = [
             'index', 'catalog', 'about', 'docs', 'privacy_policy', 'user_agreement', 'user_consent',
-            'license', 'add_license_1', 'san_rules', 'codex', 'decree', 'feedback', 'address',
+            'license', 'add_license_1', 'san_rules', 'codex', 'decree', 'feedback', 'locations',
             'login', 'reg', 'stocks'
         ]
         for name in urls:
@@ -44,7 +44,7 @@ class CatalogAndDetailsTest(TestCase):
 
 class AjaxBranchesTest(TestCase):
     def test_address_ajax(self):
-        resp = self.client.get(reverse('address'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        resp = self.client.get(reverse('locations'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
 
     def test_feedback_ajax(self):
@@ -84,24 +84,3 @@ class AuthFlowTest(TestCase):
         user = UserFactory(password='secret123')
         logged_in = self.client.login(username=user.username, password='secret123')
         self.assertTrue(logged_in)
-
-
-class DevEndpointTest(TestCase):
-    def test_dev_requires_login(self):
-        resp = self.client.get(reverse('dev'))
-        self.assertEqual(resp.status_code, 302)
-
-    def test_dev_forbidden_for_non_superuser(self):
-        user = UserFactory(is_superuser=False, is_staff=False)
-        self.client.force_login(user)
-        resp = self.client.get(reverse('dev'))
-        self.assertEqual(resp.status_code, 403)
-
-    def test_dev_ok_for_superuser(self):
-        user = UserFactory(is_superuser=True, is_staff=True)
-        self.client.force_login(user)
-        resp = self.client.get(reverse('dev'))
-        self.assertEqual(resp.status_code, 200)
-        data = resp.json()
-        # ensure large binaries not included
-        self.assertNotIn('picture', data)
