@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cart
+from cart.models import Cart
 from main.models import Shaurma
 
 

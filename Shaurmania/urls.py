@@ -11,7 +11,8 @@ from main import views as main_views
 
 urlpatterns = [
     path( 'admin-panel/', admin.site.urls ),
-    path( '', include( 'main.urls' ) ),
+    path( '',      include( 'main.urls' ) ),
+    path( 'api/',  include( 'api.urls' ) ),
     path( 'cart/', include( 'cart.urls' ) ),
 
     path( 'errors/400/', main_views.error_400, {'exception': Exception('Bad Request')},       name = 'errors_400' ),

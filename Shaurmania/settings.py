@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     "django_jinja",
 
     "main.apps.MainConfig",
-	"cart.apps.CartConfig"
+	"cart.apps.CartConfig",
+	"api.apps.ApiConfig"
 ]
 
 MIDDLEWARE = [

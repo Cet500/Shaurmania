@@ -108,6 +108,7 @@
 .footer_row{
     display: flex;
     gap: 40px;
+    justify-content: space-between;
 }
 .footer__bottom{
     display: flex;
@@ -124,10 +125,56 @@
 
 /* ------------------------ media ----------------------- */
 
-@media screen and ( max-width: 1300px ) {
-
+@media screen and (max-width: 1300px) {
     :root{
         --site-width: 1000px;
     }
+    .header__inner,
+    .main__inner,
+    .footer__inner{
+        width: var(--site-width);
+        margin: 10px auto;
+    }
+}
 
+@media screen and (max-width: 768px) {
+    :root{
+        --site-width: 600px;
+    }
+    .header__inner,
+    .main__inner,
+    .footer__inner{
+        width: var(--site-width);
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root{
+        --site-width: 300px;
+    }
+    .header__inner,
+    .main__inner,
+    .footer__inner{
+        width: var(--site-width);
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    :root{
+        --site-width: 200px;
+    }
+    .header__inner,
+    .main__inner,
+    .footer__inner{
+        width: var(--site-width);
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo h1{
+        font-size: 30px;
+    }
 }
