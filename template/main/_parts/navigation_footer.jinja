@@ -35,18 +35,9 @@
     </li>
 
     <li class="nav__item">
-        <a href="{{ url( 'address' ) }}" class="nav-item__btn">
+        <a href="{{ url( 'locations' ) }}" class="nav-item__btn">
             <i class="fa-solid fa-location-dot"></i>
             Адрес
         </a>
     </li>
-
-    {% if request.user.is_authenticated %}
-	    <li class="nav__item">
-	        <a href="{{ url( 'user', request.user.username ) }}" class="nav-item__btn">
-	            <i class="fa-solid fa-user"></i>
-	            Пользователь
-	        </a>
-	    </li>
-    {% endif %}
 </ul>

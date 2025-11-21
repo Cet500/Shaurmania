@@ -1,9 +1,8 @@
 from django.urls import path
-from . import views as v
+import main.views as v
 
 
 urlpatterns = [
-
     path ('', v.index, name = 'index'),
 
     # CATALOG ==============================================
@@ -33,16 +32,10 @@ urlpatterns = [
 
     # MISC =================================================
     path ('about',                v.about,            name = 'about'),
-    path ('address',              v.address,          name = 'address'),
-    path ('location/<slug:slug>', v.location_detail,  name = 'location' ),
+    path ('locations',            v.locations,        name = 'locations' ),
+    path ('location/<slug:slug>', v.location,         name = 'location' ),
     path ('feedback',             v.feedback,         name = 'feedback'),
     path ('stocks',               v.stocks,           name = 'stocks'),
     path ('stock/<slug:slug>',    v.stock,            name = 'stock'),
-
-    # DEV ==================================================
-    path( 'dev', v.dev, name = 'dev' ),
-
-    # ADMIN ================================================
-    path('admin/factories',            v.admin_factories,        name = 'admin_factories'),
-    path('admin/factories/<str:name>', v.admin_factory_generate, name = 'admin_factory_generate'),
+    path( 'news',                 v.news,             name = 'news' ),
 ]
