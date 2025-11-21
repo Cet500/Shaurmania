@@ -1,5 +1,6 @@
 from .achievement import Achievement, UserAchievement
 from .location import Location, TIME_VARIANTS
+from .news import News
 from .review import Review
 from .shaurma import Shaurma, ShaurmaCategory, ShaurmaImage
 from .stock import Stock
