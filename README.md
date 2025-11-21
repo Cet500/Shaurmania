@@ -138,6 +138,7 @@ Django+Gunicorn+Nginx.
 
 ```
 Shaurmania/
+├── api/               # Приложение API
 ├── bot/               # Telegram бот
 ├── cart/              # Приложение корзины (корзина, заказы, промокоды)
 ├── logs/              # Логи приложения
