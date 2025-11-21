@@ -3,21 +3,20 @@ import main.views as v
 
 
 urlpatterns = [
-    path ('', v.index, name = 'index'),
+    # ABOUT ================================================
+    path ('about',    v.about,    name = 'about'),
+    path ('feedback', v.feedback, name = 'feedback'),
 
-    # CATALOG ==============================================
-    path ('catalog',             v.catalog, name = 'catalog'),
-    path ('product/<slug:slug>', v.product, name = 'product'),
-    path ('search',              v.search,  name = 'search'),
-
-    # LOGIN SYSTEM =========================================
+    # AUTH =================================================
     path ('login',  v.login,  name = 'login'),
     path ('reg',    v.reg,    name = 'reg'),
     path ('logout', v.logout, name = 'logout' ),
 
-    # USER =================================================
-    path ('user/<str:username>', v.user,        name = 'user'),
-    path ('profile_closed',      v.user_closed, name = 'user_closed'),
+    # CATALOG ==============================================
+    path ('',                    v.index,   name = 'index'),
+    path ('catalog',             v.catalog, name = 'catalog'),
+    path ('product/<slug:slug>', v.product, name = 'product'),
+    path ('search',              v.search,  name = 'search'),
 
     # DOCS =================================================
     path( 'docs',                v.docs,           name = 'docs' ),
@@ -30,12 +29,18 @@ urlpatterns = [
     path( 'docs/codex',          v.codex,          name = 'codex' ),
     path( 'docs/decree',         v.decree,         name = 'decree' ),
 
-    # MISC =================================================
-    path ('about',                v.about,            name = 'about'),
-    path ('locations',            v.locations,        name = 'locations' ),
-    path ('location/<slug:slug>', v.location,         name = 'location' ),
-    path ('feedback',             v.feedback,         name = 'feedback'),
-    path ('stocks',               v.stocks,           name = 'stocks'),
-    path ('stock/<slug:slug>',    v.stock,            name = 'stock'),
-    path( 'news',                 v.news,             name = 'news' ),
+    # LOCATION =================================================
+    path ('locations',            v.locations, name = 'locations' ),
+    path ('location/<slug:slug>', v.location,  name = 'location' ),
+
+    # NEWS =================================================
+    path( 'news', v.news, name = 'news' ),
+
+    # PROFILE ==============================================
+    path ('user/<str:username>', v.user,        name = 'user'),
+    path ('profile_closed',      v.user_closed, name = 'user_closed'),
+
+    # STOCK ================================================
+    path ('stocks',            v.stocks, name = 'stocks'),
+    path ('stock/<slug:slug>', v.stock,  name = 'stock'),
 ]
