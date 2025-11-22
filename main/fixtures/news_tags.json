@@ -1,0 +1,1 @@
+[{"model": "main.newstag", "pk": 1, "fields": {"name": "Сайт", "slug": "site", "created_at": "2025-11-22T02:49:43.546Z"}}, {"model": "main.newstag", "pk": 2, "fields": {"name": "Официально", "slug": "official", "created_at": "2025-11-22T04:03:18.769Z"}}, {"model": "main.newstag", "pk": 3, "fields": {"name": "От админа", "slug": "admin", "created_at": "2025-11-22T04:19:44.493Z"}}]

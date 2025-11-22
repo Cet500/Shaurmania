@@ -9,7 +9,7 @@
 Проект включает систему управления товарами, корзину покупок, 
 промокоды, достижения, локации доставки и систему отзывов.
 
-> **Версия данных:** 6
+![data-version](https://img.shields.io/badge/data_version-7-4c1?style=for-the-badge)
 
 
 ## ✨ Основные возможности
@@ -169,6 +169,8 @@ Shaurmania/
    python -Xutf8 manage.py dumpdata main.Stock -o main/fixtures/stocks.json
    python -Xutf8 manage.py dumpdata cart.Promocode -o cart/fixtures/promocodes.json
    python -Xutf8 manage.py dumpdata main.ShaurmaImage -o main/fixtures/shaurma_images.json
+   python -Xutf8 manage.py dumpdata main.NewsTag -o main/fixtures/news_tags.json
+   python -Xutf8 manage.py dumpdata main.News -o main/fixtures/news.json
 ```
 
 ### Загрузка данных
@@ -182,6 +184,8 @@ Shaurmania/
    python manage.py loaddata stocks.json
    python manage.py loaddata promocodes.json
    python manage.py loaddata shaurma_images.json
+   python manage.py loaddata news_tags.json
+   python manage.py loaddata news.json
 ```
 
 
