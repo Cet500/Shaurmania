@@ -8,6 +8,7 @@ def stocks(request):
 	ctx = {
 		'stocks': stocks
 	}
+
 	return render( request, 'main/stocks.jinja', context = ctx )
 
 

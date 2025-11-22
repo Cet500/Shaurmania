@@ -1,0 +1,7 @@
+<div class="block-content grad-orange-red">
+    {% for news in page_obj %}
+        {% include 'main/_parts/news_short.jinja' %}
+    {% else %}
+        <h2>Новостей нет, невероятно, но факт.</h2>
+    {% endfor %}
+</div>

@@ -1,0 +1,37 @@
+/* ------------------------------ parts / news ------------------------------ */
+
+/* --------------------- base styles -------------------- */
+
+.part-news{
+	display: flex;
+	gap: 20px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+
+	color: black;
+	background-color: white;
+}
+.part-comment:first-child{
+	margin-top: 0;
+}
+.part-comment:last-child{
+	margin-bottom: 0;
+}
+
+/* -------------------- inner blocks -------------------- */
+
+.part-news__image{
+	width: 40%;
+	border-radius: 10px
+}
+.part-news__body{
+	height: max-content;
+	padding: 2px 10px;
+	border: 1px solid var(--clr-lighter-gray);
+	border-radius: 10px
+}
