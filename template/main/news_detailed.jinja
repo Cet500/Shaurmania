@@ -1,14 +1,43 @@
 {% extends 'main/base.jinja' %}
 
 
-{% block title %}Новость{% endblock %}
+{% block title %}{{ news_detail.title }}{% endblock %}
 
 
 {% block links %}
-
+	<link rel="stylesheet" href="{{ static( 'main/css/src/news.css' ) }}">
 {% endblock %}
 
 
 {% block main %}
-    <h2 class="h1 text-center font-comfortaa-500">Новость</h2>
+
+	<div class="news__header">
+		{% if news_detail.picture %}
+			<img class="news-header__bg"
+			     src="{{ news_detail.picture.url }}"
+			     alt="{{ news_detail.title }}">
+		{% else %}
+			<img class="news-header__bg"
+		         src="{{ static( 'main/img/news/default.png' ) }}"
+		         alt="Новости ШаурМании">
+		{% endif %}
+
+		<div class="news-header__title">
+			<h1 class="h1 font-comfortaa-500">{{ news_detail.title }}</h1>
+
+			<p class="text-big">
+				{{ news_detail.short_text }}
+			</p>
+		</div>
+	</div>
+
+	<div class="news__body">
+
+	</div>
+
+	<div class="news__footer">
+		<p class="text-sm">Создано: {{ news_detail.created_at|timesince }} назад</p>
+		<p class="text-sm">Обновлено: {{ news_detail.updated_at|timesince }} назад</p>
+	</div>
+
 {% endblock %}

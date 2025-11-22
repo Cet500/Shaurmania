@@ -36,4 +36,10 @@ def news( request, tag_slug=None ):
 
 
 def news_detail( request, slug ):
-	return render( request, 'main/news_detailed.jinja' )
+	news_detail = News.objects.get( slug = slug )
+
+	ctx = {
+		'news_detail': news_detail,
+	}
+
+	return render( request, 'main/news_detailed.jinja', context = ctx )
