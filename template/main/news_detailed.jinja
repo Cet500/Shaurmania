@@ -5,6 +5,7 @@
 
 
 {% block links %}
+	<link rel="stylesheet" href="{{ static( 'main/css/lib/rich_content.css' ) }}">
 	<link rel="stylesheet" href="{{ static( 'main/css/src/news.css' ) }}">
 {% endblock %}
 
@@ -31,8 +32,14 @@
 		</div>
 	</div>
 
-	<div class="news__body">
+	<div class="news__body rich-content">
+		{% if news_detail.rich_content %}
+			{{ news_detail.rich_content|safe }}
+		{% else %}
+			<p><b>У автора статьи лапки.</b></p>
 
+			<p>Он ничего не написал.</p>
+		{% endif %}
 	</div>
 
 	<div class="news__footer">

@@ -1,7 +1,10 @@
 .news__header{
 	position: relative;
 	width: 100%;
+	margin-top: 20px;
 	max-height: 300px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 	overflow: hidden;
 }
 .news-header__bg{
@@ -14,7 +17,7 @@
 .news-header__title{
 	position: absolute;
 	bottom: 0;
-	margin: 0;
+	margin: 20px;
 	padding: 20px;
 	color: var(--clr-white);
 }
@@ -27,15 +30,18 @@
 }
 
 .news__body{
-	width: 100%;
-	min-height: 400px;
+	width: calc( 100% - 80px );
+	padding: 20px 39px;
 	background-color: var(--clr-white);
+	border-left: 1px solid var(--clr-lighter-gray);
+	border-right: 1px solid var(--clr-lighter-gray);
 }
 
 .news__footer{
-	width: 100%;
-	margin: 10px 0;
-	padding: 10px 20px;
-	border-radius: 10px;
+	width: calc( 100% - 80px );
+	margin-bottom: 20px;
+	padding: 10px 40px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 	background-color: var(--clr-lighter-gray);
 }

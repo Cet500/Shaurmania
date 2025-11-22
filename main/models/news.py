@@ -5,10 +5,10 @@ from imagekit.processors import ResizeToFill
 
 
 class News( m.Model ):
-	title        = m.CharField( max_length = 100, verbose_name = 'Заголовок' )
+	title        = m.CharField( max_length = 100, unique = True, verbose_name = 'Заголовок' )
 	slug         = m.SlugField( max_length = 110, blank = True, verbose_name = 'URL-адрес' )
 	short_text   = m.TextField( max_length = 200, blank = True, verbose_name = 'Краткое описание' )
-	main_text    = m.TextField( max_length = 1000, blank = True, verbose_name = 'Текст новости' )
+	rich_content = m.TextField( null = True, blank = True, verbose_name = 'Текст новости' )
 	picture      = m.ImageField( upload_to = 'news_images', blank=True, null=True, verbose_name = 'Изображение 16 на 9' )
 	thumbnail_bg = ImageSpecField(
 		source = 'picture',
@@ -30,8 +30,8 @@ class News( m.Model ):
 	)
 	is_shown     = m.BooleanField( default = True, verbose_name = 'Доступна для показа' )
 	is_important = m.BooleanField( default = False, verbose_name = 'Важная новость' )
-	tags         = m.ManyToManyField( 'NewsTag', blank = True, verbose_name = 'Новостные теги' )
-	created_at   = m.DateTimeField( auto_now_add = True, verbose_name = 'Дата создания' )
+	tags         = m.ManyToManyField( 'NewsTag', blank = True, db_index = True, verbose_name = 'Новостные теги' )
+	created_at   = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Дата создания' )
 	updated_at   = m.DateTimeField( auto_now = True, verbose_name = 'Дата обновления' )
 
 	def save( self, *args, **kwargs ):

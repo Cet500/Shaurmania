@@ -14,16 +14,19 @@ class NewsAdmin( admin.ModelAdmin ):
 
 	fieldsets = (
 		('Основное', {
-			'fields': ('title', 'slug', 'short_text', 'main_text')
+			'fields': ('title', 'slug', 'short_text')
+		}),
+		('Статья', {
+			'fields': ('rich_content',)
 		}),
 		('Изображение', {
-			'fields' : ('picture', 'get_picture_big'),
+			'fields': ('picture', 'get_picture_big'),
 		}),
 		('Настройки', {
 			'fields': ('is_shown', 'is_important', 'tags')
 		}),
 		('Даты', {
-			'fields' : ('created_at', 'updated_at'),
+			'fields': ('created_at', 'updated_at'),
 		}),
 	)
 
@@ -42,6 +45,20 @@ class NewsAdmin( admin.ModelAdmin ):
 			return mark_safe( f'<b>нет</b>' )
 
 	get_picture_big.short_description = 'Изображение'
+
+	class Media:
+		css = {
+			'all': (
+				'main/assets/sceditor/themes/square.min.css',
+			)
+		}
+		js = (
+			'main/assets/sceditor/sceditor.min.js',
+			'main/assets/sceditor/icons/monocons.min.js',
+			'main/assets/sceditor/formats/xhtml.min.js',
+			'main/assets/sceditor/languages/ru.min.js',
+			'main/js/src/sceditor_init.js'
+		)
 
 
 class NewsInline( admin.TabularInline  ):

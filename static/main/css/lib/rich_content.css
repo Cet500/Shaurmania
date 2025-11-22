@@ -1,0 +1,10 @@
+.rich-content{
+	font-size: 20px;
+}
+.rich-content p{
+	margin: 16px 0;
+}
+.rich-content ol,
+.rich-content ul{
+	margin: 16px 0 16px 40px;
+}
