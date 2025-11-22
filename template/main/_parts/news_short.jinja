@@ -1,10 +1,29 @@
 <div class="part-news">
-	<img class="part-news__image"
-	     src="{{ news.picture.url }}" alt="">
+	{% if news.picture %}
+		<img class="part-news__image"
+		     src="{{ news.thumbnail_sm.url }}" alt="{{ news.title }}">
+	{% else %}
+		<img class="part-news__image"
+		     src="{{ static( 'main/img/news/default.png' ) }}" alt="Новости ШаурМании">
+	{% endif %}
 
-	<div class="part-news__body">
-		<h2 class="text-big font-comfortaa-600">{{ news.title }}</h2>
+	<div class="part-news__data">
+		<div class="part-news-data__description">
+			<h2 class="text-big font-comfortaa-600">{{ news.title }}</h2>
 
-		<p class="text">{{ news.short_text }}</p>
+			<p class="text">{{ news.short_text }}</p>
+
+			<div class="part-news__tags text-sm">
+				{% for tag in news.tags.all() %}
+					<a href="{{ url( 'news_by_tag', tag_slug = tag.slug ) }}"
+					   class="tag">{{ tag.name }}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<a class="text btn-full"
+		   href="{{ url( 'news_detail', slug = news.slug ) }}">
+			Подробнее
+		</a>
 	</div>
 </div>

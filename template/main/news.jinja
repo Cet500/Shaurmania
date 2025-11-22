@@ -11,7 +11,12 @@
 
 
 {% block main %}
-    <h2 class="h1 text-center font-comfortaa-500">Новости</h2>
+    <h2 class="h1 text-center font-comfortaa-500">
+	    Новости
+        {% if current_tag %}
+        	| {{ current_tag.name }}
+        {% endif %} 
+    </h2>
 
 	<div data-pagination-container="news-list-container">
 		{% include 'main/_parts/news_list.jinja' %}

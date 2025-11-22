@@ -1,3 +1,7 @@
+/* ------------------------------ lib of buttons ---------------------------- */
+
+/* ----------------------- base ------------------------- */
+
 .btn{
     color: black;
     background-color: white;
@@ -10,6 +14,18 @@
     text-align: center;
     display: inline-block;
 }
+.btn-full{
+    display: block;
+	width: calc(100% - 40px);
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 10px;
+	background-color: var(--clr-gray);
+	color: var(--clr-white);
+}
+
+/* ---------------------- states ------------------------ */
+
 .btn:hover{
     cursor: pointer;
     background-color: #ccc;
@@ -18,6 +34,15 @@
     background-color: #333;
     color: #fff;
 }
+.btn-full:hover{
+	background-color: var(--clr-dark-gray);
+}
+.btn-full:active{
+	background-color: var(--clr-darker-gray);
+}
+
+/* --------------------- discount ----------------------- */
+
 .discount > .btn {
     background-color: var(--clr-orange);
 }
@@ -28,6 +53,8 @@
 .discount > .btn:active {
     background-color: darkred;
 }
+
+/* --------------------- catalog ------------------------ */
 
 .btn_catalog{
     text-decoration: none;

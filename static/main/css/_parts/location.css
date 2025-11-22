@@ -41,19 +41,3 @@
 	outline: 1px solid var(--clr-darker-gray);
 	margin-bottom: 10px;
 }
-
-.part-location-main__button{
-	display: block;
-	width: calc(100% - 40px);
-	text-decoration: none;
-	padding: 10px 20px;
-	border-radius: 10px;
-	background-color: var(--clr-gray);
-	color: var(--clr-white);
-}
-.part-location-main__button:hover{
-	background-color: var(--clr-dark-gray);
-}
-.part-location-main__button:active{
-	background-color: var(--clr-darker-gray);
-}
