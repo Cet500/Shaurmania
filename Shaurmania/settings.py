@@ -424,6 +424,12 @@ IS_HALLOWEEN  = env( 'IS_HALLOWEEN', default = False )
 IS_NEW_YEAR   = env( 'IS_NEW_YEAR',  default = False )
 
 
+# REGISTRATION PARAMETERS ======================================================
+
+MIN_AGE_REGISTRATION = env( 'MIN_AGE_REGISTRATION', default = 14 )
+MAX_AGE_REGISTRATION = env( 'MAX_AGE_REGISTRATION', default = 100 )
+
+
 # OTHER SETTINGS ===============================================================
 
 AVATARS_COUNT = 81
