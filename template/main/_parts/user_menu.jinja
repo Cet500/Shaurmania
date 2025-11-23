@@ -1,4 +1,11 @@
-<a class="user-menu" href="{{ url( 'user', username = user.username ) }}">
-	<img src="{{ user.avatar_48x.url }}" alt="">
-	{{ user.username }}
-</a>
+{% if user.is_authenticated %}
+	<a class="user-menu" href="{{ url( 'user', username = user.username ) }}">
+		<img src="{{ user.avatar_48x.url }}" alt="">
+		{{ user.username }}
+	</a>
+{% else %}
+	<a class="user-menu" href="{{ url( 'login' ) }}">
+		<img src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
+		Войти
+	</a>
+{% endif %} 
