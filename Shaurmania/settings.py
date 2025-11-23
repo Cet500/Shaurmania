@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "compressor",
+    "phonenumber_field",
     "imagekit",
     "django_jinja",
 
@@ -359,6 +360,13 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+
+# PHONENUMBER LIBRARY ==========================================================
+
+PHONENUMBER_DB_FORMAT = 'E164'
+PHONENUMBER_DEFAULT_FORMAT = 'INTERNATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'RU'
 
 
 # INTERNATIONALIZATION =========================================================
