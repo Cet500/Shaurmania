@@ -20,7 +20,7 @@ class UserAdmin( BaseUserAdmin ):
 		'username', 'email', 'name', 'lastname', 'patronymic', 'phone'
 	]
 	readonly_fields = [
-		'id', 'password', 'register_at', 'updated_at', 'last_login'
+		'id', 'get_avatar_256', 'password', 'register_at', 'updated_at', 'last_login'
 	]
 	filter_horizontal = [ 'groups', 'user_permissions' ]
 	ordering = [ '-register_at' ]
@@ -41,8 +41,7 @@ class UserAdmin( BaseUserAdmin ):
 				('name', 'lastname', 'patronymic'),
 				'date_of_birth',
 				'sex',
-				'avatar',
-				# 'get_avatar_256',
+				('get_avatar_256', 'avatar'),
 				'description',
 				'last_address'
 			)
@@ -72,7 +71,7 @@ class UserAdmin( BaseUserAdmin ):
 
 	def get_avatar_32( self, obj ):
 		if obj.avatar:
-			return mark_safe( f'<img src="{obj.avatar_32x.url}" width="32" />' )
+			return mark_safe( f'<img src="{obj.avatar_32x.url}" width="32" style="border-radius: 16px;" />' )
 		else:
 			return mark_safe( f'<b>нет</b>' )
 
@@ -80,7 +79,7 @@ class UserAdmin( BaseUserAdmin ):
 
 	def get_avatar_256( self, obj ):
 		if obj.avatar:
-			return mark_safe( f'<img src="{obj.avatar_256x.url}" width="256" />' )
+			return mark_safe( f'<img src="{obj.avatar_256x.url}" width="256" style="border-radius: 128px;" />' )
 		else:
 			return mark_safe( f'<b>нет</b>' )
 

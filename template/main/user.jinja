@@ -13,8 +13,8 @@
 	{% if is_owner %}
 		<div class="wrapper">
 		    <div class="user__pic">
-		        {% if profile_user.picture %}
-		        	<img class="user__pic-img" src="{{ profile_user.picture.url }}" alt="">
+		        {% if profile_user.avatar %}
+		        	<img class="user__pic-img" src="{{ profile_user.avatar_256x.url }}" alt="">
 		        {% else %}
 		        	<img class="user__pic-img" src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
 		        {% endif %}
@@ -26,10 +26,9 @@
 		        	{% endif %}
 		        </p>
 
-		        <p class="font-comfortaa-400">{{ profile_user.number }}</p>
+		        <p class="font-comfortaa-400">{{ profile_user.phone }}</p>
 		        <p class="font-comfortaa-400">{{ profile_user.email }}</p>
-		        <p class="font-comfortaa-400">Последний адрес: {{ profile_user.last_address }}</p>
-		        <p class="font-comfortaa-400">На сайте с {{ profile_user.reg_date }}</p>
+		        <p class="font-comfortaa-400">На сайте уже {{ profile_user.register_at|timesince }}</p>
 
 		        <div class="user__pic-interactives">
 		            <ul>
@@ -57,8 +56,8 @@
 	{% else %}
 		<div class="wrapper">
 		    <div class="user__pic">
-		        {% if profile_user.picture %}
-		        	<img class="user__pic-img" src="{{ profile_user.picture.url }}" alt="">
+		        {% if profile_user.avatar %}
+		        	<img class="user__pic-img" src="{{ profile_user.avatar_256x.url }}" alt="">
 		        {% else %}
 		        	<img class="user__pic-img" src="{{ static( 'main/img/avatar/avatar_015.png' ) }}" alt="">
 		        {% endif %}
@@ -68,7 +67,7 @@
 		        		<i style="color: orangered;" class="fa fa-star"></i>
 		        	{% endif %}
 		        </p>
-		        <p class="font-comfortaa-400">На сайте с: {{ profile_user.reg_date }}</p>
+		        <p class="font-comfortaa-400">На сайте уже {{ profile_user.register_at|timesince }}</p>
 
 		        <div class="user__pic-interactives">
 		            <ul>
