@@ -1,4 +1,5 @@
 from .achievement import AchievementAdmin
+from .admin import MigrationAdmin, SessionAdmin
 from .location import LocationAdmin
 from .news import NewsAdmin
 from .review import ReviewAdmin
