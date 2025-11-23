@@ -11,7 +11,12 @@
 	        {% csrf_token %}
 
 	        <div class="form__row">
-	            <label for="id_username"><i class="form__icon fas fa-user"></i></label>
+	            <label for="id_name"><i class="form__icon fas fa-user"></i></label>
+	            {{ form.name }}
+	        </div>
+
+	        <div class="form__row">
+	            <label for="id_username"><i class="form__icon fas fa-id-card"></i></label>
 	            {{ form.username }}
 	        </div>
 

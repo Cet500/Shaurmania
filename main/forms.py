@@ -4,6 +4,7 @@ from .models import User
 
 
 class SignUpForm(UserCreationForm):
+    name      = forms.CharField( widget = forms.TextInput( attrs = { 'class': 'form__input' } ), max_length = 60 )
     username  = forms.CharField(widget=forms.TextInput(attrs={'class': 'form__input'}), max_length=60)
     email     = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form__input', 'autocomplete': 'off'}), max_length=254)
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form__input', 'autocomplete': 'new-password'}), max_length=60)

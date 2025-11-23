@@ -76,10 +76,11 @@ class UserFactory(DjangoModelFactory):
 	class Meta:
 		model = User
 
+	name         = LazyAttribute( lambda _: fake.name() )
 	username     = LazyAttribute( lambda _: fake.user_name() )
-	picture      = ImageField( width = 128, height = 128, color = 'blue' )
+	avatar       = ImageField( width = 128, height = 128, color = 'blue' )
 	email        = LazyAttribute( lambda _: fake.email() )
-	number       = LazyAttribute( lambda _: fake.phone_number() )
+	phone        = LazyAttribute( lambda _: fake.phone_number() )
 	last_address = LazyAttribute( lambda _: fake.address() )
 
 	@classmethod

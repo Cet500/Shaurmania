@@ -6,10 +6,11 @@ from main.forms import SignUpForm, LoginForm
 class SignUpFormTest(TestCase):
 	def test_valid_form_creates_user(self):
 		form_data = {
+			"name":      "Sergey",
 			"username":  "sergey",
 			"email":     "sergey@example.com",
-			"password1": "StrongPass123",
-			"password2": "StrongPass123",
+			"password1": "StrongP@ss123",
+			"password2": "StrongP@ss123",
 		}
 		form = SignUpForm(data=form_data)
 		self.assertTrue(form.is_valid())
@@ -19,6 +20,7 @@ class SignUpFormTest(TestCase):
 
 	def test_passwords_must_match(self):
 		form_data = {
+			"name":     "Sergey",
 			"username": "sergey",
 			"email": "sergey@example.com",
 			"password1": "12345",
@@ -30,6 +32,7 @@ class SignUpFormTest(TestCase):
 
 	def test_email_is_required(self):
 		form_data = {
+			"name": "Sergey",
 			"username": "sergey",
 			"password1": "StrongPass123",
 			"password2": "StrongPass123",
@@ -40,13 +43,13 @@ class SignUpFormTest(TestCase):
 
 	def test_widgets_have_correct_class(self):
 		form = SignUpForm()
-		for field in ["username", "email", "password1", "password2"]:
+		for field in ["name", "username", "email", "password1", "password2"]:
 			self.assertIn("form__input", form.fields[field].widget.attrs.get("class", ""))
 
 
 class LoginFormTest(TestCase):
 	def setUp(self):
-		self.user = User.objects.create_user( email = "sergey@example.com", username="sergey", password="StrongPass123")
+		self.user = User.objects.create_user( name = "Sergey", email = "sergey@example.com", username="sergey", password="StrongPass123")
 
 	def test_valid_login(self):
 		form = LoginForm(data={"username": "sergey", "password": "StrongPass123"})
