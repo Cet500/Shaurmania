@@ -18,9 +18,47 @@
 	<div class="part-location__data">
 
 {% block main %}
-
-	<h1>{{ location_detail.name }}</h1>
+	
+	<div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.name }}</h1>
 	<p class="text">{{ location_detail.description }}</p>
+
+	</div>
+	<div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.planet }}</h1>
+	<p class="text">{{ location_detail.planet}}</p>
+
+	</div>
+    <div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.country }}</h1>
+	<p class="text">{{ location_detail.country }}</p>
+
+	</div>
+    <div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.city }}</h1>
+	<p class="text">{{ location_detail.city }}</p>
+
+	</div>
+    <div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.address }}</h1>
+	<p class="text">{{ location_detail.address }}</p>
+
+	</div>
+    <div class="location-detailed-header__title">
+			
+    <h1>{{ location_detail.contacts }}</h1>
+	<p class="text">{{ location_detail.contacts }}</p>
+
+	</div>
+    <div class="location-detailed-header__title">
+			
+	</div>
+
 
 
 {% endblock %}
