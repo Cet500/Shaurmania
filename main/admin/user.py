@@ -20,7 +20,7 @@ class UserAdmin( BaseUserAdmin ):
 		'username', 'email', 'name', 'lastname', 'patronymic', 'phone'
 	]
 	readonly_fields = [
-		'id', 'get_avatar_256', 'password', 'register_at', 'updated_at', 'last_login'
+		'id', 'password', 'register_at', 'updated_at', 'last_login'
 	]
 	filter_horizontal = [ 'groups', 'user_permissions' ]
 	ordering = [ '-register_at' ]
@@ -41,7 +41,6 @@ class UserAdmin( BaseUserAdmin ):
 				('name', 'lastname', 'patronymic'),
 				'date_of_birth',
 				'sex',
-				('get_avatar_256', 'avatar'),
 				'description',
 				'last_address'
 			)
@@ -70,20 +69,9 @@ class UserAdmin( BaseUserAdmin ):
 	)
 
 	def get_avatar_32( self, obj ):
-		if obj.avatar:
-			return mark_safe( f'<img src="{obj.avatar_32x.url}" width="32" style="border-radius: 16px;" />' )
-		else:
-			return mark_safe( f'<b>нет</b>' )
+		return mark_safe( f'<img src="{obj.avatar_48_url}" width="48" style="border-radius: 24px;" />' )
 
 	get_avatar_32.short_description = 'Aва'
-
-	def get_avatar_256( self, obj ):
-		if obj.avatar:
-			return mark_safe( f'<img src="{obj.avatar_256x.url}" width="256" style="border-radius: 128px;" />' )
-		else:
-			return mark_safe( f'<b>нет</b>' )
-
-	get_avatar_256.short_description = 'Аватар 256x'
 
 	def has_add_permission(self, request):
 		"""Запрет на добавление"""

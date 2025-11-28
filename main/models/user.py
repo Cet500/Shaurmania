@@ -1,13 +1,15 @@
 from datetime import date
 
 from django.core.exceptions import ValidationError
-from django.core.validators import FileExtensionValidator, EmailValidator
+from django.core.validators import FileExtensionValidator, EmailValidator, URLValidator
 from django.db import models as m
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.templatetags.static import static
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from phonenumber_field.modelfields import PhoneNumberField
 
+from main.validators import validate_not_in_stop_words, validate_social_link
 from Shaurmania.settings import MIN_AGE_REGISTRATION, MAX_AGE_REGISTRATION
 
 
@@ -52,16 +54,19 @@ def validate_age(value):
 	min_age = today.replace( year = today.year - MIN_AGE_REGISTRATION )  # Минимум лет
 	max_age = today.replace( year = today.year - MAX_AGE_REGISTRATION )  # Максимум лет
 
-	if value > min_age:
+	if value < min_age:
 		raise ValidationError(f'Возраст должен быть не менее {MIN_AGE_REGISTRATION} лет.')
-	if value < max_age:
+	if value > max_age:
 		raise ValidationError(f'Возраст не может превышать {MAX_AGE_REGISTRATION} лет.')
 
 
 class User( AbstractBaseUser, PermissionsMixin ):
-	name         = m.CharField( max_length = 40, verbose_name = 'Имя' )
-	lastname     = m.CharField( max_length = 40, blank = True, null = True, verbose_name = 'Фамилия' )
-	patronymic   = m.CharField( max_length = 40, blank = True, null = True, verbose_name = 'Отчество' )
+	name         = m.CharField( max_length = 40,
+	                            validators = [ validate_not_in_stop_words ], verbose_name = 'Имя' )
+	lastname     = m.CharField( max_length = 40, blank = True, null = True,
+	                            validators = [ validate_not_in_stop_words ], verbose_name = 'Фамилия' )
+	patronymic   = m.CharField( max_length = 40, blank = True, null = True,
+	                            validators = [ validate_not_in_stop_words ], verbose_name = 'Отчество' )
 
 	description  = m.CharField( max_length = 240, blank = True, verbose_name = 'Описание' )
 	last_address = m.CharField( max_length = 200, blank = True, verbose_name = 'Адрес последней доставки' )
@@ -69,7 +74,8 @@ class User( AbstractBaseUser, PermissionsMixin ):
 	sex          = m.CharField( max_length = 1, default = 'N', choices = SEX, verbose_name = 'Пол' )
 	main_lang    = m.CharField( max_length = 2, default = 'RU', choices = LANGS, verbose_name = 'Язык' )
 
-	username     = m.CharField( max_length = 60, unique = True, db_index = True, verbose_name = 'Никнейм' )
+	username     = m.CharField( max_length = 60, unique = True, db_index = True,
+	                            validators = [ validate_not_in_stop_words ], verbose_name = 'Никнейм' )
 	email        = m.EmailField(
 		validators = [ EmailValidator ], max_length = 80, unique = True, db_index = True, verbose_name = 'Email'
 	)
@@ -77,7 +83,7 @@ class User( AbstractBaseUser, PermissionsMixin ):
 		max_length = 1, default = 'N', choices = VERIFY_STATUSES, verbose_name = 'Статус email'
 	)
 
-	phone        = PhoneNumberField( unique = True, null = False, blank = False, verbose_name = 'Телефон' )
+	phone        = PhoneNumberField( unique = True, null = True, blank = True, db_index=True, verbose_name = 'Телефон' )
 	phone_status = m.CharField(
 		max_length = 1, default = 'N', choices = VERIFY_STATUSES, verbose_name = 'Статус телефона'
 	)
@@ -86,11 +92,43 @@ class User( AbstractBaseUser, PermissionsMixin ):
 		null = True, blank = True, validators = [ validate_age ], verbose_name = 'Дата рождения'
 	)
 
-	avatar       = m.ImageField(
+	register_at  = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Время регистрации' )
+	updated_at   = m.DateTimeField( auto_now = True, verbose_name = "Время обновления" )
+
+	is_open   = m.BooleanField( default = True,  db_index = True, verbose_name = 'Открытый профиль?' )
+	is_active = m.BooleanField( default = True,  db_index = True, verbose_name = 'Профиль активен?' )
+	is_staff  = m.BooleanField( default = False, db_index = True, verbose_name = 'Это сотрудник сайта?' )
+
+	objects = UserManager()
+
+	USERNAME_FIELD = 'username'
+	EMAIL_FIELD = 'email'
+	REQUIRED_FIELDS = ['name', 'email']
+
+	@property
+	def avatar_48_url( self ):
+		avatar = self.avatars.filter( is_primary = True ).first()
+		if avatar and avatar.avatar:
+			return avatar.avatar_48x.url
+		return static( 'main/img/avatar/avatar_015.png' )
+
+	def __str__( self ):
+		return f'{self.username} | {self.email}'
+
+	class Meta:
+		verbose_name = 'пользователь'
+		verbose_name_plural = 'пользователи'
+		ordering = ['username']
+
+
+class UserAvatar( m.Model ):
+	user = m.ForeignKey( User, on_delete = m.CASCADE, related_name = 'avatars', verbose_name = 'ID пользователя' )
+
+	avatar = m.ImageField(
 		upload_to = 'user_avatars', verbose_name = 'Аватар', null = True, blank = True,
-		validators = [ FileExtensionValidator( ['jpg', 'jpeg', 'png', 'webp'] ) ]
+		validators = [FileExtensionValidator( ['jpg', 'jpeg', 'png', 'webp'] )]
 	)
-	avatar_32x   = ImageSpecField(
+	avatar_32x = ImageSpecField(
 		source = 'avatar',
 		processors = [ResizeToFill( 32, 32 )],
 		format = 'PNG',
@@ -121,18 +159,8 @@ class User( AbstractBaseUser, PermissionsMixin ):
 		options = { 'quality': 90 },
 	)
 
-	register_at  = m.DateTimeField( auto_now_add = True, verbose_name = 'Время регистрации' )
-	updated_at   = m.DateTimeField( auto_now = True, verbose_name = "Время обновления" )
-
-	is_open   = m.BooleanField( default = True, verbose_name = 'Открытый профиль?' )
-	is_active = m.BooleanField( default = True, verbose_name = 'Профиль активен?' )
-	is_staff  = m.BooleanField( default = False, verbose_name = 'Это сотрудник сайта?' )
-
-	objects = UserManager()
-
-	USERNAME_FIELD = 'username'
-	EMAIL_FIELD = 'email'
-	REQUIRED_FIELDS = ['name', 'email']
+	is_primary  = m.BooleanField( default = False, verbose_name = 'Основной аватар' )
+	uploaded_at = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Время добавления' )
 
 	def save( self, *args, **kwargs ):
 		if self.avatar:
@@ -144,10 +172,51 @@ class User( AbstractBaseUser, PermissionsMixin ):
 
 		super().save( *args, **kwargs )
 
-	def __str__( self ):
-		return f'{self.username} | {self.email}'
+	class Meta:
+		verbose_name = 'аватар'
+		verbose_name_plural = 'аватары'
+		ordering = [ 'user', '-uploaded_at' ]
+		constraints = [ m.UniqueConstraint( fields = ['user', 'is_primary'], name = 'one_primary_avatar' ) ]
+
+
+SOCIAL_NETS = {
+	'FB': 'Facebook',
+	'GH': 'GitHub',
+	'IG': 'Instagram',
+	'LN': 'LinkedIn',
+	'OK': 'Одноклассники',
+	'PT': 'Pinterest',
+	'RD': 'Reddit',
+	'SC': 'Snapchat',
+	'TG': 'Telegram',
+	'TT': 'TikTok',
+	'TW': 'Twitter',
+	'VK': 'ВКонтакте',
+	'WA': 'WhatsApp',
+	'YT': 'YouTube',
+}
+
+class UserSocialLink( m.Model ):
+	user        = m.ForeignKey( User, on_delete = m.CASCADE, related_name = 'social_links', verbose_name = 'ID пользователя' )
+	network     = m.CharField( choices = SOCIAL_NETS, max_length = 2, verbose_name = 'Соцсеть' )
+	link        = m.URLField( validators = [ URLValidator( schemes = ['http', 'https'] ) ], verbose_name = 'Ссылка' )
+	description = m.CharField( max_length = 100, blank = True, verbose_name = 'Описание' )
+	is_verified = m.BooleanField( default = False, verbose_name = 'Ссылка проверена' )
+	is_primary  = m.BooleanField( default = False, verbose_name = 'Главная ссылка' )
+	is_shown    = m.BooleanField( default = True,  verbose_name = 'Ссылка отображается' )
+	created_at  = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Дата/время записи' )
+	updated_at  = m.DateTimeField( auto_now = True, verbose_name = 'Дата/время изменения' )
+
+	def __str__(self):
+		return f'Link to {self.network} from {self.user.username}'
+
+	def clean( self ):
+		super().clean()
+		if validate_social_link( self.network, self.link ):
+			self.is_verified = True
 
 	class Meta:
-		verbose_name = 'пользователь'
-		verbose_name_plural = 'пользователи'
-		ordering = ['username']
+		verbose_name = 'ссылка'
+		verbose_name_plural = 'ссылки'
+		ordering = ['user', '-created_at']
+		constraints = [ m.UniqueConstraint( fields = ['user', 'network', 'is_primary'], name = 'one_primary_link' ) ]

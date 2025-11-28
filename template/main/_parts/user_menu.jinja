@@ -1,6 +1,6 @@
 {% if user.is_authenticated %}
 	<a class="user-menu" href="{{ url( 'user', username = user.username ) }}">
-		<img src="{{ user.avatar_48x.url }}" alt="">
+		<img src="{{ user.avatar_48_url }}" alt="">
 		{{ user.username }}
 	</a>
 {% else %}
