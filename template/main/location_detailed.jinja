@@ -5,7 +5,7 @@
 
 
 {% block links %}
-    
+    <link rel="stylesheet" href="{{ static( 'main/css/src/location_detailed.css' ) }}">
 
 {% endblock %}
 
@@ -19,46 +19,24 @@
 
 {% block main %}
 	
-	<div class="location-detailed-header__title">
+	<div class="content-box font-comfortaa-400">
 			
-    <h1>{{ location_detail.name }}</h1>
-	<p class="text">{{ location_detail.description }}</p>
-
-	</div>
-	<div class="location-detailed-header__title">
-			
-    <h1>{{ location_detail.planet }}</h1>
-	<p class="text">{{ location_detail.planet}}</p>
-
-	</div>
-    <div class="location-detailed-header__title">
-			
-    <h1>{{ location_detail.country }}</h1>
-	<p class="text">{{ location_detail.country }}</p>
-
-	</div>
-    <div class="location-detailed-header__title">
-			
-    <h1>{{ location_detail.city }}</h1>
-	<p class="text">{{ location_detail.city }}</p>
-
-	</div>
-    <div class="location-detailed-header__title">
-			
-    <h1>{{ location_detail.address }}</h1>
-	<p class="text">{{ location_detail.address }}</p>
-
-	</div>
-    <div class="location-detailed-header__title">
-			
-    <h1>{{ location_detail.contacts }}</h1>
-	<p class="text">{{ location_detail.contacts }}</p>
-
-	</div>
-    <div class="location-detailed-header__title">
-			
+	<div class="content-inner">
+	<img src="{{location_detail.picture.url}}">
+	<div class="text-block">
+	<h2>{{location_detail.name}}</h2>
+	<p>{{location_detail.description}}</p>
+	<ul class="location-specs">
+		<li>Планета: {{location_detail.planet}}</li>
+		<li>Страна: {{location_detail.country}}</li>
+		<li>Город: {{location_detail.city}}</li>
+		<li>Адрес: {{location_detail.address}}</li>
+		<li>Контакты: {{location_detail.contacts}}</li>
+	</ul>
 	</div>
 
+	</div>
 
+    </div>
 
 {% endblock %}

@@ -1,0 +1,9 @@
+.content-box {
+    font-family: ;
+    display: flex;
+    background-color: #eaeaea;
+}
+
+.location-specs {
+    font-weight: bolder;
+}
