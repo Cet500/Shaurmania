@@ -19,24 +19,27 @@
 
 {% block main %}
 	
-	<div class="content-box font-comfortaa-400">
-			
-	<div class="content-inner">
-	<img src="{{location_detail.picture.url}}">
-	<div class="text-block">
-	<h2>{{location_detail.name}}</h2>
-	<p>{{location_detail.description}}</p>
-	<ul class="location-specs">
-		<li>Планета: {{location_detail.planet}}</li>
-		<li>Страна: {{location_detail.country}}</li>
-		<li>Город: {{location_detail.city}}</li>
-		<li>Адрес: {{location_detail.address}}</li>
-		<li>Контакты: {{location_detail.contacts}}</li>
-	</ul>
-	</div>
+	<div class="block-location font-comfortaa-400">
+		<div class="block-location__text">
+			<h2 class="block-location__title">
+				{{location_detail.name}}
+			</h2>
+			<p class="block-location__description">
+				{{location_detail.description}}
+			</p>
 
-	</div>
+			<ul class="block-location__info">
+				<li>Планета: {{location_detail.planet}}</li>
+				<li>Страна: {{location_detail.country}}</li>
+				<li>Город: {{location_detail.city}}</li>
+				<li>Адрес: {{location_detail.address}}</li>
+				<li>Контакты: {{location_detail.contacts}}</li>
+			</ul>
+		</div>
 
+		<img class="block-location__image"
+			 src="{{location_detail.picture.url}}"
+			 alt="{{location_detail.name}}">
     </div>
 
 {% endblock %}
