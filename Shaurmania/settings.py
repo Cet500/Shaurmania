@@ -57,9 +57,9 @@ INSTALLED_APPS = [
 
     "main.apps.MainConfig",
 	"cart.apps.CartConfig",
-	"api.apps.ApiConfig"
 	"api.apps.ApiConfig",
 	"geodata.apps.GeodataConfig",
+    "security.apps.SecurityConfig"
 ]
 
 MIDDLEWARE = [
@@ -159,13 +159,13 @@ GEOIP_DATABASE = BASE_DIR / "ext_database/iplocate-country-ipv4.mmdb"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'main.User'
+AUTH_USER_MODEL    = 'main.User'
 
 
 # LOGS SUBSYSTEM ===============================================================
 
 LOG_DIR = BASE_DIR / env( 'LOG_DIR', default = 'logs' )
-LOG_DIR.mkdir(exist_ok=True)
+LOG_DIR.mkdir( exist_ok = True )
 
 ( LOG_DIR / 'django'      ).mkdir(exist_ok=True)
 ( LOG_DIR / 'security'    ).mkdir(exist_ok=True)
@@ -425,6 +425,13 @@ if IS_TEST_RUN:
     TEST_MEDIA_ROOT = BASE_DIR / env('TEST_MEDIA_ROOT', default='test_media')
     TEST_MEDIA_ROOT.mkdir(exist_ok=True)
     MEDIA_ROOT = TEST_MEDIA_ROOT
+
+
+class TestSettings:
+    FIXTURE_DIRS = [
+        'geodata/fixtures/',
+        'main/fixtures/'
+    ]
 
 
 # TEMPORAL EVENTS ==============================================================
