@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
+from geodata.utils import get_country_by_ip
+
 from main.factories import (
     ShaurmaFactory,
     ShaurmaCategoryFactory,
@@ -15,20 +17,21 @@ from main.factories import (
 
 
 FACTORY_REGISTRY = {
-    'shaurma': ShaurmaFactory,
-    'shaurma_category': ShaurmaCategoryFactory,
-    'shaurma_image': ShaurmaImageFactory,
-    'location': LocationFactory,
-    'user': UserFactory,
-    'achievement': AchievementFactory,
-    'user_achievement': UserAchievementFactory,
-    'review': ReviewFactory,
-    'stock': StockFactory,
+    'shaurma'          : ShaurmaFactory,
+    'shaurma_category' : ShaurmaCategoryFactory,
+    'shaurma_image'    : ShaurmaImageFactory,
+    'location'         : LocationFactory,
+    'user'             : UserFactory,
+    'achievement'      : AchievementFactory,
+    'user_achievement' : UserAchievementFactory,
+    'review'           : ReviewFactory,
+    'stock'            : StockFactory
 }
 
 
 def _to_jsonable(value):
     import datetime
+
     try:
         from django.db.models import Model
     except Exception:
@@ -36,20 +39,25 @@ def _to_jsonable(value):
 
     if value is None or isinstance(value, (bool, int, float, str)):
         return value
+
     if isinstance(value, (datetime.date, datetime.datetime, datetime.time)):
         return value.isoformat()
+
     if isinstance(value, Model):
         return str(value)
+
     return str(value)
 
 
 def _serialize_factory_object(obj):
     exclude_keys = { '_state', '_ik', 'picture', 'image', 'password', '_prefetched_objects_cache' }
     data = {}
+
     for key, val in obj.__dict__.items():
         if key in exclude_keys:
             continue
         data[key] = _to_jsonable(val)
+
     return data
 
 
@@ -84,3 +92,7 @@ def admin_factory_generate(request, name):
         items.append(_serialize_factory_object(obj))
 
     return JsonResponse({ 'factory': name, 'count': len(items), 'items': items })
+
+
+def geo_code( request, ip ):
+    return JsonResponse( _serialize_factory_object( get_country_by_ip( ip ) ) )
