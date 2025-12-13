@@ -1,18 +1,26 @@
-from django.test import TestCase
 from django.core.exceptions import ValidationError
+from django.templatetags.static import static
+from django.test import TestCase
 
 from main.factories import (
+    AchievementFactory,
+    LocationFactory,
+    NewsFactory,
+    NewsTagFactory,
+    ReviewFactory,
     ShaurmaCategoryFactory,
     ShaurmaFactory,
     ShaurmaImageFactory,
-    LocationFactory,
-    UserFactory,
-    AchievementFactory,
+    StockFactory,
     UserAchievementFactory,
-    ReviewFactory,
-    StockFactory
+    UserAddressFactory,
+    UserAvatarFactory,
+    UserFactory,
+    UserSocialLinkFactory,
 )
-from main.models import Shaurma, User, Achievement
+from main.models import Achievement, Delivery, News, NewsTag, Shaurma, User
+from main.models.user import UserAddress, UserAvatar, UserSocialLink
+from main.factories import DeliveryFactory
 
 
 class ShaurmaModelTest(TestCase):
@@ -57,6 +65,15 @@ class UserModelTest(TestCase):
         self.assertIn("testuser", str(user))
         self.assertIn("t@example.com", str(user))
         self.assertTrue(user.is_active)
+
+    def test_avatar_uses_default_when_missing(self):
+        user = UserFactory()
+        self.assertEqual(user.avatar_48_url, static('main/img/avatar/avatar_015.png'))
+
+    def test_avatar_uses_primary_avatar(self):
+        user = UserFactory()
+        avatar = UserAvatarFactory(user=user, is_primary=True)
+        self.assertEqual(user.avatar_48_url, avatar.avatar_48x.url)
 
 
 class AchievementModelTest(TestCase):
@@ -103,3 +120,64 @@ class StockModelTest(TestCase):
         self.assertGreaterEqual(stock.discount, 0)
         self.assertLessEqual(stock.discount, 100)
         self.assertLessEqual(stock.date_start, stock.date_end)
+
+
+class NewsTagModelTest(TestCase):
+    def test_slug_is_generated(self):
+        tag = NewsTagFactory(name="Горячее")
+        self.assertTrue(tag.slug)
+        self.assertEqual(str(tag), "Горячее")
+
+
+class NewsModelTest(TestCase):
+    def test_slug_and_tags(self):
+        tag = NewsTagFactory(name="Срочно")
+        news = NewsFactory(title="Большое открытие", tags=[tag])
+        self.assertTrue(news.slug)
+        self.assertTrue(news.tags.filter(pk=tag.pk).exists())
+        self.assertEqual(str(news), "Большое открытие")
+
+
+class UserSocialLinkModelTest(TestCase):
+    def test_clean_sets_verified(self):
+        link = UserSocialLinkFactory(network='TG', link='https://t.me/testchannel')
+        link.full_clean()
+        self.assertTrue(link.is_verified)
+        self.assertIn('TG', str(link))
+
+
+class UserAddressModelTest(TestCase):
+    def test_str_and_defaults(self):
+        address = UserAddressFactory()
+
+        self.assertIsNotNone(address.user)
+        self.assertIsNotNone(address.address)
+
+        self.assertIn(address.user.username, str(address))
+        self.assertIn(str(address.address), str(address))
+
+    def test_display_title(self):
+        address = UserAddressFactory(title="Дом")
+        self.assertEqual(address.display_title, "Дом")
+
+    def test_is_default_constraint(self):
+        user = UserFactory()
+        addr1 = UserAddressFactory(user=user, is_default=True)
+        addr2 = UserAddressFactory(user=user, is_default=True)
+
+        addr1.refresh_from_db()
+        addr2.refresh_from_db()
+
+        defaults = UserAddress.objects.filter(user=user, is_default=True)
+        self.assertEqual(defaults.count(), 1)
+        self.assertIn(defaults.first(), [addr1, addr2])
+
+
+class DeliveryModelTest(TestCase):
+    def test_str_and_relations(self):
+        delivery = DeliveryFactory()
+        self.assertIsInstance(delivery, Delivery)
+        self.assertIsNotNone(delivery.city)
+        self.assertGreaterEqual(delivery.delivery_price, 0)
+        from main.models.delivery import SPEED_TYPES
+        self.assertIn(delivery.delivery_speed, tuple(SPEED_TYPES.keys()))

@@ -1,27 +1,40 @@
 from django.test import TestCase
 from main.factories import (
+    AchievementFactory,
+    DeliveryFactory,
+    LocationFactory,
+    NewsFactory,
+    NewsTagFactory,
+    ReviewFactory,
     ShaurmaCategoryFactory,
     ShaurmaFactory,
     ShaurmaImageFactory,
-    LocationFactory,
-    UserFactory,
-    AchievementFactory,
+    StockFactory,
     UserAchievementFactory,
-    ReviewFactory,
-    StockFactory
+    UserAddressFactory,
+    UserAvatarFactory,
+    UserFactory,
+    UserSocialLinkFactory,
 )
 from main.models import (
-    ShaurmaCategory,
-    Shaurma,
-    ShaurmaImage,
-    Location,
-    User,
     Achievement,
-    UserAchievement,
+    Delivery,
+    Location,
+    News,
+    NewsTag,
     Review,
+    Shaurma,
+    ShaurmaCategory,
+    ShaurmaImage,
     Stock,
-    TIME_VARIANTS
+    TIME_VARIANTS,
+    User,
+    UserAchievement,
+    UserAddress,
+    UserAvatar,
+    UserSocialLink,
 )
+from main.models.delivery import SPEED_TYPES
 
 
 class ShaurmaFactoryTest(TestCase):
@@ -104,3 +117,55 @@ class StockFactoryTest(TestCase):
         cats = [ShaurmaCategoryFactory() for _ in range(2)]
         obj = StockFactory(categories=cats)
         self.assertEqual(obj.categories.count(), 2)
+
+
+class NewsTagFactoryTest(TestCase):
+    def test_factory_creates_valid_tag(self):
+        tag = NewsTagFactory()
+        self.assertIsInstance(tag, NewsTag)
+        self.assertTrue(tag.pk)
+
+
+class NewsFactoryTest(TestCase):
+    def test_factory_assigns_tags(self):
+        tag = NewsTagFactory()
+        news = NewsFactory(tags=[tag])
+        self.assertIsInstance(news, News)
+        self.assertTrue(news.slug)
+        self.assertTrue(news.tags.filter(pk=tag.pk).exists())
+
+
+class UserAvatarFactoryTest(TestCase):
+    def test_factory_creates_avatar(self):
+        avatar = UserAvatarFactory()
+        self.assertIsInstance(avatar, UserAvatar)
+        self.assertTrue(avatar.pk)
+        self.assertIsNotNone(avatar.avatar)
+
+
+class UserSocialLinkFactoryTest(TestCase):
+    def test_factory_creates_verified_link(self):
+        link = UserSocialLinkFactory()
+        link.full_clean()
+        self.assertIsInstance(link, UserSocialLink)
+        self.assertTrue(link.pk)
+        self.assertTrue(link.is_verified)
+
+
+class UserAddressFactoryTest(TestCase):
+    def test_factory_creates_valid_object(self):
+        address = UserAddressFactory()
+        self.assertIsInstance(address, UserAddress)
+        self.assertTrue(address.pk)
+        self.assertIsNotNone(address.user)
+        self.assertIsNotNone(address.address)
+
+
+class DeliveryFactoryTest(TestCase):
+    def test_factory_creates_valid_object(self):
+        delivery = DeliveryFactory()
+        self.assertIsInstance(delivery, Delivery)
+        self.assertTrue(delivery.pk)
+        self.assertIsNotNone(delivery.city)
+        self.assertGreaterEqual(delivery.delivery_price, 0)
+        self.assertIn(delivery.delivery_speed, tuple(SPEED_TYPES.keys()))
