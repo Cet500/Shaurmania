@@ -21,6 +21,10 @@ environ.Env.read_env( path.join( BASE_DIR, '.env' ) )
 SECRET_KEY    = env( "SECRET_KEY" )
 DEBUG         = env( "DEBUG" )
 IS_DDT_ACTIVE = env( "IS_DDT_ACTIVE", default = False )
+IP_INFO_KEY   = env( "IP_INFO_KEY" )
+
+GEO_CODER_KEY   = env( "GEO_CODER_KEY" )
+GEO_CODER_LIMIT = int( env( "GEO_CODER_LIMIT" ) )
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -54,6 +58,8 @@ INSTALLED_APPS = [
     "main.apps.MainConfig",
 	"cart.apps.CartConfig",
 	"api.apps.ApiConfig"
+	"api.apps.ApiConfig",
+	"geodata.apps.GeodataConfig",
 ]
 
 MIDDLEWARE = [
@@ -148,6 +154,8 @@ DATABASES = {
         }
     }
 }
+
+GEOIP_DATABASE = BASE_DIR / "ext_database/iplocate-country-ipv4.mmdb"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
