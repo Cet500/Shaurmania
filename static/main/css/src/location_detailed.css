@@ -1,9 +1,31 @@
-.content-box {
-    font-family: ;
+.block-location {
     display: flex;
+    flex-direction: row;
     background-color: #eaeaea;
+    border-radius: 26px;
+    padding: 35px 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 
-.location-specs {
-    font-weight: bolder;
+.block-location__text{
+    text-align: center;
+    padding: 75px 16px;
+}
+.block-location__title{
+    margin-bottom: 20px;
+}
+.block-location__description{
+    margin-bottom: 20px;
+}
+.block-location__info{
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+
+.block-location__image{
+    width: 50%;
+    border-radius: 26px;
 }
