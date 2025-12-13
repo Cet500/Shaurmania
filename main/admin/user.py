@@ -1,7 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.safestring import mark_safe
-from main.models import User, UserAchievement
+from main.models import (
+	User,
+	UserAchievement,
+	UserAvatar,
+	UserSocialLink,
+	UserAddress,
+)
 
 
 @admin.register( User )
@@ -113,3 +119,67 @@ class UserAdmin( BaseUserAdmin ):
 class UserAchievementAdmin(admin.ModelAdmin):
 	list_display = [ 'user', 'achievement', 'get_date' ]
 	list_filter  = [ 'get_date' ]
+
+
+@admin.register(UserAvatar)
+class UserAvatarAdmin(admin.ModelAdmin):
+	list_display = ['user', 'is_primary', 'uploaded_at', 'avatar_preview']
+	list_filter = ['is_primary', 'uploaded_at']
+	search_fields = ['user__username', 'user__email']
+	readonly_fields = ['uploaded_at', 'avatar_preview']
+	list_select_related = ['user']
+
+	def avatar_preview(self, obj):
+		if obj.avatar:
+			return mark_safe(f'<img src="{obj.avatar.url}" width="64" style="border-radius: 8px;" />')
+		return '—'
+
+	avatar_preview.short_description = 'Превью'
+
+
+@admin.register(UserSocialLink)
+class UserSocialLinkAdmin(admin.ModelAdmin):
+	list_display = [
+		'user', 'network', 'link', 'is_verified',
+		'is_primary', 'is_shown', 'created_at'
+	]
+	list_filter = ['network', 'is_verified', 'is_primary', 'is_shown', 'created_at']
+	search_fields = ['user__username', 'user__email', 'link', 'description']
+	readonly_fields = ['created_at', 'updated_at']
+	list_select_related = ['user']
+
+
+@admin.register(UserAddress)
+class UserAddressAdmin(admin.ModelAdmin):
+	list_display = [
+		'user', 'address', 'is_default', 'updated_at'
+	]
+	list_filter = [ 'is_default' ]
+	search_fields = [
+		'user__username', 'user__email'
+	]
+	readonly_fields = [ 'created_at', 'updated_at' ]
+	autocomplete_fields = [ 'user', 'address' ]
+	list_select_related = [ 'user', 'address' ]
+
+	fieldsets = (
+		( 'Адрес', {
+			'fields': (
+				'user',
+				'address'
+			)
+		}),
+		( 'Детали адреса', {
+			'fields': (
+				'title',
+				'notes',
+				'is_default'
+			)
+		}),
+		( 'Системные', {
+			'fields' : (
+				'created_at',
+				'updated_at'
+			),
+		}),
+	)

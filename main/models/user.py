@@ -9,6 +9,7 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from phonenumber_field.modelfields import PhoneNumberField
 
+from geodata.models import Address
 from main.validators import validate_not_in_stop_words, validate_social_link
 from Shaurmania.settings import MIN_AGE_REGISTRATION, MAX_AGE_REGISTRATION
 
@@ -162,6 +163,9 @@ class UserAvatar( m.Model ):
 	is_primary  = m.BooleanField( default = False, verbose_name = 'Основной аватар' )
 	uploaded_at = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Время добавления' )
 
+	def __str__(self):
+		return f'Avatar of {self.user.username}'
+
 	def save( self, *args, **kwargs ):
 		if self.avatar:
 			self.avatar_32x.generate()
@@ -176,7 +180,13 @@ class UserAvatar( m.Model ):
 		verbose_name = 'аватар'
 		verbose_name_plural = 'аватары'
 		ordering = [ 'user', '-uploaded_at' ]
-		constraints = [ m.UniqueConstraint( fields = ['user', 'is_primary'], name = 'one_primary_avatar' ) ]
+		constraints = [
+			m.UniqueConstraint(
+				fields = ['user', 'is_primary'],
+				condition = m.Q( is_primary = True ),
+				name = 'one_primary_avatar'
+			)
+		]
 
 
 SOCIAL_NETS = {
@@ -220,3 +230,59 @@ class UserSocialLink( m.Model ):
 		verbose_name_plural = 'ссылки'
 		ordering = ['user', '-created_at']
 		constraints = [ m.UniqueConstraint( fields = ['user', 'network', 'is_primary'], name = 'one_primary_link' ) ]
+
+
+class UserAddress( m.Model ):
+	user    = m.ForeignKey( User, on_delete = m.CASCADE, db_index = True,
+	                        related_name = 'addresses', verbose_name = 'ID пользователя' )
+	address = m.ForeignKey( Address, on_delete = m.CASCADE, db_index = True,
+	                        related_name = 'users', verbose_name = 'Адрес' )
+
+	title = m.CharField( blank = True, null = True, verbose_name = 'Подпись', help_text = 'Дом, Работа и т.д.' )
+	notes = m.TextField( blank = True, null = True, verbose_name = 'Заметки доставки' )
+
+	is_default = m.BooleanField( default = False, verbose_name = 'Основной адрес' )
+
+	created_at = m.DateTimeField( auto_now_add = True, db_index = True, verbose_name = 'Дата/время записи' )
+	updated_at = m.DateTimeField( auto_now = True, verbose_name = 'Дата/время изменения' )
+
+	@property
+	def display_title( self ):
+		"""Отображаемое название адреса"""
+		if self.title:
+			return self.title
+
+		if self.is_default:
+			return "Основной адрес"
+
+		return f"Адрес #{self.pk}"
+
+	def __str__(self):
+		return f'Address of {self.user} - {self.address}'
+
+	def save( self, *args, **kwargs ):
+		if self.is_default:
+			addresses_to_update = UserAddress.objects.filter( user = self.user, is_default = True )
+
+			if self.pk:
+				addresses_to_update = addresses_to_update.exclude( pk = self.pk )
+
+			addresses_to_update.update( is_default = False )
+
+		super().save( *args, **kwargs )
+
+	class Meta:
+		verbose_name = 'Адрес пользователя'
+		verbose_name_plural = 'Адреса пользователей'
+		ordering = ['-is_default', '-updated_at']
+		constraints = [
+			m.UniqueConstraint(
+				fields = ['user', 'is_default'],
+				condition = m.Q( is_default = True ),
+				name = 'one_default_address_per_user'
+			),
+			m.UniqueConstraint(
+				fields = ['user', 'address'],
+				name = 'unique_address_per_user'
+			)
+		]
