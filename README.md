@@ -9,7 +9,9 @@
 Проект включает систему управления товарами, корзину покупок, 
 промокоды, достижения, локации доставки и систему отзывов.
 
-![data-version](https://img.shields.io/badge/data_version-7-4c1?style=for-the-badge)
+![data-version](https://img.shields.io/badge/data_version-10-4c1?style=for-the-badge)
+
+> ⚠️ Переход с 7 до 10 версии требует полного пересоздания базы данных. 
 
 
 ## ✨ Основные возможности
@@ -141,9 +143,13 @@ Shaurmania/
 ├── api/               # Приложение API
 ├── bot/               # Telegram бот
 ├── cart/              # Приложение корзины (корзина, заказы, промокоды)
+├── ext_database       # Внешние используемые базы данных
+├── geodata/           # Приложение предоставления геоданных
+├── lists/             # Разные списки
 ├── logs/              # Логи приложения
 ├── main/              # Основное приложение (товары, пользователи, отзывы, локации)
 ├── media/             # Загружаемые файлы (изображения товаров, аватары)
+├── security/          # Приложение безопасности
 ├── Shaurmania/        # Настройки проекта
 ├── static/            # Статические файлы (CSS, JS, изображения)
 ├── template/          # Шаблоны Jinja2
@@ -171,6 +177,19 @@ Shaurmania/
    python -Xutf8 manage.py dumpdata main.ShaurmaImage -o main/fixtures/shaurma_images.json
    python -Xutf8 manage.py dumpdata main.NewsTag -o main/fixtures/news_tags.json
    python -Xutf8 manage.py dumpdata main.News -o main/fixtures/news.json
+   
+   python -Xutf8 manage.py dumpdata geodata.GeoPartWorld -o geodata/fixtures/parts_world.json
+   python -Xutf8 manage.py dumpdata geodata.GeoRegionWorld -o geodata/fixtures/regions_world.json
+   python -Xutf8 manage.py dumpdata geodata.GeoCountry -o geodata/fixtures/countries.json
+   python -Xutf8 manage.py dumpdata geodata.GeoNodeType -o geodata/fixtures/node_types.json
+   python -Xutf8 manage.py dumpdata geodata.GeoStreetType -o geodata/fixtures/street_types.json
+   
+   python -Xutf8 manage.py dumpdata geodata.GeoNode -o geodata/fixtures/frozen_nodes.json
+   python -Xutf8 manage.py dumpdata geodata.GeoCity -o geodata/fixtures/frozen_cities.json
+   
+   python -Xutf8 manage.py dumpdata geodata.GeoStreet -o geodata/fixtures/streets.json
+   python -Xutf8 manage.py dumpdata geodata.BaseAddress -o geodata/fixtures/base_addresses.json
+   python -Xutf8 manage.py dumpdata geodata.Address -o geodata/fixtures/addresses.json
 ```
 
 ### Загрузка данных
@@ -186,6 +205,22 @@ Shaurmania/
    python manage.py loaddata shaurma_images.json
    python manage.py loaddata news_tags.json
    python manage.py loaddata news.json
+   
+   python manage.py loaddata parts_world.json
+   python manage.py loaddata regions_world.json
+   python manage.py loaddata countries.json
+   python manage.py loaddata node_types.json
+   python manage.py loaddata street_types.json
+   
+   python manage.py create_timezones
+   
+   python manage.py download_geodata
+   python manage.py load_states_data
+   python manage.py load_cities_data
+   
+   python manage.py loaddata streets.json
+   python manage.py loaddata base_addresses.json
+   python manage.py loaddata addresses.json
 ```
 
 
