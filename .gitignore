@@ -8,9 +8,10 @@
 coverage_html/
 db.sqlite3
 desktop.ini
+docs_render/
 logs/
 media/CACHE/
 static_root/CACHE/
+temp/
 test_db.sqlite3
 test_media/
-temp/

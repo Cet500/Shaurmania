@@ -1,0 +1,58 @@
+site_name: Shaurmania
+site_description: Шаурма для всех!
+site_url: http://localhost:9000/docs/
+site_dir: docs_render
+site_author: SergoIndustries
+
+theme:
+    name: readthedocs
+    language: ru
+    highlightjs: true
+
+plugins:
+    - search
+
+nav:
+    - Главная: index.md
+
+    - Начало работы:
+        - Структура документации: structure.md
+        - Установка и настройка: installation.md
+        - Архитектура проекта: architecture.md
+
+    - Приложения:
+        - main:
+            - Обзор: applications/main/index.md
+            - Модели: applications/main/models.md
+            - Представления: applications/main/views.md
+            - Админ-панель: applications/main/admin.md
+        - cart:
+            - Обзор: applications/cart/index.md
+            - Модели: applications/cart/models.md
+        - geodata:
+            - Обзор: applications/geodata/index.md
+            - Модели: applications/geodata/models.md
+            - Сервисы: applications/geodata/services.md
+        - security:
+            - Обзор: applications/security/index.md
+            - Модели: applications/security/models.md
+        - api:
+            - Обзор: applications/api/index.md
+            - Эндпоинты: applications/api/endpoints.md
+
+    - Разработка:
+        - Обзор: development/index.md
+        - Начало работы: development/getting-started.md
+        - Стиль кода: development/code-style.md
+        - Работа с моделями: development/models.md
+        - Работа с представлениями: development/views.md
+        - Тестирование: development/testing.md
+        - Оптимизация: development/optimization.md
+        - Отладка: development/debugging.md
+
+    - Справочники:
+        - Обзор: reference/index.md
+        - Команды: reference/commands.md
+        - Справка по URL: reference/urls.md
+        - Переменные окружения: reference/env-reference.md
+        - Cookbook: reference/cookbook.md
