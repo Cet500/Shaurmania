@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from main.models import Review, Shaurma, Stock, ShaurmaImage
+from main.models import Review, Shaurma, ShaurmaCategory, Stock, ShaurmaImage
 
 
 def index( request ):
@@ -15,7 +15,7 @@ def index( request ):
 
 
 def catalog(request):
-	shaurma = Shaurma.objects.all()
+	shaurma = ShaurmaCategory.objects.all()
 
 	ctx = {
 		'shaurma': shaurma

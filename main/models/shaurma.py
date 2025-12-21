@@ -8,7 +8,8 @@ class Shaurma( m.Model ):
     name          = m.CharField( max_length = 60, unique = True, verbose_name = 'Название' )
     slug          = m.SlugField( max_length = 70, blank = True, verbose_name = "URL-адрес" )
     category      = m.ForeignKey( 'ShaurmaCategory', on_delete = m.SET_NULL,
-                                       null = True, blank = True, verbose_name = 'Категория' )
+                                  null = True, blank = True, related_name = 'shaurmas',
+                                  verbose_name = 'Категория' )
     compound      = m.TextField( max_length = 600, verbose_name = 'Состав' )
     short_text    = m.TextField( max_length = 200, blank = True, verbose_name = 'Краткое описание' )
     description   = m.TextField( max_length = 1000, blank = True, verbose_name = 'Описание' )

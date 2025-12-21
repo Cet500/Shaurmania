@@ -35,6 +35,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+FORBIDDEN_FILE_EXTENSIONS = []
+ALLOWED_MIME_TYPES = []
+MAX_FILES_SIZES = 0
 
 # APPLICATION DEFINITION =======================================================
 
