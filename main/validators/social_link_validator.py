@@ -1,43 +1,6 @@
-from django.core.exceptions import ValidationError
-from Shaurmania.settings import BASE_DIR
-
 import re
 
-
-STOP_WORDS = None
-
-def load_stop_words():
-	global STOP_WORDS
-
-	if STOP_WORDS is None:
-		stop_file = BASE_DIR / 'lists' / 'stop_words.txt'
-
-		if stop_file.exists():
-			try:
-				with open(stop_file, 'r', encoding='utf-8') as f:
-					STOP_WORDS = {line.strip().lower() for line in f if line.strip()}
-			except UnicodeDecodeError:
-				# Если UTF-8 не сработал, пробуем другие кодировки
-				with open(stop_file, 'r', encoding='cp1251') as f:
-					STOP_WORDS = {line.strip().lower() for line in f if line.strip()}
-
-		else:
-			STOP_WORDS = set()
-
-	return STOP_WORDS
-
-
-def validate_not_in_stop_words(value: str):
-	stop_words = load_stop_words()
-
-	if value and value.lower() in stop_words:
-		raise ValidationError('Это значение недоступно. Выберите другое.')
-
-	words = value.split()
-
-	for word in words:
-		if word.lower() in stop_words:
-			raise ValidationError('Обнаружение недопустимое слово. Выражайтесь культурнее.')
+from django.core.exceptions import ValidationError
 
 
 SOCIAL_PATTERNS = {
@@ -58,9 +21,31 @@ SOCIAL_PATTERNS = {
 }
 
 def validate_social_link(network: str, link: str):
+	"""
+	Валидатор для проверки соответствия ссылки формату выбранной социальной сети.
+	
+	Args:
+		network: Код социальной сети (например, 'TG', 'FB', 'VK')
+		link: URL ссылка для проверки
+		
+	Raises:
+		ValidationError: Если ссылка не соответствует формату сети
+		
+	Returns:
+		True: Если ссылка валидна
+	"""
+	if not network:
+		raise ValidationError('Не указана социальная сеть.')
+	
+	if not link:
+		raise ValidationError('Не указана ссылка.')
+	
 	pattern = SOCIAL_PATTERNS.get(network)
-
-	if pattern and not pattern.match(link):
+	
+	if not pattern:
+		raise ValidationError(f'Неподдерживаемая социальная сеть: {network}.')
+	
+	if not pattern.match(link):
 		raise ValidationError('Ссылка не похожа на профиль в выбранной соцсети.')
 
 	return True
