@@ -28,6 +28,10 @@
 		<link rel="stylesheet" href="{{ static( 'main/css/events/halloween.css' ) }}">
 	{% endif %}
 
+	{% if IS_NEW_YEAR %}
+		<link rel="stylesheet" href="{{ static( 'main/css/events/new_year.css' ) }}">
+	{% endif %}
+
 	{% compress css %}
 		{% block links %}{% endblock %}
 	{% endcompress %}
@@ -40,6 +44,11 @@
 		        <a class="logo" href="{{ url( 'index' ) }}">
 	                <img src="{{ static( 'main/img/events/halloween/logo.png' ) }}" alt="">
 	                <h1>ТыкваМания</h1>
+	            </a>
+	        {% elif IS_NEW_YEAR %}
+		        <a class="logo" href="{{ url( 'index' ) }}">
+	                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
+	                <h1>СнегоМания</h1>
 	            </a>
 	        {% else %}
 	            <a class="logo" href="{{ url( 'index' ) }}">
@@ -71,6 +80,13 @@
 			            </a>
 
 	                    <p>Страшная шаурма с доставкой.</p>
+                    {% elif IS_NEW_YEAR %}
+				        <a class="logo" href="{{ url( 'index' ) }}">
+			                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">
+			                <h1>СнегоМания</h1>
+			            </a>
+
+	                    <p>Рождественская шаурма с доставкой.</p>
 			        {% else %}
 			            <a class="logo" href="{{ url( 'index' ) }}">
 			                <img src="{{ static( 'main/img/logo/minimal.png' ) }}" alt="">

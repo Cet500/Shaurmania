@@ -1,0 +1,10 @@
+.body{
+	cursor: url("../../img/events/new_year/cursor.png"), default;
+}
+.main{
+	background-image: url("../../img/events/new_year/background.jpg");
+}
+.main__inner{
+	background-color: var(--clr-white);
+	padding: 20px;
+}
