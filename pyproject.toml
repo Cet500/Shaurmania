@@ -1,0 +1,27 @@
+[project]
+name = "shaurmania"
+version = "0.10.0"
+description = "ShaurMania project - website"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "concurrent-log-handler>=0.9.28",
+    "coverage>=7.13.0",
+    "django>=6.0",
+    "django-compressor>=4.6.0",
+    "django-debug-toolbar>=6.1.0",
+    "django-environ>=0.12.0",
+    "django-imagekit>=6.0.0",
+    "django-jinja>=2.11.0",
+    "django-phonenumber-field>=8.4.0",
+    "djangorestframework>=3.16.1",
+    "djangorestframework-simplejwt>=5.5.1",
+    "factory-boy>=3.3.3",
+    "maxminddb>=3.0.0",
+    "mkdocs>=1.6.1",
+    "phonenumbers>=9.0.21",
+    "pytest-django>=4.11.1",
+    "python-slugify>=8.0.4",
+    "requests>=2.32.5",
+    "ua-parser-py>=1.0.37",
+]
