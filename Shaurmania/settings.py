@@ -35,9 +35,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-FORBIDDEN_FILE_EXTENSIONS = []
-ALLOWED_MIME_TYPES = []
-MAX_FILES_SIZES = 0
 
 # APPLICATION DEFINITION =======================================================
 
@@ -411,6 +408,58 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_ENABLED = env('IS_COMPRESS_ENABLED', default = True)
+
+
+# CHAT SETTINGS ================================================================
+
+FORBIDDEN_FILE_EXTENSIONS = {
+    '.exe', '.bat', '.cmd', '.sh', '.bash', '.ps1', '.vbs', '.js',
+    '.jar', '.apk', '.dmg', '.iso', '.msi', '.scr', '.pif', '.com',
+    '.gadget', '.application', '.wsf', '.reg', '.inf', '.lnk'
+}
+
+ALLOWED_MIME_TYPES = {
+    'image': [
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/webp',
+        'image/svg+xml'
+    ],
+    'video': [
+        'video/mp4',
+        'video/webm',
+        'video/ogg'
+    ],
+    'audio': [
+        'audio/mpeg',
+        'audio/ogg',
+        'audio/wav',
+        'audio/webm'
+    ],
+    'document': [
+        'application/pdf',
+        'text/plain',
+        'text/markdown',
+        'application/json',
+        'application/msword'
+    ],
+    'archive': [
+        'application/zip',
+        'application/x-rar-compressed',
+        'application/x-tar',
+        'application/gzip'
+    ],
+}
+
+MAX_FILES_SIZES = {
+    'image'   : env( 'MAX_SIZE_IMAGE',   default = 10 ) * 1024 * 1024,
+    'video'   : env( 'MAX_SIZE_VIDEO',   default = 50 ) * 1024 * 1024,
+    'audio'   : env( 'MAX_SIZE_AUDIO',   default = 20 ) * 1024 * 1024,
+    'document': env( 'MAX_SIZE_DOC',     default = 5  ) * 1024 * 1024,
+    'archive' : env( 'MAX_SIZE_ARCHIVE', default = 20 ) * 1024 * 1024,
+    'other'   : env( 'MAX_SIZE_OTHER',   default = 1  ) * 1024 * 1024
+}
 
 
 # TESTS SETTINGS ===============================================================
