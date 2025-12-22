@@ -11,6 +11,9 @@ desktop.ini
 docs_render/
 logs/
 media/CACHE/
+media/chat/
+media/files/
+media/user/
 static_root/CACHE/
 temp/
 test_db.sqlite3
