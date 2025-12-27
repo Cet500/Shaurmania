@@ -61,14 +61,24 @@
 2. **Создайте виртуальное окружение**
    ```bash
    uv venv
+   
+   # Если UV нет
+   
+   # Windows
+   python -m venv .venv
+   # Linux/Mac
+   python3 -m venv .venv
    ```
 
 3. **Установите зависимости через UV:**
    ```
    # Windows
-   .venv\Scripts\activate
+   source .venv\Scripts\activate
    # Linux/Mac
    source .venv/bin/activate
+   
+   # Если UV нет
+   pip install uv
    
    uv sync
    ```
@@ -95,9 +105,14 @@
    python manage.py runserver
    ```
 
-2. **Пробный запуск:**
+2. **Пробный запуск ( Windows ):**
    ```bash
-   waitress-serve --port=8000 --threads=4 Shaurmania.wsgi:application
+   waitress-serve --host=0.0.0.0 --port=8000 --threads=8 --backlog=2048 Shaurmania.wsgi:application
+   ```
+   
+3. **Боевой запуск ( Linux ):**
+   ```bash
+   gunicorn --bind 0.0.0.0:8000 --workers 16 --worker-class gevent Shaurmania.wsgi:application
    ```
    
  - Приложение будет доступно по адресу:
@@ -246,9 +261,9 @@ Shaurmania/
 - **[Структура документации](docs/structure.md)** — описание организации документации
 - **[Установка и настройка](docs/installation.md)** — подробная инструкция по установке
 - **[Архитектура проекта](docs/architecture.md)** — обзор архитектуры и технологий
-- **[Документация по приложениям](docs/applications/)** — детальная документация каждого приложения
-- **[Руководство для разработчиков](docs/development/)** — расширенное руководство по разработке
-- **[Cправочник](docs/reference/index.md)** — команды и полезные ссылки
+- **[Документация по приложениям](docs/applications/main/index.md)** — детальная документация каждого приложения
+- **[Руководство для разработчиков](docs/development/index.md)** — расширенное руководство по разработке
+- **[Справочник](docs/reference/index.md)** — команды и полезные ссылки
 
 ### Просмотр документации
 

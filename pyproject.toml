@@ -17,6 +17,8 @@ dependencies = [
     "djangorestframework>=3.16.1",
     "djangorestframework-simplejwt>=5.5.1",
     "factory-boy>=3.3.3",
+    "gevent>=25.9.1",
+    "gunicorn>=23.0.0",
     "maxminddb>=3.0.0",
     "mkdocs>=1.6.1",
     "phonenumbers>=9.0.21",
@@ -24,4 +26,5 @@ dependencies = [
     "python-slugify>=8.0.4",
     "requests>=2.32.5",
     "ua-parser-py>=1.0.37",
+    "waitress>=3.0.2",
 ]
