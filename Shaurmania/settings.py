@@ -29,6 +29,7 @@ GEO_CODER_LIMIT = int( env( "GEO_CODER_LIMIT" ) )
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    env( "REAL_ALLOWED_IP" )
 ]
 
 INTERNAL_IPS = [
@@ -50,6 +51,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.db.migrations",
 
+    'rest_framework',
+    'rest_framework.authtoken',
+
     "compressor",
     "phonenumber_field",
     "imagekit",
@@ -61,6 +65,65 @@ INSTALLED_APPS = [
 	"geodata.apps.GeodataConfig",
     "security.apps.SecurityConfig"
 ]
+
+REST_FRAMEWORK = {
+    # Аутентификация
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    
+    # Разрешения по умолчанию
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    
+    # Пагинация
+    'DEFAULT_PAGINATION_CLASS': 'api.base.pagination.StandardResultsSetPagination',
+    
+    # Throttling (ограничение частоты запросов)
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/hour',      # Анонимные пользователи: 100 запросов в час
+        'user': '1000/hour',     # Аутентифицированные: 1000 запросов в час
+        'burst': '10/minute',    # Короткие всплески: 10 запросов в минуту
+        'sustained': '1000/day',  # Длительные: 1000 запросов в день
+    },
+    
+    # Фильтрация и поиск
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
+    
+    # Рендеринг
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    
+    # Парсинг
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ],
+    
+    # Обработка ошибок
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    
+    # Формат даты и времени
+    'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
+    'DATE_FORMAT': '%Y-%m-%d',
+    'TIME_FORMAT': '%H:%M:%S',
+    
+    # Версионирование
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    'ALLOWED_VERSIONS': ['v1'],
+    'DEFAULT_VERSION': 'v1',
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
