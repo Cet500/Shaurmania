@@ -10,7 +10,15 @@
     font-size: 18px;
     text-align: center;
     margin-bottom: 10px;
+    font-family: "Comfortaa";
 }
+
+.catalog_name_text{
+    text-align: center;
+    font-family: "Comfortaa";
+}
+
+
 .catalog__picture{
     width: 100%;
 }

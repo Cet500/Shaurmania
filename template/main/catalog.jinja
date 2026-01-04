@@ -14,7 +14,7 @@
     
     <div class="block block-columns block-columns-3 catalog__wrapper">
         {% for catalog in shaurma %}
-            <h2 style="width: 100%;">{{ catalog.name }}</h2>
+            <h2 class="catalog_name_text" style="width: 100%;">{{ catalog.name }}</h2>
 
             {% for food in catalog.shaurmas.all() %}
                 <div class="block-columns-item catalog">
