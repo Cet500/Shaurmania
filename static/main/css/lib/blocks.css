@@ -25,6 +25,8 @@
     justify-content: center;
 }
 .block-columns-item{
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     padding: 10px;
 }

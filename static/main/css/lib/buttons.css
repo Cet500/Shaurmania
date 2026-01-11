@@ -57,11 +57,13 @@
 /* --------------------- catalog ------------------------ */
 
 .btn_catalog{
+    display: block;
     text-decoration: none;
     color: var(--clr-white);
     background-color: var(--clr-orange);
-    padding: 5px 50px;
-    border-radius: 8px;
+    padding: 4% 50px;
+    border-radius: 12px;
+    font-family: 'comfortaa';
 }
 .btn_catalog:hover{
     background-color: #ef3807;
