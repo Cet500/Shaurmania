@@ -1,3 +1,19 @@
-.block-stock_image {
-    width: 25%;
+.block-stock {
+    display: flex;
+    flex-direction: row;
+    background-color: #eaeaea;
+    border-radius: 26px;
+    padding: 35px 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.part-stock_image {
+    width: 50%;
+    border-radius: 26px;
+}
+
+.block-stock-text {
+    text-align: center;
+    margin: 10px;
+    padding: 75px 16px;
 }
