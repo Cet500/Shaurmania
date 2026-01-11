@@ -12,21 +12,24 @@
 {% block main %}
     <h2 class="h2 text-center font-comfortaa-400 ">{{ stock.name }}</h2>
 
-    <div class="block-stock">
-        
-        <div class="block-stock_column-left">
-            <img class="block-stock_image" src="{{ stock.image.url }}" alt="{{ stock.name }}">
-            
-            <p class="text-big text-left"></p>
-            
-            <p class="text-big text-left"></p>
+   <div class="block-stock">
 
-            <p class="text-big text-left"></p>
-            
+       <img class="part-stock_image" src="{{ stock.image.url }}" alt="">
+
+      <div class="block-stock-text">
+
+       <p class="text-center font-comfortaa-400">{{ stock.description }}</p>
+
+       <p class="text-center font-comfortaa-400">{{ stock.condition }}</p>
+
+       <p class="text-center font-comfortaa-400">Скидка {{ stock.discount }}%</p>
+
+      </div>
+   </div>
             <div class="stock-buttons">
                 <input class="stock-buttons" type="submit" value="" />
             </div>
-        
+
         </div>
     </div>
 {% endblock %}
