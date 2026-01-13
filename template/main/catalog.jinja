@@ -14,15 +14,15 @@
     
     <div class="block block-columns block-columns-3 catalog_wrapper">
         {% for catalog in shaurma %}
-            <h2 class="catalog_name_text font font-comfortaa-400" style="width: 100%;">{{ catalog.name }}</h2>
+            <h2 class="catalog_name font-comfortaa-400" style="width: 100%;">{{ catalog.name }}</h2>
 
             {% for food in catalog.shaurmas.all() %}
                 <div class="block-columns-item catalog">
                     <img class="catalog_picture" src="{{ food.picture.url }}" alt="{{ food.name }}">
 
-                    <p class="catalog_name font-comfortaa-400">{{ food.name }}</p>
+                    <p class="shawerm_name font-comfortaa-400">{{ food.name }}</p>
 
-                    <p class="catalog_name_text font-comfortaa-400">{{ food.short_text }}</p>
+                    <p class="shawerm_name_text font-comfortaa-400">{{ food.short_text }}</p>
 
                     <div class="catalog_button">
                         <a class="btn_catalog" href="{{ url( 'cart_add', food.id ) }}">{{ food.price }}₽ <i class="fa-solid fa-basket-shopping-simple basket"></i>
