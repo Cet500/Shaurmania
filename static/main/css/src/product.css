@@ -8,3 +8,14 @@
 .block-product_image{
     width: 100%;
 }
+.btn {
+    height: 55px;
+    background-color: var(--clr-yellow-w40);
+    border-radius: 15px;
+}
+.btn:hover {
+    background-color: var(--clr-orange);
+}
+h2 {
+    padding-top: 10px
+}
