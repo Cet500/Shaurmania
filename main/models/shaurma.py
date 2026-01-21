@@ -34,6 +34,7 @@ class Shaurma( m.Model ):
     fats          = m.FloatField( default = 0, verbose_name = "Жиры (г)" )
     carbohydrates = m.FloatField( default = 0, verbose_name = "Углеводы (г)" )
     is_available  = m.BooleanField( default = True, verbose_name = "Доступна для заказа" )
+    is_featured   = m.BooleanField( default = False, verbose_name = "Показывать на главной" )
     created_at    = m.DateTimeField( auto_now_add = True, verbose_name = "Дата создания" )
     updated_at    = m.DateTimeField( auto_now = True, verbose_name = "Дата обновления" )
 

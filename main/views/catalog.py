@@ -1,11 +1,29 @@
 from django.shortcuts import render
 
+from django.db.models import Count
+
 from main.models import Review, Shaurma, ShaurmaCategory, Stock, ShaurmaImage
+from cart.models import Order
 
 
 def index( request ):
-	shaurma = Shaurma.objects.all()
-	stocks  = Stock.objects.all()
+	mode = request.GET.get('mode')  # 'featured' or 'popular'
+	try:
+		limit = int(request.GET.get('limit', 6))
+	except (TypeError, ValueError):
+		limit = 6
+
+	stocks = Stock.objects.all()
+
+	if mode == 'featured':
+		shaurma = Shaurma.objects.filter(is_featured=True, is_available=True)[:limit]
+	else:
+		featured = Shaurma.objects.filter(is_featured=True, is_available=True)
+		if featured.exists():
+			shaurma = featured[:limit]
+		else:
+			popular_ids = Order.objects.values('shaurma').annotate(cnt=Count('id')).order_by('-cnt').values_list('shaurma', flat=True)[:limit]
+			shaurma = Shaurma.objects.filter(id__in=list(popular_ids), is_available=True)
 
 	ctx = {
 		'shaurma': shaurma,
