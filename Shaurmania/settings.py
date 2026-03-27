@@ -166,7 +166,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'main.context_processors.feature_flags'
+                'main.context_processors.feature_flags',
+                'main.context_processors.cart_meta',
             ],
             'extensions': [
                 'jinja2.ext.i18n',
@@ -200,6 +201,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "main.context_processors.cart_meta",
             ],
         },
     },

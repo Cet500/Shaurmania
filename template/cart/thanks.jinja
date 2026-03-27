@@ -1,0 +1,18 @@
+{% extends 'main/base.jinja' %}
+
+{% block title %}Спасибо за заказ{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ static( 'cart/css/src/checkout.css' ) }}">
+{% endblock %}
+
+{% block main %}
+    <section class="checkout-warning">
+        <h2 class="h1 text-center font-comfortaa-500">Спасибо за заказ!</h2>
+        <p>Учебный платёж успешно подтверждён.</p>
+        <p>Номер заказа: <b>{{ order.order_code }}</b></p>
+        <p>Списано (учебно): <b>{{ order.total }}₽</b></p>
+        <p>Счёт списания: <b>Galactical Bank Inc.</b></p>
+        <a class="btn" href="{{ url('catalog') }}">Вернуться в каталог</a>
+    </section>
+{% endblock %}

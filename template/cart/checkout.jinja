@@ -1,0 +1,79 @@
+{% extends 'main/base.jinja' %}
+
+{% block title %}Учебная оплата{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ static( 'cart/css/src/checkout.css' ) }}">
+{% endblock %}
+
+{% block main %}
+    <h2 class="h1 text-center font-comfortaa-500">Оплата заказа</h2>
+
+    <section class="checkout-warning">
+        <p><b>ВАЖНО:</b> Сайт учебный. Реальные деньги не списываются, реальные продажи не ведутся.</p>
+        <p>Подтверждая оплату, вы имитируете списание со счёта <b>{{ bank_name }}</b>.</p>
+    </section>
+
+    {% if pricing.lines %}
+        <section class="checkout-layout">
+            <div class="checkout-invoice">
+                <h3>Счёт</h3>
+                <table class="checkout-table">
+                    <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Кол-во</th>
+                            <th>Цена</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in pricing.lines %}
+                            <tr>
+                                <td>{{ row.shaurma.name }}</td>
+                                <td>{{ row.quantity }}</td>
+                                <td>{{ row.unit_price }}₽</td>
+                                <td>{{ row.line_subtotal }}₽</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <aside class="checkout-summary grad-sand-orange">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="apply_promo">
+                    <label for="promo_code">Промокод</label>
+                    <input id="promo_code" name="promo_code" value="{{ pricing.promo_code }}" placeholder="Введите код">
+                    <button class="btn" type="submit">Применить</button>
+                </form>
+
+                {% if promo_error %}
+                    <p class="checkout-error">{{ promo_error }}</p>
+                {% elif pricing.promo %}
+                    <p class="checkout-ok">Промокод {{ pricing.promo.code_name }}: -{{ pricing.discount_percent }}%</p>
+                {% endif %}
+
+                <div class="checkout-totals">
+                    <p>Товаров: {{ pricing.count }}</p>
+                    <p>Сумма: {{ pricing.subtotal }}₽</p>
+                    <p>Скидка: -{{ pricing.discount }}₽</p>
+                    <p class="checkout-total">К списанию (учебно): {{ pricing.total }}₽</p>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="confirm">
+                    <input type="hidden" name="promo_code" value="{{ pricing.promo_code }}">
+                    <button class="btn btn-pay" type="submit">Подтвердить учебную оплату</button>
+                </form>
+            </aside>
+        </section>
+    {% else %}
+        <section class="checkout-warning">
+            <p>Корзина пуста. Добавьте товары, чтобы сформировать счёт.</p>
+            <a class="btn" href="{{ url('catalog') }}">Перейти в каталог</a>
+        </section>
+    {% endif %}
+{% endblock %}

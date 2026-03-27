@@ -34,7 +34,7 @@
 		            <ul>
 		                <li class="order-history user__pic-interactives-btns">
 			                <i class="fa fa-history"></i>
-			                <a href="">История заказов</a>
+			                <a href="#order-history">История заказов</a>
 		                </li>
 		            </ul>
 	                <a class="btn" href="{{ url( 'logout' ) }}">
@@ -51,6 +51,37 @@
 		    		<span><i class="fa fa-heart"></i></span>
 		    		<span><i class="fa fa-crown"></i></span>
 		    	</div>
+
+                <div id="order-history" class="order-history-list">
+                    <h3>История заказов</h3>
+                    {% if order_history %}
+                        {% for order in order_history %}
+                            <details class="order-history-card">
+                                <summary class="order-history-summary">
+                                    <span><b>Заказ:</b> {{ order.order_code }}</span>
+                                    <span><b>Итог:</b> {{ order.total }}₽</span>
+                                </summary>
+
+                                <div class="order-history-body">
+                                    <p><b>Дата:</b> {{ order.date }}</p>
+                                    <p><b>Сумма:</b> {{ order.subtotal }}₽</p>
+                                    <p><b>Скидка:</b> -{{ order.discount }}₽</p>
+                                    {% if order.promocode %}
+                                        <p><b>Промокод:</b> {{ order.promocode }}</p>
+                                    {% endif %}
+
+                                    <ul>
+                                        {% for item in order.order_lines %}
+                                            <li>{{ item.shaurma.name }} — {{ item.quantity }} шт. × {{ item.unit_price }}₽ = {{ item.line_total }}₽</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </details>
+                        {% endfor %}
+                    {% else %}
+                        <p>Пока нет заказов.</p>
+                    {% endif %}
+                </div>
 		    </div>
 		</div>
 	{% else %}

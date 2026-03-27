@@ -91,6 +91,26 @@
     color: var(--clr-white);
 }
 
+.nav-item__btn-cart {
+    position: relative;
+    padding-right: 28px;
+}
+
+.nav-item__btn-cart [data-cart-count] {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--clr-red);
+    color: #fff;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0 4px;
+}
+
 /* --------------------- part user-menu ----------------- */
 
 .user-menu{

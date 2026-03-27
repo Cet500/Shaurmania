@@ -61,3 +61,48 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.order-history-list {
+    margin: 18px;
+    text-align: left;
+}
+
+.order-history-card {
+    background-color: #ffe7d4;
+    border: 2px solid #ff7433;
+    border-radius: 12px;
+    padding: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.order-history-card > summary {
+    list-style: none;
+}
+
+.order-history-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.order-history-summary::after {
+    content: "▾";
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+.order-history-card[open] .order-history-summary::after {
+    content: "▴";
+}
+
+.order-history-body {
+    padding: 8px 12px 12px;
+    border-top: 1px solid #ffccab;
+}
+
+.order-history-card ul {
+    margin: 8px 0 0 20px;
+}

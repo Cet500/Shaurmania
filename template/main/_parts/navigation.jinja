@@ -40,4 +40,12 @@
             Адрес
         </a>
     </li>
+
+    <li class="nav__item">
+        <a href="{{ url( 'cart' ) }}" class="nav-item__btn nav-item__btn-cart">
+            <i class="fa-solid fa-basket-shopping"></i>
+            Корзина
+            <span data-cart-count {% if not cart_count %}style="display: none;"{% endif %}>{{ cart_count }}</span>
+        </a>
+    </li>
 </ul>

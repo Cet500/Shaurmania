@@ -5,12 +5,25 @@ from django.db import models as m
 
 
 class Order( m.Model ):
-    user    = m.ForeignKey( 'main.User', on_delete = m.CASCADE, verbose_name = 'Пользователь' )
-    shaurma = m.ForeignKey( 'main.Shaurma', on_delete = m.CASCADE, verbose_name = 'Шаурма' )
-    date    = m.DateTimeField( auto_now_add = True )
+    user              = m.ForeignKey( 'main.User', on_delete = m.SET_NULL, null = True, blank = True, verbose_name = 'Пользователь' )
+    session_key       = m.CharField( max_length = 40, null = True, blank = True, verbose_name = 'Ключ сессии' )
+    shaurma           = m.ForeignKey( 'main.Shaurma', on_delete = m.PROTECT, verbose_name = 'Шаурма' )
+    quantity          = m.PositiveSmallIntegerField( default = 1, verbose_name = 'Количество' )
+    unit_price        = m.PositiveIntegerField( default = 0, verbose_name = 'Цена за штуку' )
+    line_subtotal     = m.PositiveIntegerField( default = 0, verbose_name = 'Сумма без скидки' )
+    line_discount     = m.PositiveIntegerField( default = 0, verbose_name = 'Скидка по позиции' )
+    line_total        = m.PositiveIntegerField( default = 0, verbose_name = 'Сумма по позиции' )
+    order_code        = m.CharField( max_length = 20, db_index = True, verbose_name = 'Код заказа' )
+    promocode         = m.ForeignKey( 'cart.Promocode', on_delete = m.SET_NULL, null = True, blank = True, verbose_name = 'Промокод' )
+    order_subtotal    = m.PositiveIntegerField( default = 0, verbose_name = 'Сумма заказа без скидки' )
+    order_discount    = m.PositiveIntegerField( default = 0, verbose_name = 'Скидка по заказу' )
+    order_total       = m.PositiveIntegerField( default = 0, verbose_name = 'Итог по заказу' )
+    payer_name        = m.CharField( max_length = 128, default = 'Galactical Bank Inc.', verbose_name = 'Счёт списания' )
+    is_demo_payment   = m.BooleanField( default = True, verbose_name = 'Учебный платеж' )
+    date              = m.DateTimeField( auto_now_add = True )
 
     def __str__(self):
-        return f'Заказ {self.shaurma.name} от {self.user.username}'
+        return f'Заказ {self.order_code}'
 
     class Meta:
         verbose_name = 'заказ'
@@ -29,6 +42,7 @@ class Cart( m.Model ):
     class Meta:
         verbose_name = 'корзина'
         verbose_name_plural = 'корзины'
+        ordering = [ '-updated_at' ]
         constraints = [
             m.UniqueConstraint( fields = [ 'user', 'item' ], name = 'uniq_cart_user_item' ),
             m.UniqueConstraint( fields = [ 'session_key', 'item' ], name = 'uniq_cart_session_item' ),
