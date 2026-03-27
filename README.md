@@ -12,7 +12,7 @@
 Это проект, который до сих пор находится в стадии разработки,
 но очень стремится стать большим и сильным сайтом.
 
-![data-version](https://img.shields.io/badge/data_version-10-4c1?style=for-the-badge)
+![data-version](https://img.shields.io/badge/data_version-11-4c1?style=for-the-badge)
 
 > ⚠️ Переход с 7 до 10 версии требует полного пересоздания базы данных. 
 

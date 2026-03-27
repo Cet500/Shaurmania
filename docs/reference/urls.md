@@ -134,8 +134,15 @@
 | URL                         | Имя маршрута  | Представление            | Описание            | Методы |
 |-----------------------------|---------------|--------------------------|---------------------|--------|
 | `/cart/`                    | `cart`        | `cart.views.cart`        | Отображение корзины | GET    |
-| `/cart/add/<shaurma_id>`    | `cart_add`    | `cart.views.cart_add`    | Добавление товара   | POST   |
-| `/cart/remove/<shaurma_id>` | `cart_remove` | `cart.views.cart_remove` | Удаление товара     | POST   |
+| `/cart/add/<shaurma_id>`    | `cart_add`    | `cart.views.cart_add`    | Добавление товара (AJAX/redirect)   | GET   |
+| `/cart/remove/<shaurma_id>` | `cart_remove` | `cart.views.cart_remove` | Удаление товара (AJAX/redirect)     | GET   |
+
+### Checkout
+
+| URL                       | Имя               | View                    | Описание                   | Метод |
+|---------------------------|-------------------|-------------------------|----------------------------|-------|
+| `/cart/checkout`          | `checkout`        | `cart.views.checkout`   | Учебная оплата заказа      | GET/POST |
+| `/cart/checkout/thanks`   | `checkout_thanks` | `cart.views.checkout_thanks` | Страница благодарности | GET   |
 
 **Примеры:**
 
