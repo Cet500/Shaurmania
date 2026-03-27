@@ -12,30 +12,45 @@
 {% block main %}
     <h2 class="h1 text-center font-comfortaa-500">Ваша корзина</h2>
 
-    {% for item in cart %}
-	    <div class="cart-item">
-	        <h3 class="">{{ item.shaurma.name }}</h3>
+    <div class="cart-layout">
+        <div class="cart-items" data-cart-items>
+            {% for item in cart %}
+                <article class="cart-item" data-cart-item="{{ item.shaurma.id }}">
+                    <img class="cart-item-image" src="{{ item.shaurma.picture.url }}" alt="{{ item.shaurma.name }}">
 
-	        <img class="cart-item-image" src="{{ item.shaurma.picture.url }}" alt="">
+                    <div class="cart-item-main">
+                        <h3 class="cart-item-title">{{ item.shaurma.name }}</h3>
+                        <p class="cart-item-price">{{ item.shaurma.price }}₽ за штуку</p>
 
-	        <p class="">{{ item.shaurma.price }}₽</p>
+                        <div class="cart-item-quantity">
+                            <a class="btn-qty"
+                               href="{{ url( 'cart_remove', item.shaurma.id ) }}"
+                               data-cart-action="remove">−</a>
+                            <span class="qty" data-cart-item-qty>{{ item.quantity }}</span>
+                            <a class="btn-qty"
+                               href="{{ url( 'cart_add', item.shaurma.id ) }}"
+                               data-cart-action="add">+</a>
+                        </div>
+                    </div>
 
-	        <div class="cart-item-quantity">
-	            <a class="btn-qty" href="{{ url( 'cart_remove', item.shaurma.id ) }}">−</a>
-	            <span class="qty">{{ item.quantity }}</span>
-	            <a class="btn-qty" href="{{ url( 'cart_add', item.shaurma.id ) }}">+</a>
-	        </div>
+                    <div class="cart-item-right">
+                        <p class="cart-item-total">Сумма: <span data-cart-item-total>{{ item.total }}₽</span></p>
+                        <a class="btn" href="{{ url( 'product', item.shaurma.slug ) }}">Подробнее</a>
+                    </div>
+                </article>
+            {% endfor %}
 
-	        <div class="cart-item-buttons">
-	            <a class="btn" href="{{ url( 'product', item.shaurma.slug ) }}">Подробнее</a>
-	            <a class="btn btn-pay" href="#">Оплатить {{ item.total }}₽</a>
-	        </div>
-	    </div>
-    {% else %}
-        <p>Корзина пуста.</p>
-    {% endfor %}
+            <div class="cart-empty" data-cart-empty {% if cart %}style="display: none;"{% endif %}>
+                Корзина пока пуста. Добавьте любимую шаурму из каталога.
+            </div>
+        </div>
 
-    <hr>
+        <aside class="cart-summary grad-sand-orange">
+            <h3>Итог по заказу</h3>
+            <p class="cart-summary-total">К оплате: <span data-cart-total>{{ cart_total }}₽</span></p>
+            <a class="btn btn-pay" href="#">Перейти к оплате</a>
+        </aside>
+    </div>
 
-    <p>Итого: {{ cart_total }}₽</p>
+    <script src="{{ static( 'main/js/src/cart.js' ) }}"></script>
 {% endblock %}

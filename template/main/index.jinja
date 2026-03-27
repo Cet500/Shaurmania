@@ -23,7 +23,19 @@
                     <p class="description">{{ food.compound }}</p>
                     <p class="price">{{ food.price }}₽ / {{ food.weight }}гр</p>
                     <div>
-                        <button class="btn">В корзину</button>
+                        {% set food_qty = cart_quantities.get(food.id, 0) %}
+                        <a class="btn"
+                           href="{{ url( 'cart_add', food.id ) }}"
+                           data-cart-action="add"
+                           data-cart-item="{{ food.id }}">
+                            В корзину
+                            <span class="btn-cart-counter"
+                                  data-cart-inline-qty
+                                  data-cart-item="{{ food.id }}"
+                                  {% if not food_qty %}style="display: none;"{% endif %}>
+                                {{ food_qty }}
+                            </span>
+                        </a>
                         <a class="btn" href="{{ url( 'product', slug=food.slug ) }}">Подробнее</a>
                     </div>
                 </div>
@@ -76,4 +88,6 @@
             <a href="{{ url( 'locations' ) }}" class="btn">За покупками</a>
         </div>
     </div>
+
+    <script src="{{ static( 'main/js/src/cart.js' ) }}"></script>
 {% endblock %}

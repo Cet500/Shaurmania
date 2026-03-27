@@ -24,7 +24,19 @@
 
                 <p class="text-big text-left">БЖУ: {{ product.proteins }} / {{ product.fats }} / {{ product.carbohydrates }}</p>
 
-			    <button class="btn font-comfortaa-500">{{ product.price }}₽ <i class='fa fa-shopping-basket'></i></button>
+                {% set product_qty = cart_quantities.get(product.id, 0) %}
+			    <a class="btn font-comfortaa-500"
+                   href="{{ url( 'cart_add', product.id ) }}"
+                   data-cart-action="add"
+                   data-cart-item="{{ product.id }}">
+                    {{ product.price }}₽ <i class='fa fa-shopping-basket'></i>
+                    <span class="btn-cart-counter"
+                          data-cart-inline-qty
+                          data-cart-item="{{ product.id }}"
+                          {% if not product_qty %}style="display: none;"{% endif %}>
+                        {{ product_qty }}
+                    </span>
+                </a>
 		    </div>
 
 		    <div class="block block-columns-item">
@@ -87,4 +99,6 @@
             {% include 'main/_parts/comment.jinja' %}
         {% endfor %}
     </div>
+
+    <script src="{{ static( 'main/js/src/cart.js' ) }}"></script>
 {% endblock %}

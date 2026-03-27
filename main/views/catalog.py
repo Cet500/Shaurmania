@@ -4,6 +4,18 @@ from django.db.models import Count
 
 from main.models import Review, Shaurma, ShaurmaCategory, Stock, ShaurmaImage
 from cart.models import Order
+from cart.models import Cart
+
+
+def _get_cart_quantity_map(request):
+	if request.user.is_authenticated:
+		rows = Cart.objects.filter(user=request.user).values_list('item_id', 'quanity')
+	else:
+		if not request.session.session_key:
+			request.session.save()
+		rows = Cart.objects.filter(session_key=request.session.session_key).values_list('item_id', 'quanity')
+
+	return {item_id: qty for item_id, qty in rows}
 
 
 def index( request ):
@@ -27,7 +39,8 @@ def index( request ):
 
 	ctx = {
 		'shaurma': shaurma,
-		'stocks': stocks
+		'stocks': stocks,
+		'cart_quantities': _get_cart_quantity_map(request),
 	}
 	return render( request, 'main/index.jinja', context = ctx )
 
@@ -36,7 +49,8 @@ def catalog(request):
 	shaurma = ShaurmaCategory.objects.all()
 
 	ctx = {
-		'shaurma': shaurma
+		'shaurma': shaurma,
+		'cart_quantities': _get_cart_quantity_map(request),
 	}
 	return render( request, 'main/catalog.jinja', context = ctx )
 
@@ -49,7 +63,8 @@ def product( request, slug ):
 	ctx = {
 		'product': product,
 		'reviews': reviews,
-		'photos' : photos
+		'photos' : photos,
+		'cart_quantities': _get_cart_quantity_map(request),
 	}
 
 	return render( request, 'main/product.jinja', context = ctx )

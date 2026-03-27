@@ -18,13 +18,21 @@ class Order( m.Model ):
 
 
 class Cart( m.Model ):
-    user = m.ForeignKey( 'main.User', on_delete = m.CASCADE, verbose_name='Пользователь' )
-    item = m.ForeignKey( 'main.Shaurma', on_delete = m.CASCADE, verbose_name = 'Шаурма' )
-    quanity = m.PositiveSmallIntegerField( 'Quanity', default=1 )
+    user        = m.ForeignKey( 'main.User', on_delete = m.CASCADE, null=True, blank=True, verbose_name='Пользователь' )
+    session_key = m.CharField( max_length = 40, null = True, blank = True, verbose_name = 'Ключ сессии' )
+    item        = m.ForeignKey( 'main.Shaurma', on_delete = m.CASCADE, verbose_name = 'Шаурма' )
+    quanity     = m.PositiveSmallIntegerField( 'Quanity', default=1 )
+    meta        = m.JSONField( null = True, blank = True, verbose_name = 'Доп. данные о позиции' )
+    created_at  = m.DateTimeField( auto_now_add = True, verbose_name = 'Добавлено' )
+    updated_at  = m.DateTimeField( auto_now = True, verbose_name = 'Обновлено' )
 
     class Meta:
         verbose_name = 'корзина'
         verbose_name_plural = 'корзины'
+        constraints = [
+            m.UniqueConstraint( fields = [ 'user', 'item' ], name = 'uniq_cart_user_item' ),
+            m.UniqueConstraint( fields = [ 'session_key', 'item' ], name = 'uniq_cart_session_item' ),
+        ]
 
 
 class Promocode( m.Model ):
